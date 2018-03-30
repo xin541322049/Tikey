@@ -1,0 +1,67 @@
+.header{
+    padding-top: 10px;
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    z-index:99;
+    background: #FFFFFF;
+    padding-bottom: 15px;
+    font-weight: 500;
+}
+
+.pure-menu-heading{
+    font-weight: 900;
+}
+
+.search, .search-input{
+    background: #F5F5F5;
+    border-radius: 25px;
+}
+
+.search{
+    margin-left: 80px;
+    height: 46px;
+    padding: 7px;
+    width: 40%;
+}
+
+.search-input{
+    padding-left: 15px;
+    border-width: 0;
+    height: 32px;
+    width: 287%;
+}
+
+.login-menu-item {
+    border-left:1.5px solid #F5F5F5;
+}
+
+.join-button {
+    float: right;
+    color: white;
+    border-radius: 25px;
+    background: #5987c9;
+    font-weight: 600;
+    height: 32px;
+    width: 55px;
+}
+
+.genres {
+    width: 100%;
+    padding-top: 130px;
+    padding-left: 170px;
+    background: white;
+    color: black;
+    border-width: 0;
+}
+
+.genre {
+    margin:20px;
+    font-size: 20px;
+    color: black;
+}
+
+.price {
+    color: #5987c9;
+    font-size: large;
+}
