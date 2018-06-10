@@ -15,11 +15,6 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/carousel.css">
     <link rel="stylesheet" href="/css/unit.css">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/jquery.carousel.js"></script>
-    <script src="/js/citySelect.js"></script>
   </head>
   <body id="mainBody">
   <nav class="navbar navbar-default navbar-fixed-top header" role="navigation" style="padding-left: 20px; padding-right: 20px">
@@ -390,6 +385,11 @@
   </div>
   </body>
 
+  <script src="/js/jquery-1.8.3.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/jquery.carousel.js"></script>
+
   <script type="text/javascript">
 
       $(function(){
@@ -526,7 +526,6 @@
   </script>
 
   <script>
-      $('.city').kuCity();
       Caroursel.init($('.caroursel'))
   </script>
 </html>
