@@ -1,0 +1,108 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+			 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			 xmlns:context="http://www.springframework.org/schema/context"
+			 xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+			 xmlns:tx="http://www.springframework.org/schema/tx"
+			 xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.1.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+	<!-- 配置自定扫描的包, 自动注入其中的bean -->
+	<context:component-scan base-package="cn.tikey.dao"/>
+	<context:component-scan base-package="cn.tikey.service"/>
+
+	<context:annotation-config/>
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<!-- Database connection settings -->
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/tikey?characterEncoding=utf8&amp;useSSL=false"/>
+		<property name="username" value="root"/>
+		<property name="password" value="1704"/>
+	</bean>
+
+	<!--  配置Hibernate SessionFactory-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<!-- SQL dialect -->
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<!-- Drop and re-create the database schema on startup -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<!-- Echo all executed SQL to stdout -->
+				<prop key="hibernate.show_sql">true</prop>
+				<!-- 以格式良好的方式显示SQL语句 -->
+				<prop key="hibernate.format_sql">true</prop>
+
+                <prop key="hibernate.transaction.auto_close_session">true</prop>
+                <prop key="transaction.auto_close_session">true</prop>
+                <prop key="c3p0.timeout">20</prop>
+                <prop key="hibernate.c3p0.timeout">20</prop>
+                <prop key="connection.release_mode">after_statement</prop>
+                <prop key="hibernate.connection.release_mode">after_statement</prop>
+				<prop key="connection.autoReconnectForPools">true</prop>
+                <prop key="c3p0.max_statements">0</prop>
+                <prop key="hibernate.c3p0.max_statements">0</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"/>
+	</bean>
+
+	<!-- 开启事务管理注解 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<!-- 表示JPA Repository所在的包 -->
+	<jpa:repositories base-package="cn.tikey.dao"/>
+
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="Tikey"/>
+		<property name="packagesToScan" value="cn.tikey.entity" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</prop>
+				<prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/tikey?characterEncoding=utf8&amp;useSSL=false</prop>
+				<prop key="hibernate.connection.username">root</prop>
+				<prop key="hibernate.connection.password">1704</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.connection.useUnicode">true</prop>
+				<prop key="hibernate.connection.characterEncoding">UTF-8</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="hibernate.connection.autoReconnect">true</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
+				<prop key="connection.autoReconnectForPools">true</prop>
+				<prop key="connection.is-connection-validation-required">true</prop>
+				<prop key="hibernate.c3p0.validate">true</prop>
+				<prop key="hibernate.connection.provider_class">org.hibernate.service.jdbc.connections.internal.C3P0ConnectionProvider</prop>
+				<prop key="hibernate.c3p0.min_size">5</prop>
+				<prop key="hibernate.c3p0.max_size">600</prop>
+				<prop key="hibernate.c3p0.testConnectionOnCheckout">true</prop>
+				<prop key="hibernate.c3p0.idle_test_period">3000</prop>
+
+                <prop key="hibernate.transaction.auto_close_session">true</prop>
+                <prop key="transaction.auto_close_session">true</prop>
+                <prop key="c3p0.timeout">20</prop>
+                <prop key="hibernate.c3p0.timeout">20</prop>
+                <prop key="connection.release_mode">after_statement</prop>
+                <prop key="hibernate.connection.release_mode">after_statement</prop>
+                <prop key="c3p0.max_statements">0</prop>
+                <prop key="hibernate.c3p0.max_statements">0</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

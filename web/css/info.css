@@ -1,0 +1,26 @@
+#edit_btns{
+    left:800px;
+}
+
+.info_icon{
+    right: 10px;
+}
+
+.join_button {
+    float: right;
+    color: white;
+    border-radius: 5px;
+    background: #5987c9;
+    font-weight: 600;
+    height: 32px;
+    width: auto;
+    margin-top: 18px;
+    margin-left: 25px;
+}
+
+.rotating-slider ul.slides li:nth-of-type(1){background: #3498db;}
+.rotating-slider ul.slides li:nth-of-type(2){background: url('/img/car-oldtimer-snow-342-825x550.jpg');}
+.rotating-slider ul.slides li:nth-of-type(3){background: #e74c3c;}
+.rotating-slider ul.slides li:nth-of-type(4){background: url('/img/analog-camera-old-olympus-om-10-1528-825x550.jpg');}
+.rotating-slider ul.slides li:nth-of-type(5){background: #f1c40f;}
+.rotating-slider ul.slides li:nth-of-type(6){background: url('/img/bridge-city-night-645-827x550.jpg');}
