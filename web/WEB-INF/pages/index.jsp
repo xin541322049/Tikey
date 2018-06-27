@@ -71,14 +71,14 @@
   </nav>
   <ol class="genres breadcrumb">
     <li class="active genre"><a href="/tikey">首页</a></li>
-    <li class="genre"><a href="/tikey?genre=演唱会">演唱会</a></li>
-    <li class="genre"><a href="/tikey?genre=体育赛事">体育赛事</a></li>
-    <li class="genre"><a href="/tikey?genre=音乐会">音乐会</a></li>
-    <li class="genre"><a href="/tikey?genre=歌剧">歌剧</a></li>
-    <li class="genre"><a href="/tikey?genre=话剧">话剧</a></li>
-    <li class="genre"><a href="/tikey?genre=儿童亲子">儿童亲子</a></li>
-    <li class="genre"><a href="/tikey?genre=舞蹈">舞蹈</a></li>
-    <li class="genre"><a href="/tikey?genre=马戏杂技">马戏杂技</a></li>
+    <li class="genre"><a href="/tikey?genre=演唱会&email=${member.email}">演唱会</a></li>
+    <li class="genre"><a href="/tikey?genre=体育赛事&email=${member.email}">体育赛事</a></li>
+    <li class="genre"><a href="/tikey?genre=音乐会&email=${member.email}">音乐会</a></li>
+    <li class="genre"><a href="/tikey?genre=歌剧&email=${member.email}">歌剧</a></li>
+    <li class="genre"><a href="/tikey?genre=话剧&email=${member.email}">话剧</a></li>
+    <li class="genre"><a href="/tikey?genre=儿童亲子&email=${member.email}">儿童亲子</a></li>
+    <li class="genre"><a href="/tikey?genre=舞蹈&email=${member.email}">舞蹈</a></li>
+    <li class="genre"><a href="/tikey?genre=马戏杂技&email=${member.email}">马戏杂技</a></li>
   </ol>
 
   <article class="jq22-container" style="margin-bottom: 100px">

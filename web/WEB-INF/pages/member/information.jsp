@@ -52,7 +52,7 @@
     <div class="content pure-u-1 pure-u-md-3-4">
 
         <div  style="float: right">
-            <a  href="/tikey?email=${member.email}">退出</a>
+            <a  href="/tikey?email=${member.email}">返回</a>
         </div>
 
         <div>
