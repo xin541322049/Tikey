@@ -74,9 +74,9 @@
 		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</prop>
-				<prop key="hibernate.connection.url">jdbc:mysql://localhost:3306/tikey?characterEncoding=utf8&amp;useSSL=false</prop>
+				<prop key="hibernate.connection.url">jdbc:mysql://47.106.146.53:3306/tikey?characterEncoding=utf8&amp;useSSL=false</prop>
 				<prop key="hibernate.connection.username">root</prop>
-				<prop key="hibernate.connection.password">1704</prop>
+				<prop key="hibernate.connection.password">123</prop>
 				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.connection.useUnicode">true</prop>
 				<prop key="hibernate.connection.characterEncoding">UTF-8</prop>
