@@ -22,9 +22,9 @@
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<!-- Database connection settings -->
 		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-		<property name="url" value="jdbc:mysql://localhost:3306/tikey?characterEncoding=utf8&amp;useSSL=false"/>
+		<property name="url" value="jdbc:mysql://47.106.146.53:3306/tikey?characterEncoding=utf8&amp;useSSL=false"/>
 		<property name="username" value="root"/>
-		<property name="password" value="1704"/>
+		<property name="password" value="123"/>
 	</bean>
 
 	<!--  配置Hibernate SessionFactory-->
