@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%--
   Created by IntelliJ IDEA.
   User: apple
@@ -122,7 +123,7 @@
             <div class="movie-info">
                 <h2>${performance.name}<small> <br><br>${performance.showPlace.name}</small></h2>
                 <p>
-                    ${performance.showTime}<span class="split-symbol"> | </span>
+                    ${fn:substring(performance.showTime,0,16)}<span class="split-symbol"> | </span>
                     <c:if test="${performance.type=='Concert'}">
                         演唱会
                     </c:if>
