@@ -25,12 +25,14 @@
         border: 2px solid;
         border-radius: 20px;
         margin: 10px;
+        color: #999999;
     }
     .price_button:hover,
     .price_button:focus {
         background: white;
         border: 2px solid rgb(253, 165, 114);
         border-radius: 20px;
+        color: #fda572;
         margin: 10px;
     }
     .price_button_active {
@@ -102,14 +104,21 @@
     </div>
 </nav>
 
-<div class="container" style="margin-top: 150px">
-    <div class="row">
+<div class="container" style="margin-top: 200px;
+    display: table;
+    border-radius: 14px;
+    background-color: #fff;
+    box-shadow: 0 0 20px 0 #eee;
+    margin-bottom: 40px;
+    border: 1px solid #eee;
+    height: 52%">
+    <div style="margin-left: -100px" class="row">
         <div class="col-md-4">
-            <div class="poster">
-                <img class="img-thumbnail" src="${performance.posterUrl}">
+            <div style="margin-left: 10%;margin-top: -10%" class="poster">
+                <img class="img-rounded" src="${performance.posterUrl}">
             </div>
         </div>
-        <div class="col-md-8">
+        <div style="margin-top: 3%;margin-left: -2%" class="col-md-8">
             <div class="movie-info">
                 <h2>${performance.name}<small> <br><br>${performance.showPlace.name}</small></h2>
                 <p>
@@ -149,40 +158,40 @@
                     <h3>现场购票</h3>
                     <div>
                         <label for="stall">选择票面：</label>
-                        <button class="pure-button price_button_active" id="stall"
+                        <button style="background-image: none" class="pure-button price_button_active" id="stall"
                                 onclick="selectPrice(${performance.stallPrice}, 'stall')">
                             ¥${performance.stallPrice}</button>
                         <c:if test="${performance.secondPrice>0}">
-                            <button class="pure-button price_button" id="second"
+                            <button style="background-image: none" class="pure-button price_button" id="second"
                                     onclick="selectPrice(${performance.secondPrice}, 'second')">
                                 ¥${performance.secondPrice}</button>
                         </c:if>
                         <c:if test="${performance.thirdPrice>0}">
-                            <button class="pure-button price_button" id="third"
+                            <button style="background-image: none" class="pure-button price_button" id="third"
                                     onclick="selectPrice(${performance.thirdPrice}, 'third')">
                                 ¥${performance.thirdPrice}</button>
                         </c:if>
                         <c:if test="${performance.fourthPrice>0}">
-                            <button class="pure-button price_button" id="fourth"
+                            <button style="background-image: none" class="pure-button price_button" id="fourth"
                                     onclick="selectPrice(${performance.fourthPrice}, 'fourth')">
                                 ¥${performance.fourthPrice}</button>
                         </c:if>
                     </div>
                     <c:if test="${email.length()>0}">
-                        <button class="pure-button" style="background: #fda572; color: white; margin-top: 40px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px" onclick="pickSeat()">
+                        <button class="pure-button" style="background: #fda572; color: white; margin-top: 10px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px" onclick="pickSeat()">
                             选座购买</button>
                     </c:if>
                     <c:if test="${email.length()==0}">
-                        <button class="pure-button" style="background: #fda572; color: white; margin-top: 40px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px" onclick="javascript: alert('登录后才能购票，请先登录')">
+                        <button class="pure-button" style="background: #fda572; color: white; margin-top: 10px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px" onclick="javascript: alert('登录后才能购票，请先登录')">
                             选座购买</button>
                     </c:if>
                     <c:if test="${!performance.distributed}">
                         <c:if test="${email.length()>0}">
-                            <button class="pure-button" style="background: #fda572; color: white; margin-top: 40px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px" data-toggle="modal" data-target="#numberModal">
+                            <button class="pure-button" style="background: #fda572; color: white; margin-top: 10px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px" data-toggle="modal" data-target="#numberModal">
                                 直接购买</button>
                         </c:if>
                         <c:if test="${email.length()==0}">
-                            <button class="pure-button" style="background: #fda572; color: white; margin-top: 40px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px" onclick="javascript: alert('登录后才能购票，请先登录')">
+                            <button class="pure-button" style="background: #fda572; color: white; margin-top: 10px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px" onclick="javascript: alert('登录后才能购票，请先登录')">
                                 直接购买</button>
                         </c:if>
                     </c:if>
