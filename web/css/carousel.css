@@ -1,10 +1,8 @@
-/*!*重置*!*/
 ol,ul{list-style:none;}
 .clearfix:after {visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}
 .clearfix {zoom:1;}
 .caroursel{margin:50px auto;}
 
-/*插件样式*/
 .poster-main{position: relative;width: 900px;height: 270px}
 .poster-main a,.poster-main img{display:block;}
 .poster-main .poster-list{width: 900px;height: 270px}
