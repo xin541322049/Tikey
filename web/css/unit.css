@@ -29,9 +29,9 @@
 /*= effect-1 css end =*/
 
 /*= effect-2 css =*/
-.effect-2{max-height: 402px; min-height: 402px; overflow: hidden;}
-.effect-2 h3{padding-top: 7px; line-height: 33px;}
-.effect-2 .member-image{ height: 314px; overflow: hidden; width: 100%; transition: 0.4s; display: inline-block; float: none; vertical-align: middle;}
+.effect-2{max-height: 402px;  overflow: hidden;}
+.effect-2 h4{padding-top: 2px; line-height: 22px;}
+.effect-2 .member-image{ height: 300px; overflow: hidden; width: 100%; transition: 0.4s; display: inline-block; float: none; vertical-align: middle;}
 .effect-2 .member-info{transition: 0.4s; margin-top: 2px}
 .effect-2 .member-image img{width: 100%; vertical-align: bottom;}
 .effect-2 .social-touch{background-color: #1fb554; float: left; left: 0; bottom: 0; overflow: hidden; padding: 5px 0; width: 100%; transition: 0.4s;}

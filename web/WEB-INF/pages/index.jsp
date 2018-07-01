@@ -15,71 +15,106 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/carousel.css">
     <link rel="stylesheet" href="/css/unit.css">
-  </head>
-  <body id="mainBody">
-  <nav class="navbar navbar-default navbar-fixed-top header" role="navigation" style="padding-left: 20px; padding-right: 20px">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img alt="Brand" src="/img/viking_ship_72px_1209600_easyicon.net.ico">
-      </a>
-      <div class="navbar-header">
-        <h1 class="pure-menu-heading">Tikey</h1>
-      </div>
-      <div style="padding-top: 17px" id="nav_body">
-        <ul class="nav navbar-nav" style="padding-top: 15px">
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              南京<b class="caret"></b>
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+    <link href="/img/viking_ship_72px_1209600_easyicon.net.ico" rel="shortcut icon" type="image/x-icon">
+</head>
+
+<body id="mainBody">
+
+<nav class="navbar navbar-default navbar-static-top header">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand no-gap" href="/tikey" style="height: 75px;">
+                <img alt="Brand" src="/img/viking_ship_72px_1209600_easyicon.net.ico"
+                     style="width: 130px; height: 72px">
             </a>
-            <ul class="dropdown-menu">
-              <li><a href="#">北京</a></li>
-              <li><a href="#">上海</a></li>
-              <li><a href="#">杭州</a></li>
-              <li class="divider"></li>
-              <li><a href="#">大连</a></li>
-              <li><a href="#">武汉</a></li>
-            </ul>
-          </li>
-        </ul>
-        <form class="navbar-form navbar-left search" role="search" action="/tikey/search" method="post">
-          <div class="form-group">
-            <input type="text" class="search-input" placeholder="Search" name="term">
-            <input type="text" hidden="hidden" name="email" value="${member.email}">
-          </div>
-          <button type="submit" class="pure-button join-button">搜索</button>
-        </form>
-        <ul class="nav navbar-nav navbar-right navbar-light" id="visitor_nav">
-          <c:if test="${member.email.length()>0}">
-            <%--<li style="margin-top: 25px; margin-left: 15px">Welcome ${member.name}!</li>--%>
-            <li><a  href="${pageContext.servletContext.contextPath}/tikey/member/detail" onclick="return addEmail();">
-              <span class="glyphicon glyphicon-user"></span> 我的</a>
+            <%--<h3 class="pure-menu-heading" style="margin: 0px; padding: 0px">Tikey</h3>--%>
+        </div>
+
+        <div class="navbar-site">
+            <div class="splitor"></div>
+        </div>
+
+        <div id="choose-city" class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin-top: 15px">
+                    <span class="city-chooser">南京</span><b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">北京</a></li>
+                    <li><a href="#">上海</a></li>
+                    <li><a href="#">杭州</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#">大连</a></li>
+                    <li><a href="#">武汉</a></li>
+                </ul>
             </li>
-            <li><a href="${pageContext.servletContext.contextPath}/tikey">
-              <span class="glyphicon glyphicon-log-in"></span> 退出</a>
-            </li>
-            <form action="/tikey/member/detail" hidden="hidden" id="email-form" method="post">
-              <input value="${member.email}" name="email">
+        </div>
+
+        <div id="search-area" class="nav navbar-nav" style="margin-left: 120px;">
+            <form class="form-inline" role="search" action="/tikey/search"
+                  style="margin-top: 20px; line-height: 40px; height: 40px;">
+                <input class="search-input" placeholder="搜索演出、赛事" name="term">
+                <button class="pure-button join-button" style="padding-bottom: 8px">
+                    <span class="glyphicon glyphicon-search" style="margin-right: 5px"></span>搜索
+                </button>
             </form>
-          </c:if>
-          <c:if test="${member==null}">
-            <li><a data-toggle="modal" href="#registerModal"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
-            <li><a data-toggle="modal" href="#logModal"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
-          </c:if>
+        </div>
+
+        <ul id="visitor_nav" class="nav navbar-nav navbar-right" style="margin-top: 25px">
+            <c:if test="${member==null}">
+                <li class="user-menu"><span data-toggle="modal" href="#registerModal"
+                                            style="outline: none; cursor: pointer">
+                    <i class="fa fa-user-circle fa-2x"></i>
+                        <span style="position:relative;bottom: 5px">注册</span>
+                </span></li>
+
+                <li class="user-menu"><span data-toggle="modal" href="#logModal" style="outline: none; cursor: pointer">
+                    <i class="fa fa-sign-in fa-2x"></i>
+                        <span style="position:relative;bottom: 5px">登录</span>
+                </span></li>
+            </c:if>
+
+            <c:if test="${member.email.length()>0}">
+                <li>
+                    <a href="${pageContext.servletContext.contextPath}/tikey/member/detail"
+                       onclick="return addEmail();">
+                        <span class="glyphicon glyphicon-user"></span> 我的
+                    </a>
+                </li>
+                <li>
+                    <a href="${pageContext.servletContext.contextPath}/tikey">
+                        <span class="glyphicon glyphicon-log-in"></span> 退出
+                    </a>
+                </li>
+                <form action="/tikey/member/detail" hidden="hidden" id="email-form">
+                    <input value="${member.email}" name="email">
+                </form>
+            </c:if>
         </ul>
       </div>
     </div>
-  </nav>
-  <ol class="genres breadcrumb">
-    <li class="active genre"><a href="/tikey?email=${member.email}">首页</a></li>
-    <li class="genre"><a href="/tikey?genre=演唱会&email=${member.email}">演唱会</a></li>
-    <li class="genre"><a href="/tikey?genre=体育赛事&email=${member.email}">体育赛事</a></li>
-    <li class="genre"><a href="/tikey?genre=音乐会&email=${member.email}">音乐会</a></li>
-    <li class="genre"><a href="/tikey?genre=歌剧&email=${member.email}">歌剧</a></li>
-    <li class="genre"><a href="/tikey?genre=话剧&email=${member.email}">话剧</a></li>
-    <li class="genre"><a href="/tikey?genre=儿童亲子&email=${member.email}">儿童亲子</a></li>
-    <li class="genre"><a href="/tikey?genre=舞蹈&email=${member.email}">舞蹈</a></li>
-    <li class="genre"><a href="/tikey?genre=马戏杂技&email=${member.email}">马戏杂技</a></li>
-  </ol>
+</nav>
+
+<div id="nav-channel">
+    <div class="container" style="padding-left: 0; padding-right: 0">
+        <ol class="breadcrumb genres" style="margin: 0; padding: 0">
+            <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey">首页</a>
+                <div class="border-bottom"></div>
+            </li>
+            <%--<li class="genre"><a href="/tikey?genre=演唱会&email=${member.email}">演唱会</a><div class="border-bottom" style="margin-left: 10px"></div></li>--%>
+            <li class="genre"><a href="/tikey?genre=演唱会&email=${member.email}">演唱会</a></li>
+            <li class="genre"><a href="/tikey?genre=体育赛事&email=${member.email}">体育赛事</a></li>
+            <li class="genre"><a href="/tikey?genre=音乐会&email=${member.email}">音乐会</a></li>
+            <li class="genre"><a href="/tikey?genre=歌剧&email=${member.email}">歌剧</a></li>
+            <li class="genre"><a href="/tikey?genre=话剧&email=${member.email}">话剧</a></li>
+            <li class="genre"><a href="/tikey?genre=儿童亲子&email=${member.email}">儿童亲子</a></li>
+            <li class="genre"><a href="/tikey?genre=舞蹈&email=${member.email}">舞蹈</a></li>
+            <li class="genre"><a href="/tikey?genre=马戏杂技&email=${member.email}">马戏杂技</a></li>
+        </ol>
+    </div>
+</div>
 
   <article class="jq22-container" style="margin-bottom: 100px">
 

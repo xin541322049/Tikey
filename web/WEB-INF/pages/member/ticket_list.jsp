@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%--
   Created by IntelliJ IDEA.
   User: apple
@@ -14,8 +15,80 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/pure-min.css">
     <link rel="stylesheet" href="/css/grids-responsive-min.css">
+    <link rel="stylesheet" href="/css/uikit.css">
+    <link rel="stylesheet" href="/css/uikit-rtl.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/uikit-icons.js"></script>
+    <script src="/js/uikit.js"></script>
+    <script src="/js/paging.js"></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        /*
+          * 外面盒子样式---自己定义
+          */
+
+        .page_div {
+            margin-bottom: 20px;
+            font-size: 15px;
+            font-family: "microsoft yahei";
+            color: #666666;
+            margin-right: 10px;
+            margin-left: -5px;
+            box-sizing: border-box;
+        }
+        /*
+         * 页数按钮样式
+         */
+
+        .page_div a {
+            min-width: 30px;
+            height: 28px;
+            border: 1px solid #dce0e0!important;
+            text-align: center;
+            margin: 0 4px;
+            cursor: pointer;
+            line-height: 28px;
+            color: #666666;
+            font-size: 13px;
+            display: inline-block;
+        }
+
+        #firstPage,
+        #lastPage {
+            width: 50px;
+            color: #0073A9;
+            border: 1px solid #0073A9!important;
+        }
+
+        #prePage,
+        #nextPage {
+            width: 70px;
+            color: #0073A9;
+            border: 1px solid #0073A9!important;
+        }
+
+        .page_div .current {
+            background-color: #0073A9;
+            border-color: #0073A9;
+            color: #FFFFFF;
+        }
+
+        .totalPages {
+            margin: 0 10px;
+        }
+
+        .totalPages span,
+        .totalSize span {
+            color: #0073A9;
+            margin: 0 5px;
+        }
+    </style>
+
 </head>
 <body>
 <div id="layout" class="pure-g">
@@ -39,12 +112,19 @@
 
     <div class="content pure-u-1 pure-u-md-3-4">
 
-        <div>
-            <!-- A wrapper for all the blog posts -->
-            <div class="posts">
-                <h1 class="content-subhead">未使用</h1>
-                <c:forEach items="${unusedList}" var="ticket">
-                    <section class="post" style="margin-bottom: 60px">
+        <ul ul uk-switcher="animation: uk-animation-fade" id="tabElement" uk-tab>
+            <li><a href="#">未使用/已选座</a></li>
+            <li><a href="#">未使用/未选座</a></li>
+            <li><a href="#">已使用</a></li>
+            <li><a href="#">已退款</a></li>
+        </ul>
+
+        <ul class="uk-switcher uk-margin">
+            <li>
+                <div class="posts">
+                    <%--<h1 class="content-subhead">未使用</h1>--%>
+                    <c:forEach items="${unusedList}" var="ticket" begin="${page1 * 5}" end="${(page1 + 1) * 5 - 1}">
+                    <section class="post" style="margin-bottom: 15px">
                         <header class="post-header">
                             <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
 
@@ -73,139 +153,155 @@
                                 票号：${ticket.id}<br>
                                 票价：¥${ticket.price}<br>
                                 位置：${ticket.theRow}排${ticket.theColumn}座<br>
-                                购票时间：${ticket.saleTime}<br>
-                                <button type="button" class="pure-button" style="float: right; background: #5987c9; color: white"
+                                购票时间：${fn:substring(ticket.saleTime,0,19)}<br>
+                                <button type="button" class="pure-button" style="float: right; background: #5987c9; color: white; margin-top: -30px; margin-right: 20px "
                                         data-toggle="modal" data-target="#acceptModal" onclick="refundCheck(${ticket.id})">
                                     退票</button>
                             </p>
                         </div>
                     </section>
-                </c:forEach>
+                    </c:forEach>
+                </div>
 
-                <c:forEach items="${unseatedList}" var="ticket">
-                    <section class="post" style="margin-bottom: 60px">
-                        <header class="post-header">
-                            <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
+                <div id="page_page_1" class="page_div"></div>
+            </li>
+            <li>
+                <div class="posts">
+                    <c:forEach items="${unseatedList}" var="ticket" begin="${page2 * 5}" end="${(page2 + 1) * 5 - 1}">
+                        <section class="post" style="margin-bottom: 15px">
+                            <header class="post-header">
+                                <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
 
-                            <a href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
-                                <h2 class="post-title">${ticket.performanceName}</h2>
-                            </a>
+                                <a href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
+                                    <h2 class="post-title">${ticket.performanceName}</h2>
+                                </a>
 
-                            <p class="post-meta" style="margin-top: 13px; margin-bottom: 13px">
-                                <c:if test="${ticket.type=='Stall'}">
-                                    <span class="post-category post-category-concert">池座</span>
-                                </c:if>
-                                <c:if test="${ticket.type=='Second'}">
-                                    <span class="post-category post-category-competition">二楼</span>
-                                </c:if>
-                                <c:if test="${ticket.type=='Third'}">
-                                    <span class="post-category post-category-opera">三楼</span>
-                                </c:if>
-                                <c:if test="${ticket.type=='Fourth'}">
-                                    <span class="post-category post-category-circus">四楼</span>
-                                </c:if>
-                            </p>
-                        </header>
+                                <p class="post-meta" style="margin-top: 13px; margin-bottom: 13px">
+                                    <c:if test="${ticket.type=='Stall'}">
+                                        <span class="post-category post-category-concert">池座</span>
+                                    </c:if>
+                                    <c:if test="${ticket.type=='Second'}">
+                                        <span class="post-category post-category-competition">二楼</span>
+                                    </c:if>
+                                    <c:if test="${ticket.type=='Third'}">
+                                        <span class="post-category post-category-opera">三楼</span>
+                                    </c:if>
+                                    <c:if test="${ticket.type=='Fourth'}">
+                                        <span class="post-category post-category-circus">四楼</span>
+                                    </c:if>
+                                </p>
+                            </header>
 
-                        <div class="post-description">
-                            <p>
-                                票号：${ticket.id}<br>
-                                票价：¥${ticket.price}<br>
-                                位置：未选座，等待配票<br>
-                                购票时间：${ticket.saleTime}<br>
-                                <button type="button" class="pure-button" style="float: right; background: #5987c9; color: white"
-                                        data-toggle="modal" data-target="#acceptModal" onclick="refundCheck(${ticket.id})">
-                                    退票</button>
-                            </p>
-                        </div>
-                    </section>
-                </c:forEach>
-            </div>
+                            <div class="post-description">
+                                <p>
+                                    票号：${ticket.id}<br>
+                                    票价：¥${ticket.price}<br>
+                                    位置：未选座，等待配票<br>
+                                    购票时间：${fn:substring(ticket.saleTime,0,19)}<br>
+                                    <button type="button" class="pure-button" style="float: right; background: #5987c9; color: white; margin-top: -30px; margin-right: 20px "
+                                            data-toggle="modal" data-target="#acceptModal" onclick="refundCheck(${ticket.id})">
+                                        退票</button>
+                                </p>
+                            </div>
+                        </section>
+                    </c:forEach>
+                </div>
 
-            <div class="posts" style="margin-top: 50px">
-                <h1 class="content-subhead">已使用</h1>
-                <c:forEach items="${usedList}" var="ticket">
-                    <section class="post">
-                        <header class="post-header">
-                            <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
+                <div id="page_page_2" class="page_div"></div>
+            </li>
+            <li>
+                <div class="posts">
+                    <%--<h1 class="content-subhead">已使用</h1>--%>
+                    <c:forEach items="${usedList}" var="ticket" begin="${page3 * 5}" end="${(page3 + 1) * 5 - 1}">
+                        <section class="post">
+                            <header class="post-header">
+                                <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
 
-                            <a href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
-                                <h2 class="post-title">${ticket.performanceName}</h2>
-                            </a>
+                                <a href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
+                                    <h2 class="post-title">${ticket.performanceName}</h2>
+                                </a>
 
-                            <p class="post-meta" style="margin-top: 13px; margin-bottom: 13px">
-                                <c:if test="${ticket.type=='Stall'}">
-                                    <span class="post-category post-category-concert">池座</span>
-                                </c:if>
-                                <c:if test="${ticket.type=='Second'}">
-                                    <span class="post-category post-category-competition">二楼</span>
-                                </c:if>
-                                <c:if test="${ticket.type=='Third'}">
-                                    <span class="post-category post-category-opera">三楼</span>
-                                </c:if>
-                                <c:if test="${ticket.type=='Fourth'}">
-                                    <span class="post-category post-category-circus">四楼</span>
-                                </c:if>
-                            </p>
-                        </header>
+                                <p class="post-meta" style="margin-top: 13px; margin-bottom: 13px">
+                                    <c:if test="${ticket.type=='Stall'}">
+                                        <span class="post-category post-category-concert">池座</span>
+                                    </c:if>
+                                    <c:if test="${ticket.type=='Second'}">
+                                        <span class="post-category post-category-competition">二楼</span>
+                                    </c:if>
+                                    <c:if test="${ticket.type=='Third'}">
+                                        <span class="post-category post-category-opera">三楼</span>
+                                    </c:if>
+                                    <c:if test="${ticket.type=='Fourth'}">
+                                        <span class="post-category post-category-circus">四楼</span>
+                                    </c:if>
+                                </p>
+                            </header>
 
-                        <div class="post-description">
-                            <p>
-                                票号：${ticket.id}<br>
-                                票价：¥${ticket.price}<br>
-                                位置：${ticket.theRow}排${ticket.theColumn}座<br>
-                                购票时间：${ticket.saleTime}<br>
-                            </p>
-                        </div>
-                    </section>
-                </c:forEach>
-            </div>
-
-
-            <div class="posts" style="margin-top: 70px">
-                <h1 class="content-subhead">已退款</h1>
-                <c:forEach items="${refundedList}" var="ticket">
-                    <section class="post">
-                        <header class="post-header">
-                            <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
-
-                            <a href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
-                                <h2 class="post-title">${ticket.performanceName}</h2>
-                            </a>
-
-                            <p class="post-meta" style="margin-top: 13px; margin-bottom: 13px">
-                                <c:if test="${ticket.type=='Stall'}">
-                                    <span class="post-category post-category-concert">池座</span>
-                                </c:if>
-                                <c:if test="${ticket.type=='Second'}">
-                                    <span class="post-category post-category-competition">二楼</span>
-                                </c:if>
-                                <c:if test="${ticket.type=='Third'}">
-                                    <span class="post-category post-category-opera">三楼</span>
-                                </c:if>
-                                <c:if test="${ticket.type=='Fourth'}">
-                                    <span class="post-category post-category-circus">四楼</span>
-                                </c:if>
-                            </p>
-                        </header>
-
-                        <div class="post-description">
-                            <p>
-                                票号：${ticket.id}<br>
-                                票价：¥${ticket.price}<br>
-                                <c:if test="${ticket.theRow!=-1}">
+                            <div class="post-description">
+                                <p>
+                                    票号：${ticket.id}<br>
+                                    票价：¥${ticket.price}<br>
                                     位置：${ticket.theRow}排${ticket.theColumn}座<br>
-                                </c:if>
-                                <c:if test="${ticket.theRow==-1}">
-                                    位置：未选座<br>
-                                </c:if>
-                                购票时间：${ticket.saleTime}<br>
-                                退款金额：${ticket.refund}<br>
-                            </p>
-                        </div>
-                    </section>
-                </c:forEach>
-            </div>
+                                    购票时间：${fn:substring(ticket.saleTime,0,19)}<br>
+                                </p>
+                            </div>
+                        </section>
+                    </c:forEach>
+                </div>
+
+                <div id="page_page_3" class="page_div"></div>
+            </li>
+            <li>
+
+                <div class="posts">
+                    <%--<h1 class="content-subhead">已退款</h1>--%>
+                    <c:forEach items="${refundedList}" var="ticket" begin="${page4 * 5}" end="${(page4 + 1) * 5 - 1}">
+                        <section class="post">
+                            <header class="post-header">
+                                <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
+
+                                <a href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
+                                    <h2 class="post-title">${ticket.performanceName}</h2>
+                                </a>
+
+                                <p class="post-meta" style="margin-top: 13px; margin-bottom: 13px">
+                                    <c:if test="${ticket.type=='Stall'}">
+                                        <span class="post-category post-category-concert">池座</span>
+                                    </c:if>
+                                    <c:if test="${ticket.type=='Second'}">
+                                        <span class="post-category post-category-competition">二楼</span>
+                                    </c:if>
+                                    <c:if test="${ticket.type=='Third'}">
+                                        <span class="post-category post-category-opera">三楼</span>
+                                    </c:if>
+                                    <c:if test="${ticket.type=='Fourth'}">
+                                        <span class="post-category post-category-circus">四楼</span>
+                                    </c:if>
+                                </p>
+                            </header>
+
+                            <div class="post-description">
+                                <p>
+                                    票号：${ticket.id}<br>
+                                    票价：¥${fn:substring(ticket.price, 0, fn:indexOf(ticket.price, ".") + 2)}<br>
+                                    <c:if test="${ticket.theRow!=-1}">
+                                        位置：${ticket.theRow}排${ticket.theColumn}座<br>
+                                    </c:if>
+                                    <c:if test="${ticket.theRow==-1}">
+                                        位置：未选座<br>
+                                    </c:if>
+                                    购票时间：${fn:substring(ticket.saleTime,0,19)}<br>
+                                    退款金额：${fn:substring(ticket.refund, 0, fn:indexOf(ticket.refund, ".") + 2)}<br>
+                                </p>
+                            </div>
+                        </section>
+                    </c:forEach>
+                </div>
+
+                <div id="page_page_4" class="page_div"></div>
+            </li>
+        </ul>
+
         </div>
     </div>
 </div>
@@ -281,5 +377,82 @@
             }
         });
     }
+
+    var page_1 = ${page1};
+    var page_2 = ${page2};
+    var page_3 = ${page3};
+    var page_4 = ${page4};
+    var index = ${index};
+    var page_size = 5;
+    var max_page_1 = ${unusedList.size()};
+    var max_page_2 = ${unseatedList.size()};
+    var max_page_3 = ${usedList.size()};
+    var max_page_4 = ${refundedList.size()};
+    max_page_1 = Math.ceil(max_page_1 / page_size);
+    max_page_2 = Math.ceil(max_page_2 / page_size);
+    max_page_3 = Math.ceil(max_page_3 / page_size);
+    max_page_4 = Math.ceil(max_page_4 / page_size);
+
+    function changePage(number, newPage) {
+        switch (number){
+            case 1:
+                page_1 = newPage;
+                break;
+            case 2:
+                page_2 = newPage;
+                break;
+            case 3:
+                page_3 = newPage;
+                break;
+            case 4:
+                page_4 = newPage;
+                break;
+        }
+        index = number - 1;
+        window.location = "/tikey/member/tickets?email=${member.email}&page1=" + page_1 +"&page2=" + page_2 +"&page3=" + page_3 +"&page4=" + page_4 +"&index=" + index;
+    }
+
+    $(document).ready(function(){
+        var i = ${index};
+        var element = $("#tabElement");
+        UIkit.tab(element).show(i);
+    });
+
+    $("#page_page_1").paging({
+        pageNo:page_1+1,
+        totalPage: max_page_1,
+        totalSize: ${unusedList.size()},
+        callback: function(num) {
+            changePage(1,num-1)
+        }
+    })
+
+    $("#page_page_2").paging({
+        pageNo:page_2+1,
+        totalPage: max_page_2,
+        totalSize: ${unseatedList.size()},
+        callback: function(num) {
+            changePage(2,num-1)
+        }
+    })
+
+    $("#page_page_3").paging({
+        pageNo:page_3+1,
+        totalPage: max_page_3,
+        totalSize: ${usedList.size()},
+        callback: function(num) {
+            changePage(3,num-1)
+        }
+    })
+
+    $("#page_page_4").paging({
+        pageNo:page_4+1,
+        totalPage: max_page_4,
+        totalSize: ${refundedList.size()},
+        callback: function(num) {
+            changePage(4,num-1)
+        }
+    })
+
 </script>
 </html>

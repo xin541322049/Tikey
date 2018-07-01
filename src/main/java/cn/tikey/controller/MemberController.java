@@ -163,7 +163,8 @@ public class MemberController {
     }
 
     @RequestMapping(value = "/tickets")
-    public String getTicketList(ModelMap modelMap, @ModelAttribute("email") String email){
+    public String getTicketList(ModelMap modelMap, @ModelAttribute("email") String email, @ModelAttribute("page1") String page1,
+    @ModelAttribute("page2") String page2, @ModelAttribute("page3") String page3, @ModelAttribute("page4") String page4, @ModelAttribute("index") String index){
         Member member = memberService.getMemberByEmail(email);
         List<Ticket> unusedList = ticketService.findByMemberEmailAndState(email, TicketState.Unused);
         List<Ticket> unseatedList = ticketService.findByMemberEmailAndState(email, TicketState.Unseated);
@@ -174,6 +175,11 @@ public class MemberController {
         modelMap.addAttribute("unseatedList", unseatedList);
         modelMap.addAttribute("usedList", usedList);
         modelMap.addAttribute("refundedList", refundedList);
+        modelMap.addAttribute("page1",Integer.parseInt(page1));
+        modelMap.addAttribute("page2",Integer.parseInt(page2));
+        modelMap.addAttribute("page3",Integer.parseInt(page3));
+        modelMap.addAttribute("page4",Integer.parseInt(page4));
+        modelMap.addAttribute("index",index);
         return "member/ticket_list";
     }
 
