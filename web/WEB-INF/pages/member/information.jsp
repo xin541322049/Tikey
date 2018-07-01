@@ -61,24 +61,24 @@
                 <h1 class="content-subhead">基本资料</h1>
 
                 <!-- A single blog post -->
-                <div id="info" class="content" style="color: #737373">
-                    <p>
-                        <span class="glyphicon glyphicon-envelope info_icon" style="color: #5aba59"></span>
+                <div id="info" class="content" style="color: #737373;margin-left: 11.5%">
+                    <p style="font-size: 17px">
+                        <span class="glyphicon glyphicon-envelope info_icon" style="color: #5aba59; font-size: 25px"></span>
                         邮箱：${member.email}
                     </p>
                     <div id="name_field">
-                        <p id="name">
-                            <span class="glyphicon glyphicon-user info_icon" style="color: #4d85d1"></span>
+                        <p style="font-size: 17px" id="name">
+                            <span class="glyphicon glyphicon-user info_icon" style="color: #4d85d1; font-size: 25px"></span>
                             昵称：${member.name}
                             <a onclick="editName()"><span class="glyphicon glyphicon-pencil"></span></a>
                         </p>
                     </div>
-                    <p>
-                        <span class="glyphicon glyphicon-bookmark info_icon" style="color: #8156a7"></span>
+                    <p style="font-size: 17px">
+                        <span class="glyphicon glyphicon-bookmark info_icon" style="color: #8156a7; font-size: 25px"></span>
                         会员等级：${member.rank}
                     </p>
-                    <p>
-                        <span class="glyphicon glyphicon-gift info_icon" style="color: #df2d4f"></span>
+                    <p style="font-size: 17px">
+                        <span class="glyphicon glyphicon-gift info_icon" style="color: #df2d4f; font-size: 25px"></span>
                         积分：${member.credits}
                     </p>
 
@@ -111,7 +111,7 @@
                 </div>
             </div>
 
-            <div class="posts" style="margin-top: 140px">
+            <div class="posts" style="margin-top: 80px">
                 <h1 class="content-subhead">我的会员</h1>
                 <div class="mature-progress" style="margin-left: 115px">
                     <div class="mature-progress-bottom">
@@ -165,7 +165,7 @@
 
             <div class="posts" style="margin-top: 70px">
                 <h1 class="content-subhead">我与Tikey</h1>
-                <a href="/tikey/member/statistics?email=${member.email}" style="margin-top: 30px">翻看故事</a>
+                <%--<a href="/tikey/member/statistics?email=${member.email}" style="margin-top: 30px">翻看故事</a>--%>
             </div>
 
             <div class="footer">
@@ -211,18 +211,19 @@
     function editPassword() {
         document.getElementById("password_button").setAttribute("class", "pure-button join_button pure-button-disabled")
         $('#password_field').append("<form class=\"pure-form pure-form-stacked\" id='password_form' style='margin-top: 90px'>" +
-            "<fieldset>" +
+            "<fieldset style='margin-left: -1%'>" +
             "<label for=\"old_password\" id='old_check'>旧密码" +
-            "<input id=\"old_password\" type=\"password\" placeholder=\"请正确输入以前的密码\" required=\"required\">" +
+            "<input style='width: 190px' id=\"old_password\" type=\"password\" placeholder=\"请正确输入以前的密码\" required=\"required\">" +
             "</label>" +
-            "<label for=\"new_password\">新密码</label>" +
-            "<input id=\"new_password\" type=\"password\" placeholder=\"请输入要更改的新密码\" required=\"required\">" +
+            "<label for=\"new_password\">新密码" +
+            "<input style='width: 190px' id=\"new_password\" type=\"password\" placeholder=\"请输入要更改的新密码\" required=\"required\">" +
+            "</lable>" +
             "<label for=\"new_password_check\" id='new_check'>新密码确认" +
-            "<input id=\"new_password_check\" type=\"password\" placeholder=\"请重复输入新密码\" required=\"required\">" +
+            "<input style='width: 190px' id=\"new_password_check\" type=\"password\" placeholder=\"请重复输入新密码\" required=\"required\">" +
             "</label>" +
-            "<button type=\"button\" class=\"pure-button join_button\" onclick=\"changePassword()\" id='pwd_submit'>" +
+            "<button style='width: 84px' type=\"button\" class=\"pure-button join_button\" onclick=\"changePassword()\" id='pwd_submit'>" +
             "提交</button>" +
-            "<button type=\"button\" class=\"pure-button join_button\" onclick=\"cancelChangePassword()\">取消</button>"+
+            "<button style='width: 84px' type=\"button\" class=\"pure-button join_button\" onclick=\"cancelChangePassword()\">取消</button>"+
             "</fieldset>" +
             "</form>");
         var str_check ="";
@@ -243,7 +244,7 @@
                         $('#check_true').remove();
                         $('#check_false').remove();
                         $('#new_check').append("<span id='check_false' class='glyphicon glyphicon-remove-sign' " +
-                            "style='color: #d06d72; top: 8px'>新密码两次输入不一致</span>");
+                            "style='color: #d06d72; top: 2px'>新密码两次输入不一致</span>");
                         document.getElementById("pwd_submit").setAttribute("class", "pure-button join_button pure-button-disabled");
                     }
                 }   //end if
@@ -266,7 +267,7 @@
                     $('#check_false').remove();
                     $('#password_false').remove();
                     $('#old_check').append("<span id='password_false' class='glyphicon glyphicon-remove-sign' " +
-                        "style='color: #d06d72; top: 8px'>旧密码输入错误</span>");
+                        "style='color: #d06d72; top: 2px'>旧密码输入错误</span>");
                 }
             }
         });
