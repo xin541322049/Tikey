@@ -24,6 +24,7 @@ public interface PerformanceService {
     Ticket refundTicket(int ticketId);
     Ticket checkTicket(int ticketId, int performanceId);
     List<Performance> findByNameContaining(String name);
+    List<Performance> findByDescriptionContaining(String description);
     List<Performance> findByShowTime(Date showTime);
     List<Performance> findByState(PerformanceState state);
     List<Performance> findByStateAndType(PerformanceState state, String type);

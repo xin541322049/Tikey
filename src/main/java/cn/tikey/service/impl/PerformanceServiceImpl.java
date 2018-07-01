@@ -288,6 +288,10 @@ public class PerformanceServiceImpl implements PerformanceService{
         return performanceRepository.findByNameContainingAndState(name, PerformanceState.Sale);
     }
 
+    public List<Performance> findByDescriptionContaining(String description) {
+        return performanceRepository.findByDescriptionContainingAndState(description, PerformanceState.Sale);
+    }
+
     public List<Performance> findByShowTime(Date showTime) {
         return performanceRepository.findByShowTime(showTime);
     }

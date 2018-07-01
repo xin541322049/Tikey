@@ -47,6 +47,7 @@ public class HomeController {
             page = "0";
         }
         List<Performance> result = performanceService.findByNameContaining(term);
+        result.addAll(performanceService.findByDescriptionContaining(term));
         modelMap.addAttribute("result", result);
         modelMap.addAttribute("page", Integer.parseInt(page));
         modelMap.addAttribute("search_term", term);

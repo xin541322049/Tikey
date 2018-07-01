@@ -16,6 +16,7 @@ import java.util.List;
 @Repository
 public interface PerformanceRepository extends JpaRepository<Performance, Integer> {
     List<Performance> findByNameContainingAndState(String name, PerformanceState state);
+    List<Performance> findByDescriptionContainingAndState(String description, PerformanceState state);
     List<Performance> findByShowTime(Date showTime);
     List<Performance> findByState(PerformanceState state);
     List<Performance> findByStateAndType(PerformanceState state, PerformanceType type);
