@@ -56,6 +56,7 @@
             <form class="form-inline" role="search" action="/tikey/search"
                   style="margin-top: 20px; line-height: 40px; height: 40px;" method="post">
                 <input class="search-input" placeholder="搜索演出、赛事" name="term">
+                <input value="${member.email}" name="email" hidden="hidden">
                 <button class="pure-button join-button" style="padding-bottom: 8px">
                     <span class="glyphicon glyphicon-search" style="margin-right: 5px"></span>搜索
                 </button>

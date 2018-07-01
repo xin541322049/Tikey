@@ -1,0 +1,65 @@
+.page_div {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-family: "microsoft yahei";
+    color: #999999;
+    /*margin-right: 20%;*/
+    /*margin-left: -5px;*/
+    box-sizing: border-box;
+    align-content: center;
+}
+/*
+ * 页数按钮样式
+ */
+
+.page_div a {
+    min-width: 22px;
+    height: 28px;
+    /*border: 1px solid #dce0e0!important;*/
+    text-align: center;
+    margin: 0 4px;
+    cursor: pointer;
+    line-height: 28px;
+    color: #999999;
+    font-size: 20px;
+    font-weight: 400;
+    display: inline-block;
+    text-decoration: none;
+}
+
+#firstPage,
+#lastPage {
+    content: '';
+    width: 50px;
+    color: #666666;
+    /*border: 1px solid #0073A9!important;*/
+}
+
+#prePage,
+#nextPage {
+    width: 20px;
+    color: #999999;
+    /*border: 1px solid #0073A9!important;*/
+}
+
+.page_div .current {
+    /*background-color: #0073A9;*/
+    border: none;
+    /*border-color: #0073A9;*/
+    color: #2aabd2;
+    border-bottom: #2aabd2 solid 2px;
+}
+
+.totalSize{
+    font-size: 16px;
+}
+
+.totalPages {
+    margin: 0 10px;
+}
+
+.totalPages span,
+.totalSize span {
+    color: #0073A9;
+    margin: 0 5px;
+}

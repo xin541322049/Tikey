@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: apple
@@ -14,9 +15,18 @@
     <link rel="stylesheet" href="/css/pure-min.css">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/paging.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/paging.js"></script>
 </head>
+
+<style>
+    .page_div{
+        margin-left: 35%;
+    }
+</style>
+
 <body>
 
 <nav class="navbar navbar-default navbar-static-top header">
@@ -51,8 +61,10 @@
 
         <div id="search-area" class="nav navbar-nav" style="margin-left: 120px;">
             <form class="form-inline" role="search" action="/tikey/search"
-                  style="margin-top: 20px; line-height: 40px; height: 40px;">
-                <input class="search-input" placeholder="搜索演出、赛事" name="term">
+                  style="margin-top: 20px; line-height: 40px; height: 40px;" method="post" id="search-form">
+                <input class="search-input" placeholder="搜索演出、赛事" name="term" value="${search_term}">
+                <input value="${member.email}" name="email" hidden="hidden">
+                <input value="${page}" name="page" hidden="hidden" id="search-form-page">
                 <button class="pure-button join-button" style="padding-bottom: 8px">
                     <span class="glyphicon glyphicon-search" style="margin-right: 5px"></span>搜索
                 </button>
@@ -85,7 +97,7 @@
                         <span class="glyphicon glyphicon-log-in"></span> 退出
                     </a>
                 </li>
-                <form action="/tikey/member/detail" hidden="hidden" id="email-form">
+                <form action="/tikey/member/detail" hidden="hidden" id="email-form" method="post">
                     <input value="${member.email}" name="email">
                 </form>
             </c:if>
@@ -97,7 +109,7 @@
     <c:if test="${result.size()==0}">
         <h2>哎呀，目前还没有这个演出哦～返回<a href="/tikey">首页</a>看看别的演出叭，也很精彩呢！</h2>
     </c:if>
-    <c:forEach items="${result}" var="performance">
+    <c:forEach items="${result}" var="performance" begin="${page * 10}" end="${(page + 1) * 10 - 1}">
         <div class="row" style="margin: 30px">
             <div class="col-md-4">
                 <div class="poster" style="max-height: 350px; max-width: 200px">
@@ -111,7 +123,7 @@
                         <small> <br><br>${performance.showPlace.name}</small>
                     </h2>
                     <p>
-                            ${performance.showTime}<span class="split-symbol"> | </span>
+                            ${fn:substring(performance.showTime,0,16)}<span class="split-symbol"> | </span>
                         <c:if test="${performance.type=='Concert'}">
                             演唱会
                         </c:if>
@@ -171,6 +183,8 @@
             </div>
         </div>
     </c:forEach>
+
+    <div id="page_block" class="page_div"></div>
 </div>
 
 <div class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="logModalLabel" aria-hidden="true">
@@ -305,6 +319,23 @@
         form.submit();
         return false;
     }
+
+    max_page = ${result.size()}
+    max_page = Math.ceil(max_page / 10)
+
+    function changePage(newPage) {
+        $("#search-form-page").val(newPage)
+        $("#search-form").submit()
+    }
+
+    $("#page_block").paging({
+        pageNo:${page}+1,
+        totalPage: max_page,
+        totalSize: ${result.size()},
+        callback: function(num) {
+            changePage(num-1)
+        }
+    })
 </script>
 
 </html>

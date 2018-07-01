@@ -39,12 +39,17 @@ public class HomeController {
 
     @RequestMapping(value = "/tikey/search")
     public String searchPerformance(ModelMap modelMap, @ModelAttribute("term") String term,
-                                    @ModelAttribute("email") String email){
+                                    @ModelAttribute("email") String email, @ModelAttribute("page") String page){
         if(!email.equals("")){
             modelMap.addAttribute("member", memberService.getMemberByEmail(email));
         }
+        if(page.equals("")){
+            page = "0";
+        }
         List<Performance> result = performanceService.findByNameContaining(term);
         modelMap.addAttribute("result", result);
+        modelMap.addAttribute("page", Integer.parseInt(page));
+        modelMap.addAttribute("search_term", term);
         return "performance/search";
     }
 }
