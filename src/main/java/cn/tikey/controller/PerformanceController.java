@@ -279,7 +279,7 @@ public class PerformanceController {
 
     @RequestMapping(value = "/refund/checkAmount")
     public @ResponseBody double checkRefundAmount(@ModelAttribute("id") int id){
-        return performanceService.checkRefundAmount(id);
+        return  (double)Math.round(performanceService.checkRefundAmount(id)*10)/10;
     }
 
     @RequestMapping(value = "/refund")

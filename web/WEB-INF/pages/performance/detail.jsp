@@ -112,7 +112,7 @@
     box-shadow: 0 0 20px 0 #eee;
     margin-bottom: 40px;
     border: 1px solid #eee;
-    height: 52%">
+    height: 54%">
     <div style="margin-left: -100px" class="row">
         <div class="col-md-4">
             <div style="margin-left: 10%;margin-top: -10%" class="poster">

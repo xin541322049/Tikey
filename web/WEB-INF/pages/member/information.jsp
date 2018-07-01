@@ -39,7 +39,7 @@
             <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a class="pure-button" href="/tikey/member/tickets?email=${member.email}">我的订单</a>
+                        <a class="pure-button" href="/tikey/member/tickets?email=${member.email}&page1=0&page2=0&page3=0&page4=0&index=0">我的订单</a>
                     </li>
                     <li class="nav-item">
                         <a class="pure-button" href="/tikey/member/coupons?email=${member.email}">我的优惠券</a>
