@@ -41,7 +41,7 @@
             </ul>
           </li>
         </ul>
-        <form class="navbar-form navbar-left search" role="search" action="/tikey/search">
+        <form class="navbar-form navbar-left search" role="search" action="/tikey/search" method="post">
           <div class="form-group">
             <input type="text" class="search-input" placeholder="Search" name="term">
             <input type="text" hidden="hidden" name="email" value="${member.email}">
@@ -57,7 +57,7 @@
             <li><a href="${pageContext.servletContext.contextPath}/tikey">
               <span class="glyphicon glyphicon-log-in"></span> 退出</a>
             </li>
-            <form action="/tikey/member/detail" hidden="hidden" id="email-form">
+            <form action="/tikey/member/detail" hidden="hidden" id="email-form" method="post">
               <input value="${member.email}" name="email">
             </form>
           </c:if>
@@ -70,7 +70,7 @@
     </div>
   </nav>
   <ol class="genres breadcrumb">
-    <li class="active genre"><a href="/tikey">首页</a></li>
+    <li class="active genre"><a href="/tikey?email=${member.email}">首页</a></li>
     <li class="genre"><a href="/tikey?genre=演唱会&email=${member.email}">演唱会</a></li>
     <li class="genre"><a href="/tikey?genre=体育赛事&email=${member.email}">体育赛事</a></li>
     <li class="genre"><a href="/tikey?genre=音乐会&email=${member.email}">音乐会</a></li>

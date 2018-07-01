@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: apple
@@ -12,6 +13,7 @@
     <title>Tikey</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/pure-min.css">
+    <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/seat.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -19,13 +21,66 @@
 </head>
 <body>
 
+<nav class="navbar navbar-default navbar-fixed-top header" role="navigation" style="padding-left: 20px; padding-right: 20px">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <img alt="Brand" src="/img/viking_ship_72px_1209600_easyicon.net.ico">
+        </a>
+        <div class="navbar-header">
+            <h1 class="pure-menu-heading">Tikey</h1>
+        </div>
+        <div style="padding-top: 17px" id="nav_body">
+            <ul class="nav navbar-nav" style="padding-top: 15px">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        南京<b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">北京</a></li>
+                        <li><a href="#">上海</a></li>
+                        <li><a href="#">杭州</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">大连</a></li>
+                        <li><a href="#">武汉</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-left search" role="search" action="/tikey/search" method="post">
+                <div class="form-group">
+                    <input type="text" class="search-input" placeholder="Search" name="term">
+                    <input type="text" hidden="hidden" name="email" value="${member.email}">
+                </div>
+                <button type="submit" class="pure-button join-button">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right navbar-light" id="visitor_nav">
+                <c:if test="${member.email.length()>0}">
+                    <%--<li style="margin-top: 25px; margin-left: 15px">Welcome ${member.name}!</li>--%>
+                    <li><a  href="${pageContext.servletContext.contextPath}/tikey/member/detail" onclick="return addEmail();">
+                        <span class="glyphicon glyphicon-user"></span> 我的</a>
+                    </li>
+                    <li><a href="${pageContext.servletContext.contextPath}/tikey">
+                        <span class="glyphicon glyphicon-log-in"></span> 退出</a>
+                    </li>
+                    <form action="/tikey/member/detail" hidden="hidden" id="email-form" method="post">
+                        <input value="${member.email}" name="email">
+                    </form>
+                </c:if>
+                <c:if test="${member==null}">
+                    <li><a data-toggle="modal" href="#registerModal"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                    <li><a data-toggle="modal" href="#logModal"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                </c:if>
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <script>
     var sum = 0;
     var couponId = -1;
 </script>
 
 <div class="container" style="margin-top: 130px; width: 70% ">
-    <h2 class="title"><a href="http://www.jq22.com/jquery-info2692">演出选座</a></h2>
+    <h2 class="title"><a href="">演出选座</a></h2>
 
     <div class="demo clearfix">
 
@@ -43,7 +98,7 @@
 
             <p>演出：<span>${performance.name}</span></p>
 
-            <p>时间：<span>${performance.showTime}</span></p>
+            <p>时间：<span>${fn:substring(performance.showTime,0,16)}</span></p>
 
             <p>座位：</p>
 
@@ -57,8 +112,8 @@
 
             <input type="button" class="pure-button" style="background: #fda572; color: white; margin-top: 20px; border-radius: 25px;" value="确定购买" onclick="purchase()"/>
 
-            <div id="legend"></div>
-
+            <div id="legend">
+            </div>
         </div>
 
     </div>
@@ -146,6 +201,7 @@
 </div>
 
 <script>
+    var sum_price = 0;
     var price = ${price}; //电影票价
     var number = 0;
     var rank = [0.95, 0.9, 0.85, 0.8, 0.7];
@@ -177,7 +233,7 @@
             $total_price = $('#total_price'); //票价总额
 
         var seatMap = [];
-        if(${type=='stall'}){
+        <%--if(${type=='stall'}){--%>
             var rowSeat = "";
             var i = 0;
             for (i=0; i<${stadium.colOfStall}; i++){
@@ -188,121 +244,139 @@
             }
             rowSeat = "";
             for (i=0; i<${stadium.colOfSecondFloor}; i++){
-                rowSeat = rowSeat+'_';
+                rowSeat = rowSeat+'c';
             }
             for (i=0; i<${stadium.rowOfSecondFloor}; i++){
                 seatMap.push(rowSeat);
             }
             rowSeat = "";
             for (i=0; i<${stadium.colOfThirdFloor}; i++){
-                rowSeat = rowSeat+'_';
+                rowSeat = rowSeat+'c';
             }
             for (i=0; i<${stadium.rowOfThirdFloor}; i++){
                 seatMap.push(rowSeat);
             }
             rowSeat = "";
             for (i=0; i<${stadium.colOfFourthFloor}; i++){
-                rowSeat = rowSeat+'_';
+                rowSeat = rowSeat+'c';
             }
             for (i=0; i<${stadium.rowOfFourthFloor}; i++){
                 seatMap.push(rowSeat);
             }
+        // }
+
+        <%--if(${type=='second'}){--%>
+            <%--var rowSeat = "";--%>
+            <%--var i = 0;--%>
+            <%--for (i=0; i<${stadium.colOfStall}; i++){--%>
+                <%--rowSeat = rowSeat+'_';--%>
+            <%--}--%>
+            <%--for (i=0; i<${stadium.rowOfStall}; i++){--%>
+                <%--seatMap.push(rowSeat);--%>
+            <%--}--%>
+            <%--rowSeat = "";--%>
+            <%--for (i=0; i<${stadium.colOfSecondFloor}; i++){--%>
+                <%--rowSeat = rowSeat+'c';--%>
+            <%--}--%>
+            <%--for (i=0; i<${stadium.rowOfSecondFloor}; i++){--%>
+                <%--seatMap.push(rowSeat);--%>
+            <%--}--%>
+            <%--rowSeat = "";--%>
+            <%--for (i=0; i<${stadium.colOfThirdFloor}; i++){--%>
+                <%--rowSeat = rowSeat+'_';--%>
+            <%--}--%>
+            <%--for (i=0; i<${stadium.rowOfThirdFloor}; i++){--%>
+                <%--seatMap.push(rowSeat);--%>
+            <%--}--%>
+            <%--rowSeat = "";--%>
+            <%--for (i=0; i<${stadium.colOfFourthFloor}; i++){--%>
+                <%--rowSeat = rowSeat+'_';--%>
+            <%--}--%>
+            <%--for (i=0; i<${stadium.rowOfFourthFloor}; i++){--%>
+                <%--seatMap.push(rowSeat);--%>
+            <%--}--%>
+        <%--}--%>
+
+        <%--if(${type=='third'}){--%>
+            <%--var rowSeat = "";--%>
+            <%--var i = 0;--%>
+            <%--for (i=0; i<${stadium.colOfStall}; i++){--%>
+                <%--rowSeat = rowSeat+'_';--%>
+            <%--}--%>
+            <%--for (i=0; i<${stadium.rowOfStall}; i++){--%>
+                <%--seatMap.push(rowSeat);--%>
+            <%--}--%>
+            <%--rowSeat = "";--%>
+            <%--for (i=0; i<${stadium.colOfSecondFloor}; i++){--%>
+                <%--rowSeat = rowSeat+'_';--%>
+            <%--}--%>
+            <%--for (i=0; i<${stadium.rowOfSecondFloor}; i++){--%>
+                <%--seatMap.push(rowSeat);--%>
+            <%--}--%>
+            <%--rowSeat = "";--%>
+            <%--for (i=0; i<${stadium.colOfThirdFloor}; i++){--%>
+                <%--rowSeat = rowSeat+'c';--%>
+            <%--}--%>
+            <%--for (i=0; i<${stadium.rowOfThirdFloor}; i++){--%>
+                <%--seatMap.push(rowSeat);--%>
+            <%--}--%>
+            <%--rowSeat = "";--%>
+            <%--for (i=0; i<${stadium.colOfFourthFloor}; i++){--%>
+                <%--rowSeat = rowSeat+'_';--%>
+            <%--}--%>
+            <%--for (i=0; i<${stadium.rowOfFourthFloor}; i++){--%>
+                <%--seatMap.push(rowSeat);--%>
+            <%--}--%>
+        <%--}--%>
+
+        <%--if(${type=='fourth'}){--%>
+            <%--var rowSeat = "";--%>
+            <%--var i = 0;--%>
+            <%--for (i=0; i<${stadium.colOfStall}; i++){--%>
+                <%--rowSeat = rowSeat+'_';--%>
+            <%--}--%>
+            <%--for (i=0; i<${stadium.rowOfStall}; i++){--%>
+                <%--seatMap.push(rowSeat);--%>
+            <%--}--%>
+            <%--rowSeat = "";--%>
+            <%--for (i=0; i<${stadium.colOfSecondFloor}; i++){--%>
+                <%--rowSeat = rowSeat+'_';--%>
+            <%--}--%>
+            <%--for (i=0; i<${stadium.rowOfSecondFloor}; i++){--%>
+                <%--seatMap.push(rowSeat);--%>
+            <%--}--%>
+            <%--rowSeat = "";--%>
+            <%--for (i=0; i<${stadium.colOfThirdFloor}; i++){--%>
+                <%--rowSeat = rowSeat+'c';--%>
+            <%--}--%>
+            <%--for (i=0; i<${stadium.rowOfThirdFloor}; i++){--%>
+                <%--seatMap.push(rowSeat);--%>
+            <%--}--%>
+            <%--rowSeat = "";--%>
+            <%--for (i=0; i<${stadium.colOfFourthFloor}; i++){--%>
+                <%--rowSeat = rowSeat+'_';--%>
+            <%--}--%>
+            <%--for (i=0; i<${stadium.rowOfFourthFloor}; i++){--%>
+                <%--seatMap.push(rowSeat);--%>
+            <%--}--%>
+        <%--}--%>
+        var l_list = [
+
+            ['c', 'unavailable', '已售出'],
+
+            ['c', 'available stall', '¥${performance.stallPrice}'],
+
+        ]
+        if(${performance.secondPrice > 0}){
+            l_list.push(['c', 'available second', '¥${performance.secondPrice}'])
         }
 
-        if(${type=='second'}){
-            var rowSeat = "";
-            var i = 0;
-            for (i=0; i<${stadium.colOfStall}; i++){
-                rowSeat = rowSeat+'_';
-            }
-            for (i=0; i<${stadium.rowOfStall}; i++){
-                seatMap.push(rowSeat);
-            }
-            rowSeat = "";
-            for (i=0; i<${stadium.colOfSecondFloor}; i++){
-                rowSeat = rowSeat+'c';
-            }
-            for (i=0; i<${stadium.rowOfSecondFloor}; i++){
-                seatMap.push(rowSeat);
-            }
-            rowSeat = "";
-            for (i=0; i<${stadium.colOfThirdFloor}; i++){
-                rowSeat = rowSeat+'_';
-            }
-            for (i=0; i<${stadium.rowOfThirdFloor}; i++){
-                seatMap.push(rowSeat);
-            }
-            rowSeat = "";
-            for (i=0; i<${stadium.colOfFourthFloor}; i++){
-                rowSeat = rowSeat+'_';
-            }
-            for (i=0; i<${stadium.rowOfFourthFloor}; i++){
-                seatMap.push(rowSeat);
-            }
+        if(${performance.thirdPrice > 0}){
+            l_list.push(['c', 'available third', '¥${performance.thirdPrice}'])
         }
 
-        if(${type=='third'}){
-            var rowSeat = "";
-            var i = 0;
-            for (i=0; i<${stadium.colOfStall}; i++){
-                rowSeat = rowSeat+'_';
-            }
-            for (i=0; i<${stadium.rowOfStall}; i++){
-                seatMap.push(rowSeat);
-            }
-            rowSeat = "";
-            for (i=0; i<${stadium.colOfSecondFloor}; i++){
-                rowSeat = rowSeat+'_';
-            }
-            for (i=0; i<${stadium.rowOfSecondFloor}; i++){
-                seatMap.push(rowSeat);
-            }
-            rowSeat = "";
-            for (i=0; i<${stadium.colOfThirdFloor}; i++){
-                rowSeat = rowSeat+'c';
-            }
-            for (i=0; i<${stadium.rowOfThirdFloor}; i++){
-                seatMap.push(rowSeat);
-            }
-            rowSeat = "";
-            for (i=0; i<${stadium.colOfFourthFloor}; i++){
-                rowSeat = rowSeat+'_';
-            }
-            for (i=0; i<${stadium.rowOfFourthFloor}; i++){
-                seatMap.push(rowSeat);
-            }
-        }
-
-        if(${type=='fourth'}){
-            var rowSeat = "";
-            var i = 0;
-            for (i=0; i<${stadium.colOfStall}; i++){
-                rowSeat = rowSeat+'_';
-            }
-            for (i=0; i<${stadium.rowOfStall}; i++){
-                seatMap.push(rowSeat);
-            }
-            rowSeat = "";
-            for (i=0; i<${stadium.colOfSecondFloor}; i++){
-                rowSeat = rowSeat+'_';
-            }
-            for (i=0; i<${stadium.rowOfSecondFloor}; i++){
-                seatMap.push(rowSeat);
-            }
-            rowSeat = "";
-            for (i=0; i<${stadium.colOfThirdFloor}; i++){
-                rowSeat = rowSeat+'c';
-            }
-            for (i=0; i<${stadium.rowOfThirdFloor}; i++){
-                seatMap.push(rowSeat);
-            }
-            rowSeat = "";
-            for (i=0; i<${stadium.colOfFourthFloor}; i++){
-                rowSeat = rowSeat+'_';
-            }
-            for (i=0; i<${stadium.rowOfFourthFloor}; i++){
-                seatMap.push(rowSeat);
-            }
+        if(${performance.fourthPrice > 0}){
+            l_list.push(['c', 'available forth', '¥${performance.fourthPrice}'])
         }
 
         var sc = $('#seat_area').seatCharts({
@@ -325,17 +399,15 @@
 
                 node: $('#legend'),
 
-                items: [
-
-                    ['c', 'available', '可选座'],
-
-                    ['c', 'unavailable', '已售出']
-
-                ]
+                items: l_list
 
             },
 
             click: function() {
+
+                var id = (this.settings.row+1) + '_' + (this.settings.column+1);
+
+                price = parseInt(document.getElementById(id).value);
 
                 if (this.status() == 'available') { //若为可选座状态，添加座位
 
@@ -356,11 +428,11 @@
 
                         $tickects_num.text(sc.find('selected').length + 1); //统计选票数量
 
-                        $total_price.text(getTotalPrice(sc) + price);//计算票价总金额
+                        $total_price.text(getTotalPrice(sc)+price);//计算票价总金额
 
-                        $discount_price.text((getTotalPrice(sc) + price)*rank[${member.rank}]);
+                        $discount_price.text((getTotalPrice(sc)+price)*rank[${member.rank}]);
 
-                        sum = (getTotalPrice(sc) + price)*rank[${member.rank}];
+                        sum = (getTotalPrice(sc)+price)*rank[${member.rank}];
 
 
 
@@ -377,7 +449,7 @@
 
                     $discount_price.text((getTotalPrice(sc) - price)*rank[${member.rank}]);
 
-                    sum = (getTotalPrice(sc) - price)*rank[${member.rank}];
+                    sum = (getTotalPrice(sc)-price)*rank[${member.rank}];
 
                     $('#cart-item-' + this.settings.id).remove();//删除已预订座位
                     number--;
@@ -404,7 +476,7 @@
         var i = 0;
         var j = 0;
         var map = '${saleMatrix}';
-        if(${type=='stall'}){
+        <%--if(${type=='stall'}){--%>
             for(i=0; i<${stadium.rowOfStall}; i++){
                 for (j=0; j<${stadium.colOfStall}; j++){
                     var index = i*${stadium.colOfStall}+j;
@@ -412,54 +484,113 @@
                         var row = i+1;
                         var col = j+1;
                         var seat = row+'_'+col;
-                        console.log(seat);
                         sc.get([seat]).status('unavailable');
                     }
                 }
             }
-        }
-        if(${type=='second'}){
+        // }
+        <%--if(${type=='second'}){--%>
             for(i=0; i<${stadium.rowOfSecondFloor}; i++){
                 for (j=0; j<${stadium.colOfSecondFloor}; j++){
-                    var index = i*${stadium.colOfSecondFloor}+j;
+                    index = i*${stadium.colOfSecondFloor}+j+${stadium.rowOfStall*stadium.colOfStall};
                     if(map[index] == '1'){
-                        var row = i+1+${stadium.rowOfStall};
-                        var col = j+1;
-                        var seat = row+'_'+col;
+                        row = i+1+${stadium.rowOfStall};
+                        col = j+1;
+                        seat = row+'_'+col;
                         sc.get([seat]).status('unavailable');
                     }
                 }
             }
-        }
-        if(${type=='third'}){
+        // }
+        <%--if(${type=='third'}){--%>
             for(i=0; i<${stadium.rowOfThirdFloor}; i++){
                 for (j=0; j<${stadium.colOfThirdFloor}; j++){
-                    var index = i*${stadium.colOfThirdFloor}+j;
+                    index = i*${stadium.colOfThirdFloor}+j+${stadium.rowOfStall*stadium.colOfStall}+${stadium.rowOfSecondFloor*stadium.colOfSecondFloor};
                     if(map[index] == '1'){
                         var temp = ${stadium.rowOfStall}+${stadium.rowOfSecondFloor};
-                        var row = i+1+temp;
-                        var col = j+1;
-                        var seat = row+'_'+col;
+                        row = i+1+temp;
+                        col = j+1;
+                        seat = row+'_'+col;
                         sc.get([seat]).status('unavailable');
                     }
                 }
             }
-        }
-        if(${type=='fourth'}){
+        // }
+        <%--if(${type=='fourth'}){--%>
             for(i=0; i<${stadium.rowOfFourthFloor}; i++){
                 for (j=0; j<${stadium.colOfStall}; j++){
-                    var index = i*${stadium.colOfStall}+j;
+                    index = i*${stadium.colOfFourthFloor}+j
+                        +${stadium.rowOfStall*stadium.colOfStall}
+                        +${stadium.rowOfSecondFloor*stadium.colOfSecondFloor}
+                        +${stadium.rowOfThirdFloor*stadium.colOfThirdFloor};
                     if(map[index] == '1'){
                         var temp = ${stadium.rowOfStall}+${stadium.rowOfSecondFloor}+${stadium.rowOfThirdFloor};
-                        var row = i+1+temp;
-                        var col = j+1;
-                        var seat = row+'_'+col;
+                        row = i+1+temp;
+                        col = j+1;
+                        seat = row+'_'+col;
                         sc.get([seat]).status('unavailable');
                     }
                 }
+            }
+        // }
+    });
+
+    //区分不同区域座位的价格
+    $(document).ready(function() {
+        var i=0
+        var j = 0
+        for(i=0; i<${stadium.rowOfStall}; i++){
+            for (j=0; j<${stadium.colOfStall}; j++){
+                var row = i+1;
+                var col = j+1;
+                var id = row+'_'+col;
+                var seat = document.getElementById(id);
+                seat.classList.add("stall");
+                seat.value = ${performance.stallPrice};
+            }
+        }
+
+        for(i=0; i<${stadium.rowOfSecondFloor}; i++){
+            for (j=0; j<${stadium.colOfSecondFloor}; j++){
+                row = row = i+1+${stadium.rowOfStall};
+                col = j+1;
+                id = row+'_'+col;
+                seat = document.getElementById(id);
+                seat.classList.add("second");
+                seat.value = ${performance.secondPrice};
+            }
+        }
+
+        for(i=0; i<${stadium.rowOfThirdFloor}; i++){
+            for (j=0; j<${stadium.colOfThirdFloor}; j++){
+                var temp = ${stadium.rowOfStall}+${stadium.rowOfSecondFloor};
+                row = i+1+temp;
+                col = j+1;
+                id = row+'_'+col;
+                seat = document.getElementById(id);
+                seat.classList.add("third");
+                seat.value = ${performance.thirdPrice};
+            }
+        }
+
+        for(i=0; i<${stadium.rowOfFourthFloor}; i++){
+            for (j=0; j<${stadium.colOfFourthFloor}; j++){
+                var temp = ${stadium.rowOfStall}+${stadium.rowOfSecondFloor}+${stadium.rowOfThirdFloor};
+                row = i+1+temp;
+                col = j+1;
+                id = row+'_'+col;
+                seat = document.getElementById(id);
+                seat.classList.add("forth");
+                seat.value = ${performance.fourthPrice};
             }
         }
     });
+
+    function addEmail(){
+        var form = document.getElementById("email-form");
+        form.submit();
+        return false;
+    }
 
     function getTotalPrice(sc) { //计算票价总额
 
@@ -467,7 +598,11 @@
 
         sc.find('selected').each(function() {
 
-            total += price;
+            var id = (this.settings.row+1) + '_' + (this.settings.column+1);
+
+            p = parseInt(document.getElementById(id).value);
+
+            total += p;
 
         });
 

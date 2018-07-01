@@ -34,7 +34,7 @@
 /*.input{border:1px solid #ccc;padding:0 5px;width:220px; height: 26px;line-height: 26px;}*/
 .front{width: 300px;margin: 5px 32px 45px 32px;background-color: #f0f0f0;	color: #666;text-align: center;padding: 3px;border-radius: 5px;}
 
-.booking_area {float: right;position: relative;width:400px;height: 450px; }
+.booking_area {float: right;position: relative;width:450px;height: 600px; padding-top: 2%}
 
 .booking_area h3 {margin: 5px 5px 0 0;font-size: 16px;}
 
@@ -48,9 +48,25 @@ div.seatCharts-seat {color: #fff;cursor: pointer;-webkit-border-radius: 5px;-moz
 
 div.seatCharts-row {height: 35px;}
 
-div.seatCharts-seat.available {background-color: #ffd1a7;}
+div.seatCharts-seat.available.stall {background-color: #ffd1a7;}
 
-div.seatCharts-seat.focused {background-color: #fda572;border: none;}
+div.seatCharts-seat.focused.stall {background-color: #fda572;border: none;}
+
+div.seatCharts-seat.available.second {background-color: #b2dba1;}
+
+div.seatCharts-seat.focused.second {background-color: #7bae7f;border: none;}
+
+div.seatCharts-seat.available.third {background-color: #a1abff;}
+
+div.seatCharts-seat.focused.third {background-color: #b667cc;border: none;}
+
+/*div.seatCharts-seat.available.forth {background-color: #fbf069;}*/
+
+/*div.seatCharts-seat.focused.forth {background-color: #f1c40f;border: none;}*/
+
+div.seatCharts-seat.available.forth {background-color: #f5aeab;}
+
+div.seatCharts-seat.focused.forth {background-color: #d06d72;border: none;}
 
 div.seatCharts-seat.selected {background-color: #a7cde2;}
 
@@ -72,5 +88,5 @@ span.seatCharts-legendDescription {margin-left: 5px;line-height: 30px;}
     /*overflow-x: none;*/
     width: 200px;}
 
-#seats_chose li{float:left; width:72px; height:26px; line-height:26px; border:1px solid #d3d3d3; background:#f7f7f7; margin:6px; font-size:14px; font-weight:bold; text-align:center}
+#seats_chose li{float:left; width:72px; height:26px; line-height:26px; border:1px solid #d3d3d3; background:transparent; margin:6px; font-size:14px; font-weight:bold; text-align:center}
 
