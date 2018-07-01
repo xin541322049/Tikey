@@ -79,9 +79,9 @@
     var couponId = -1;
 </script>
 
-<div class="container" style="margin-top: 130px; width: 70% ">
+<div class="container" style="margin-top: 110px; width: 70% ">
 
-    <h2 class="title"><a href="">演出选座</a></h2>
+    <h2 class="title" style="font-size: 23px; font-weight: 500"><a href="">演出选座</a></h2>
 
     <div class="demo clearfix">
 
