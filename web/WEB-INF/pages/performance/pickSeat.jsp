@@ -21,7 +21,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top header" role="navigation" style="padding-left: 20px; padding-right: 20px">
+<nav class="navbar navbar-default navbar-fixed-top header" role="navigation" style="padding-left: 20px; padding-right: 20px;">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">
             <img alt="Brand" src="/img/viking_ship_72px_1209600_easyicon.net.ico">
@@ -80,6 +80,7 @@
 </script>
 
 <div class="container" style="margin-top: 130px; width: 70% ">
+
     <h2 class="title"><a href="">演出选座</a></h2>
 
     <div class="demo clearfix">
@@ -111,6 +112,10 @@
             <p>折后价：<b>￥<span id="discount_price">0</span></b></p>
 
             <input type="button" class="pure-button" style="background: #fda572; color: white; margin-top: 20px; border-radius: 25px;" value="确定购买" onclick="purchase()"/>
+
+            <a type="button" class="pure-button"
+               style="background: #999999; color: white; margin-top: 20px; border-radius: 25px; text-decoration: none; margin-left: 8px"
+               href="/tikey/performance/detail/${performance.id}?email=${member.email}">返回演出</a>
 
             <div id="legend">
             </div>

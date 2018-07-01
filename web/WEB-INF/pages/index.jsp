@@ -54,7 +54,7 @@
 
         <div id="search-area" class="nav navbar-nav" style="margin-left: 120px;">
             <form class="form-inline" role="search" action="/tikey/search"
-                  style="margin-top: 20px; line-height: 40px; height: 40px;">
+                  style="margin-top: 20px; line-height: 40px; height: 40px;" method="post">
                 <input class="search-input" placeholder="搜索演出、赛事" name="term">
                 <button class="pure-button join-button" style="padding-bottom: 8px">
                     <span class="glyphicon glyphicon-search" style="margin-right: 5px"></span>搜索
@@ -88,7 +88,7 @@
                         <span class="glyphicon glyphicon-log-in"></span> 退出
                     </a>
                 </li>
-                <form action="/tikey/member/detail" hidden="hidden" id="email-form">
+                <form action="/tikey/member/detail" hidden="hidden" id="email-form" method="post">
                     <input value="${member.email}" name="email">
                 </form>
             </c:if>
@@ -100,7 +100,7 @@
 <div id="nav-channel">
     <div class="container" style="padding-left: 0; padding-right: 0">
         <ol class="breadcrumb genres" style="margin: 0; padding: 0">
-            <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey">首页</a>
+            <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey?email=${member.email}">首页</a>
                 <div class="border-bottom"></div>
             </li>
             <%--<li class="genre"><a href="/tikey?genre=演唱会&email=${member.email}">演唱会</a><div class="border-bottom" style="margin-left: 10px"></div></li>--%>
@@ -199,7 +199,7 @@
           <h4 class="modal-title" id="registerModalLabel"><br>会员注册</h4>
         </div>
         <div class="modal-body">
-          <form class="form-horizontal" role="form" action="/tikey/member/register">
+          <form class="form-horizontal" role="form" action="/tikey/member/register" method="post">
             <div class="form-group">
               <label for="emailRegister" class="col-sm-2 control-label">邮箱</label>
               <div class="col-sm-8" id="email_check">
