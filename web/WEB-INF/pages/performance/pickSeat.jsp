@@ -101,7 +101,7 @@
     var couponId = -1;
 </script>
 
-<div class="container" style="margin-top: 110px; width: 70% ">
+<div class="container" style="margin-top: 20px; width: 70% ">
 
     <h2 class="title" style="font-size: 23px; font-weight: 500"><a href="">演出选座</a></h2>
 
@@ -150,7 +150,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/img/viking_ship_48px_1209600_easyicon.net.ico">
+                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg">
             </a>
             <div class="modal-header" style="top: 25px">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -179,7 +179,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/img/viking_ship_48px_1209600_easyicon.net.ico">
+                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg">
             </a>
             <div class="modal-header" style="top: 25px">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>

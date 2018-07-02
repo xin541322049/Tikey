@@ -11,7 +11,7 @@
     <title>连接失效</title>
 </head>
 <body>
-<img alt="Brand" src="/img/viking_ship_72px_1209600_easyicon.net.ico">
+<img alt="Brand" src="/img/Hollywood_Ticket_72px_548853_easyicon.net.jpg">
 <h2>不好意思，该激活连接已失效</h2>
 <a href="/tikey">点击返回Tikey首页</a>
 </body>

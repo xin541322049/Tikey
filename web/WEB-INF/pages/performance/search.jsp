@@ -215,141 +215,87 @@
     <c:if test="${result.size()==0}">
         <h2>哎呀，目前还没有这个演出哦～返回<a href="/tikey?email=${email}">首页</a>看看别的演出叭，也很精彩呢！</h2>
     </c:if>
-    <c:if test="${result.size()==1}">
-        <c:forEach items="${result}" var="performance" begin="${page * 10}" end="${(page + 1) * 10 - 1}">
-            <div class="row">
-            <div class="col-md-5 uk-card uk-card-default uk-card-hover uk-card-body" style="padding: 8px; margin: 4% 4%; height: 220px">
-                <div class="col-md-3" style="padding-right: 0;">
-                    <div class="poster" style="margin-left: -40%; margin-top: -40%; margin-bottom: 40%">
-                        <img class="img-thumbnail" src="${performance.posterUrl}" style="height: 200px">
-                    </div>
-                </div>
-                <div class="col-md-9" style="padding-left: 30px;">
-                    <div class="movie-info">
-                        <h2>
-                            <a href="/tikey/performance/detail/${performance.id}?email=${email}" class="performance-link">${performance.name}</a>
-                            <small> <br><br>${performance.showPlace.name}</small>
-                        </h2>
-                        <p>
-                                ${fn:substring(performance.showTime,0,16)}<span class="split-symbol"> | </span>
-                            <c:if test="${performance.type=='Concert'}">
-                                演唱会
-                            </c:if>
-                            <c:if test="${performance.type=='Competition'}">
-                                体育比赛
-                            </c:if>
-                            <c:if test="${performance.type=='Opera'}">
-                                歌剧
-                            </c:if>
-                            <c:if test="${performance.type=='Circus'}">
-                                马戏
-                            </c:if>
-                            <c:if test="${performance.type=='Drama'}">
-                                话剧
-                            </c:if>
-                            <c:if test="${performance.type=='Dance'}">
-                                舞蹈
-                            </c:if>
-                            <c:if test="${performance.type=='ChildPlay'}">
-                                儿童亲子
-                            </c:if>
-                            <c:if test="${performance.type=='Music'}">
-                                音乐会
-                            </c:if>
-                        </p>
-                        <p>
-                                ${performance.actors}
-                        </p>
-                        <div style="color: #ff936f; font-size: large; padding-left: 68%; font-weight: 500">
-                            ¥${performance.stallPrice}<span style="color: #666666; font-size: small; font-weight: normal"> 以内</span>
-                        </div>
-                    </div>
+    <c:forEach items="${result}" var="performance" begin="${page * 10}" end="${(page + 1) * 10 - 1}">
+        <div class="col-md-5 uk-card uk-card-default uk-card-hover uk-card-body" style=" padding: 8px; margin: 4% 4%; height: 215px">
+            <div class="col-md-3" style="padding-right: 0;">
+                <div class="poster" style="float: right; margin-left: -40%; margin-top: -40%; margin-bottom: 40%">
+                    <img class="img-thumbnail" src="${performance.posterUrl}" style="height: 200px">
                 </div>
             </div>
-            </div>
-        </c:forEach>
-    </c:if>
-    <c:if test="${result.size()>1}">
-        <c:forEach items="${result}" var="performance" begin="${page * 10}" end="${(page + 1) * 10 - 1}">
-            <div class="col-md-5 uk-card uk-card-default uk-card-hover uk-card-body" style="float: right; padding: 8px; margin: 4% 4%; height: 215px">
-                <div class="col-md-3" style="padding-right: 0;">
-                    <div class="poster" style="float: right; margin-left: -40%; margin-top: -40%; margin-bottom: 40%">
-                        <img class="img-thumbnail" src="${performance.posterUrl}" style="height: 200px">
-                    </div>
-                </div>
-                <div class="col-md-9" style="padding-left: 30px;">
-                    <div class="movie-info">
-                        <h2>
-                            <a href="/tikey/performance/detail/${performance.id}?email=${email}" class="performance-link">${performance.name}</a>
-                            <small> <br><br>${performance.showPlace.name}</small>
-                        </h2>
-                        <p>
-                                ${fn:substring(performance.showTime,0,16)}<span class="split-symbol"> | </span>
-                            <c:if test="${performance.type=='Concert'}">
-                                演唱会
-                            </c:if>
-                            <c:if test="${performance.type=='Competition'}">
-                                体育比赛
-                            </c:if>
-                            <c:if test="${performance.type=='Opera'}">
-                                歌剧
-                            </c:if>
-                            <c:if test="${performance.type=='Circus'}">
-                                马戏
-                            </c:if>
-                            <c:if test="${performance.type=='Drama'}">
-                                话剧
-                            </c:if>
-                            <c:if test="${performance.type=='Dance'}">
-                                舞蹈
-                            </c:if>
-                            <c:if test="${performance.type=='ChildPlay'}">
-                                儿童亲子
-                            </c:if>
-                            <c:if test="${performance.type=='Music'}">
-                                音乐会
-                            </c:if>
-                        </p>
-                        <p>
-                                ${performance.actors} 出演
+            <div class="col-md-9" style="padding-left: 30px;">
+                <div class="movie-info">
+                    <h2>
+                        <a href="/tikey/performance/detail/${performance.id}?email=${email}" class="performance-link">${performance.name}</a>
+                        <small> <br><br>${performance.showPlace.name}</small>
+                    </h2>
+                    <p>
+                            ${fn:substring(performance.showTime,0,16)}<span class="split-symbol"> | </span>
+                        <c:if test="${performance.type=='Concert'}">
+                            演唱会
+                        </c:if>
+                        <c:if test="${performance.type=='Competition'}">
+                            体育比赛
+                        </c:if>
+                        <c:if test="${performance.type=='Opera'}">
+                            歌剧
+                        </c:if>
+                        <c:if test="${performance.type=='Circus'}">
+                            马戏
+                        </c:if>
+                        <c:if test="${performance.type=='Drama'}">
+                            话剧
+                        </c:if>
+                        <c:if test="${performance.type=='Dance'}">
+                            舞蹈
+                        </c:if>
+                        <c:if test="${performance.type=='ChildPlay'}">
+                            儿童亲子
+                        </c:if>
+                        <c:if test="${performance.type=='Music'}">
+                            音乐会
+                        </c:if>
+                    </p>
+                    <p>
+                            ${performance.actors} 出演
 
-                        </p>
-                        <div style="color: #ff936f; font-size: large; padding-left: 68%; font-weight: 500">
-                            ¥${performance.stallPrice}<span style="color: #666666; font-size: small; font-weight: normal"> 以内</span>
-                        </div>
-                            <%--<p>--%>
-                            <%--${performance.description}--%>
-                            <%--</p>--%>
-                            <%--<h3>现场购票</h3>--%>
-                            <%--<div>--%>
-                            <%--<label for="stall">选择票面：</label>--%>
-                            <%--<button class="pure-button price_button_active" id="stall"--%>
-                            <%--onclick="selectPrice('${performance.stallPrice}', 'stall')">--%>
-                            <%--¥${performance.stallPrice}</button>--%>
-                            <%--<c:if test="${performance.secondPrice>0}">--%>
-                            <%--<button class="pure-button price_button" id="second"--%>
-                            <%--onclick="selectPrice('${performance.secondPrice}', 'second')">--%>
-                            <%--¥${performance.secondPrice}</button>--%>
-                            <%--</c:if>--%>
-                            <%--<c:if test="${performance.thirdPrice>0}">--%>
-                            <%--<button class="pure-button price_button" id="third"--%>
-                            <%--onclick="selectPrice('${performance.thirdPrice}', 'third')">--%>
-                            <%--¥${performance.thirdPrice}</button>--%>
-                            <%--</c:if>--%>
-                            <%--<c:if test="${performance.fourthPrice>0}">--%>
-                            <%--<button class="pure-button price_button" id="fourth"--%>
-                            <%--onclick="selectPrice('${performance.fourthPrice}', 'fourth')">--%>
-                            <%--¥${performance.fourthPrice}</button>--%>
-                            <%--</c:if>--%>
-                            <%--</div>--%>
-                            <%--<button class="pure-button" style="background: #fda572; color: white; margin-top: 20px; border-radius: 25px; font-size: 18px" onclick="pickSeat()">--%>
-                            <%--选座购买</button>--%>
+                    </p>
+                    <div style="color: #ff936f; font-size: large; padding-left: 68%; font-weight: 500">
+                        ¥${performance.stallPrice}<span style="color: #666666; font-size: small; font-weight: normal"> 以内</span>
                     </div>
+                        <%--<p>--%>
+                        <%--${performance.description}--%>
+                        <%--</p>--%>
+                        <%--<h3>现场购票</h3>--%>
+                        <%--<div>--%>
+                        <%--<label for="stall">选择票面：</label>--%>
+                        <%--<button class="pure-button price_button_active" id="stall"--%>
+                        <%--onclick="selectPrice('${performance.stallPrice}', 'stall')">--%>
+                        <%--¥${performance.stallPrice}</button>--%>
+                        <%--<c:if test="${performance.secondPrice>0}">--%>
+                        <%--<button class="pure-button price_button" id="second"--%>
+                        <%--onclick="selectPrice('${performance.secondPrice}', 'second')">--%>
+                        <%--¥${performance.secondPrice}</button>--%>
+                        <%--</c:if>--%>
+                        <%--<c:if test="${performance.thirdPrice>0}">--%>
+                        <%--<button class="pure-button price_button" id="third"--%>
+                        <%--onclick="selectPrice('${performance.thirdPrice}', 'third')">--%>
+                        <%--¥${performance.thirdPrice}</button>--%>
+                        <%--</c:if>--%>
+                        <%--<c:if test="${performance.fourthPrice>0}">--%>
+                        <%--<button class="pure-button price_button" id="fourth"--%>
+                        <%--onclick="selectPrice('${performance.fourthPrice}', 'fourth')">--%>
+                        <%--¥${performance.fourthPrice}</button>--%>
+                        <%--</c:if>--%>
+                        <%--</div>--%>
+                        <%--<button class="pure-button" style="background: #fda572; color: white; margin-top: 20px; border-radius: 25px; font-size: 18px" onclick="pickSeat()">--%>
+                        <%--选座购买</button>--%>
                 </div>
             </div>
-        </c:forEach>
-    </c:if>
-    <div id="page_block" class="page_div"></div>
+        </div>
+    </c:forEach>
+    <div class="col-md-12">
+        <div id="page_block" class="page_div"></div>
+    </div>
 </div>
 
 

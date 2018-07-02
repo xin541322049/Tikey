@@ -26,7 +26,7 @@
 <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
-            <h1 class="brand-title">${member.name}</h1>
+            <h1 class="brand-title" style="color: white">${member.name}</h1>
             <h2 class="brand-tagline">在 Tikey,<br>发现你从未见过的世界</h2>
 
             <nav class="nav">
