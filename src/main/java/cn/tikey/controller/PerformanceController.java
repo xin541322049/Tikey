@@ -144,23 +144,23 @@ public class PerformanceController {
         Performance performance = performanceService.findById(id);
         Member member = memberService.getMemberByEmail(email);
         List<Coupon> couponList = couponService.getMemberCoupon(email);
-        String saleMatrix = "";
-        int stall = stadium.getRowOfStall()*stadium.getColOfStall();
-        int second = stall+stadium.getRowOfSecondFloor()*stadium.getColOfSecondFloor();
-        int third = second+stadium.getRowOfThirdFloor()*stadium.getColOfThirdFloor();
-        int fourth = third+stadium.getRowOfFourthFloor()*stadium.getColOfFourthFloor();
-        if(type.equals("stall")){
-            saleMatrix = performance.getSaleMatrix().substring(0, stall);
-        }
-        if(type.equals("second")){
-            saleMatrix = performance.getSaleMatrix().substring(stall, second);
-        }
-        if(type.equals("third")){
-            saleMatrix = performance.getSaleMatrix().substring(second, third);
-        }
-        if(type.equals("fourth")){
-            saleMatrix = performance.getSaleMatrix().substring(third, fourth);
-        }
+        String saleMatrix = performance.getSaleMatrix();
+//        int stall = stadium.getRowOfStall()*stadium.getColOfStall();
+//        int second = stall+stadium.getRowOfSecondFloor()*stadium.getColOfSecondFloor();
+//        int third = second+stadium.getRowOfThirdFloor()*stadium.getColOfThirdFloor();
+//        int fourth = third+stadium.getRowOfFourthFloor()*stadium.getColOfFourthFloor();
+//        if(type.equals("stall")){
+//            saleMatrix = performance.getSaleMatrix().substring(0, stall);
+//        }
+//        if(type.equals("second")){
+//            saleMatrix = performance.getSaleMatrix().substring(stall, second);
+//        }
+//        if(type.equals("third")){
+//            saleMatrix = performance.getSaleMatrix().substring(second, third);
+//        }
+//        if(type.equals("fourth")){
+//            saleMatrix = performance.getSaleMatrix().substring(third, fourth);
+//        }
         modelMap.addAttribute("stadium", stadium);
         modelMap.addAttribute("performance", performance);
         modelMap.addAttribute("member", member);
