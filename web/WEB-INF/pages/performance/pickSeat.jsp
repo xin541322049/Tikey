@@ -640,6 +640,13 @@
     function purchase() {
         var couponValid = 0;
 
+        var seatMap = document.getElementById("seats_chose");
+        var lis = seatMap.getElementsByTagName("li");
+        if(lis.length == 0){
+            alert("请先选择您喜欢的座位，然后点击确定购买")
+            return;
+        }
+
         if(${couponList.size()>0}){
             $('#coupon_sum').text(sum);
             $('#couponModal').modal('show')
@@ -687,7 +694,7 @@
         payForm.submit();
     }
 
-    var t = 30;
+    var t = 90;
     var timer;
     //显示倒数秒数
     function showTime(){
@@ -701,7 +708,7 @@
     }
 
     function clearTimer() {
-        t = 30;
+        t = 90;
         window.clearTimeout(timer);
         $("#purchaseModal").modal("hide");
     }

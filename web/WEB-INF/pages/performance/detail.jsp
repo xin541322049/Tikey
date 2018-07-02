@@ -565,7 +565,7 @@
         showTime();
     }
 
-    var t = 30;
+    var t = 90;
     var timer;
     //显示倒数秒数
     function showTime(){
@@ -589,7 +589,7 @@
     }
 
     function clearTimer() {
-        t = 30;
+        t = 90;
         window.clearTimeout(timer);
         $("#purchaseModal").modal("hide");
     }
