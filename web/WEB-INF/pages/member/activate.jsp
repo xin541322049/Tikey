@@ -9,9 +9,10 @@ r<%--
 <html>
 <head>
     <title>Tikey会员激活</title>
+    <link href="/img/Hollywood_Ticket_64px_548853_easyicon.net.ico" rel="shortcut icon" type="image/x-icon">
 </head>
 <body>
-<img alt="Brand" src="/img/viking_ship_72px_1209600_easyicon.net.ico">
+<img alt="Brand" src="/img/Hollywood_Ticket_72px_548853_easyicon.net.jpg">
 <h2>恭喜您已经成功激活Tikey会员</h2>
 <a href="/tikey">点击链接进入Tikey首页</a>
 </body>

@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/uikit.css">
     <link rel="stylesheet" href="/css/uikit-rtl.css">
     <link rel="stylesheet" href="/css/paging.css">
+    <link href="/img/Hollywood_Ticket_64px_548853_easyicon.net.ico" rel="shortcut icon" type="image/x-icon">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/uikit-icons.js"></script>

@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/css/unit.css">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
-    <link href="/img/Hollywood_Ticket_72px_548853_easyicon.net.jpg" rel="shortcut icon" type="image/x-icon">
+    <link href="/img/Hollywood_Ticket_64px_548853_easyicon.net.ico" rel="shortcut icon" type="image/x-icon">
 </head>
 
 <body id="mainBody">
