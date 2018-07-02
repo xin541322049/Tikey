@@ -400,7 +400,7 @@
                 <h4 class="modal-title" id="purchaseModalLabel"><br>支付界面</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" role="form" id="pay-form" action="/tikey/performance/purchase">
+                <form class="form-horizontal" role="form" id="pay-form" action="/tikey/performance/purchase" method="post">
                     <div class="form-group">
                         <label for="account_name" class="col-sm-2 control-label">账户名</label>
                         <div class="col-sm-8">
@@ -420,7 +420,7 @@
                         <p>支付时间还剩 <span id="time"></span> 秒</p>
                     </div>
                     <div class="form-group">
-                        <input type="text" id="pay_email" name="email" value="${email}" `>
+                        <input type="text" id="pay_email" name="email" value="${email}" hidden="hidden">
                         <input type="text" id="id" name="id" value="${performance.id}" hidden="hidden">
                         <input type="text" id="type" name="type"  hidden="hidden">
                         <input type="text" id="sumPrice" name="sum" hidden="hidden">
