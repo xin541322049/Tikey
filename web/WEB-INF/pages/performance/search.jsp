@@ -104,18 +104,19 @@
             </c:if>
 
             <c:if test="${member.email.length()>0}">
-                <li>
-                    <a href="${pageContext.servletContext.contextPath}/tikey/member/detail"
-                       onclick="return addEmail();">
-                        <span class="glyphicon glyphicon-user"></span> 我的
+                <li  class="user-menu">
+                    <span onclick="return addEmail();" style="text-decoration: none; cursor: pointer">
+                        <i class="fa fa-user-o fa-2x"></i>
+                        <span style="position:relative;bottom: 5px">我的</span>
+                    </span>
+                </li>
+                <li  class="user-menu">
+                    <a href="${pageContext.servletContext.contextPath}/tikey"  style="padding: 0">
+                        <i class="fa fa-sign-out fa-2x"></i>
+                        <span style="position:relative;bottom: 5px"> 退出</span>
                     </a>
                 </li>
-                <li>
-                    <a href="${pageContext.servletContext.contextPath}/tikey">
-                        <span class="glyphicon glyphicon-log-in"></span> 退出
-                    </a>
-                </li>
-                <form action="/tikey/member/detail" hidden="hidden" id="email-form" method="post">
+                <form action="/tikey/member/detail" id="email-form" method="post" hidden="hidden">
                     <input value="${member.email}" name="email">
                 </form>
             </c:if>
