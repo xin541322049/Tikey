@@ -76,20 +76,19 @@
             </c:if>
 
             <c:if test="${member.email.length()>0}">
-                <li>
-                    <a href="${pageContext.servletContext.contextPath}/tikey/member/detail"
-                       onclick="return addEmail();">
-                        <i class="fa fa-user-circle fa-2x"></i>
+                <li  class="user-menu">
+                    <span onclick="return addEmail();" style="text-decoration: none; cursor: pointer">
+                        <i class="fa fa-user-o fa-2x"></i>
                         <span style="position:relative;bottom: 5px">我的</span>
-                    </a>
+                    </span>
                 </li>
-                <li>
-                    <a href="${pageContext.servletContext.contextPath}/tikey">
+                <li  class="user-menu">
+                    <a href="${pageContext.servletContext.contextPath}/tikey"  style="padding: 0">
                         <i class="fa fa-sign-out fa-2x"></i>
                         <span style="position:relative;bottom: 5px"> 退出</span>
                     </a>
                 </li>
-                <form action="/tikey/member/detail" id="email-form" method="post">
+                <form action="/tikey/member/detail" id="email-form" method="post" hidden="hidden">
                     <input value="${member.email}" name="email">
                 </form>
             </c:if>
@@ -103,7 +102,6 @@
             <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey?email=${member.email}">首页</a>
                 <div class="border-bottom"></div>
             </li>
-            <%--<li class="genre"><a href="/tikey?genre=演唱会&email=${member.email}">演唱会</a><div class="border-bottom" style="margin-left: 10px"></div></li>--%>
             <li class="genre"><a href="/tikey?genre=演唱会&email=${member.email}">演唱会</a></li>
             <li class="genre"><a href="/tikey?genre=体育赛事&email=${member.email}">体育赛事</a></li>
             <li class="genre"><a href="/tikey?genre=音乐会&email=${member.email}">音乐会</a></li>
@@ -201,10 +199,6 @@
 <div class="container" style="margin-top: 40px">
     <footer style="margin-bottom: 60px">
         <p>&copy; Tikey, NJU Software Institute, 2018.</p>
-        <%--<a href="#" class="btn btn-default">Back to top</a>--%>
-        <%--<button type="button" class="btn btn-default" data-toggle="modal" data-target="#applyModal">场馆注册</button>--%>
-        <%--<button type="button" class="btn btn-default" data-toggle="modal" data-target="#workInModal">场馆登录</button>--%>
-        <%--<button type="button" class="btn btn-default" data-toggle="modal" data-target="#adminModal">管理员登录</button>--%>
     </footer>
 </div>
 
@@ -253,8 +247,8 @@
                     </div>
                 </form>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+    </div>
 </div>
 
 <div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
@@ -305,139 +299,11 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
 </div>
-
 </body>
-
 <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery.carousel.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.5.13/vue.min.js"></script>
 <script src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
-<script type="text/javascript">
-    Caroursel.init($('.caroursel'));
-    $(function () {
-        var str_checkname = "";
-        $("#emailRegister").blur(
-            function () {
-                //start if
-                if ($("#emailRegister").val() != "" && $("#emailRegister").val() != str_checkname) {
-                    //记录上次填入的值
-                    str_checkname = $("#emailRegister").val();
-                    $.ajax({
-                        type: "POST",
-                        url: "${pageContext.servletContext.contextPath}/tikey/member/register/check",
-                        data: {'email': $("#emailRegister").val()},
-                        success: function (data) {
-                            //$("#ta1").val(data);
-                            if (data == "success") {
-                                $('#check_true').remove();
-                                $('#check_false').remove();
-                                $('#email_check').append("<span id='check_true' class='glyphicon glyphicon-ok-sign' " +
-                                    "style='color: green; top: 8px'> </span>");
-                                $('#register_b').remove();
-                                $('#button_container').append("<button type='submit' class='pure-button ' " +
-                                    "style='float: right; background: #5987c9; color: white' id='register_b'>\n" +
-                                    "                  注册</button>");
-                            } else {
-                                $('#check_true').remove();
-                                $('#check_false').remove();
-                                $('#email_check').append("<span id='check_false' class='glyphicon glyphicon-remove-sign' " +
-                                    "style='color: #d06d72; top: 8px'>该邮箱已注册，请直接登录</span>");
-                                $('#register_b').remove();
-                                $('#button_container').append("<button type='submit' " +
-                                    "class='pure-button pure-button-disabled' " +
-                                    "style='float: right; background: #5987c9; color: white' id='register_b'>\n" +
-                                    "                  注册</button>");
-                            }
-                        }
-                    });
-                }
-            });
-    });
-
-    function logIn() {
-        $.ajax({
-            type: "POST",
-            data: {'email': $("#email").val(), 'password': $("#password").val(), 'remember': $("#remember").val()},
-            url: "/tikey/member/login/check",
-            success: function (data) {
-                if (data == "success") {
-                    // window.location.href="/tikey/member/detail/"+$("#email").val();
-                    $('#member_wrong').remove();
-                    $('#password_wrong').remove();
-                    $('#logModal').modal('hide');
-                    var form = document.getElementById("login-form");
-                    form.submit();
-                }
-                if (data == "no member") {
-                    $('#member_wrong').remove();
-                    $('#password_wrong').remove();
-                    $('#member_check').append("<span id='member_wrong' class='glyphicon glyphicon-remove-sign' " +
-                        "style='color: #d06d72; top: 8px'>用该邮箱注册用户不存在</span>");
-                }
-                if (data == "wrong password") {
-                    $('#member_wrong').remove();
-                    $('#password_wrong').remove();
-                    $('#password_check').append("<span id='password_wrong' class='glyphicon glyphicon-remove-sign' " +
-                        "style='color: #d06d72; top: 8px'>密码错误</span>");
-                }
-                if (data == "canceled member") {
-                    // $('#member_wrong').remove();
-                    // $('#password_wrong').remove();
-                    $('#logModal').modal('hide');
-                    alert("对不起，该邮箱注册的会员已注销");
-                }
-            }
-        });
-        return false;
-    }
-
-    function workIn() {
-        $.ajax({
-            type: "POST",
-            data: {
-                'code': $("#code").val(),
-                'password': $("#stdm_password").val(),
-                'remember': $("#code_remember").val()
-            },
-            url: "/tikey/stadium/login/check",
-            success: function (data) {
-                if (data === "success") {
-                    var form = document.getElementById("workIn-form");
-                    form.submit();
-                }
-                if (data === "fail") {
-                    $('#stadium_wrong').remove();
-                    $('#code_check').append("<span id='stadium_wrong' class='glyphicon glyphicon-remove-sign' " +
-                        "style='color: #d06d72; top: 8px'>验证码或密码错误</span>");
-                }
-            }
-        });
-        return false;
-    }
-
-    function addEmail() {
-        var form = document.getElementById("email-form");
-        form.submit();
-        return false;
-    }
-
-    function adminCheck() {
-        $.ajax({
-            type: "POST",
-            data: {'id': $("#admin_id").val(), 'password': $("#admin_password").val()},
-            url: "/tikey/manager/login/check",
-            success: function (data) {
-                if (data === "success") {
-                    window.location.href = "/tikey/manager/login?id=" + $("#admin_id").val()
-                        + "&password=" + $("#admin_password").val();
-                }
-                if (data === "fail") {
-                    $('#admin_wrong').remove();
-                    $('#admin_check').append("<span id='admin_wrong' class='glyphicon glyphicon-remove-sign' " +
-                        "style='color: #d06d72; top: 8px'>验证码或密码错误</span>");
-                }
-            }
-        });
-    }
-</script>
+<script src="/js/home.js"></script>
 </html>
