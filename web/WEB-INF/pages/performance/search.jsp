@@ -219,7 +219,7 @@
     <c:if test="${result.size()==1}">
         <c:forEach items="${result}" var="performance" begin="${page * 10}" end="${(page + 1) * 10 - 1}">
             <div class="row">
-            <div class="col-md-5 uk-card uk-card-default uk-card-hover uk-card-body" style="padding: 8px; margin: 4% 4%; height: 200px">
+            <div class="col-md-5 uk-card uk-card-default uk-card-hover uk-card-body" style="padding: 8px; margin: 4% 4%; height: 220px">
                 <div class="col-md-3" style="padding-right: 0;">
                     <div class="poster" style="margin-left: -40%; margin-top: -40%; margin-bottom: 40%">
                         <img class="img-thumbnail" src="${performance.posterUrl}" style="height: 200px">
@@ -259,8 +259,11 @@
                             </c:if>
                         </p>
                         <p>
-                                ${performance.actors} 出演
+                                ${performance.actors}
                         </p>
+                        <div style="color: #ff936f; font-size: large; padding-left: 68%; font-weight: 500">
+                            ¥${performance.stallPrice}<span style="color: #666666; font-size: small; font-weight: normal"> 以内</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -269,7 +272,7 @@
     </c:if>
     <c:if test="${result.size()>1}">
         <c:forEach items="${result}" var="performance" begin="${page * 10}" end="${(page + 1) * 10 - 1}">
-            <div class="col-md-5 uk-card uk-card-default uk-card-hover uk-card-body" style="float: right; padding: 8px; margin: 4% 4%; height: 200px">
+            <div class="col-md-5 uk-card uk-card-default uk-card-hover uk-card-body" style="float: right; padding: 8px; margin: 4% 4%; height: 215px">
                 <div class="col-md-3" style="padding-right: 0;">
                     <div class="poster" style="float: right; margin-left: -40%; margin-top: -40%; margin-bottom: 40%">
                         <img class="img-thumbnail" src="${performance.posterUrl}" style="height: 200px">
@@ -310,7 +313,11 @@
                         </p>
                         <p>
                                 ${performance.actors} 出演
+
                         </p>
+                        <div style="color: #ff936f; font-size: large; padding-left: 68%; font-weight: 500">
+                            ¥${performance.stallPrice}<span style="color: #666666; font-size: small; font-weight: normal"> 以内</span>
+                        </div>
                             <%--<p>--%>
                             <%--${performance.description}--%>
                             <%--</p>--%>
