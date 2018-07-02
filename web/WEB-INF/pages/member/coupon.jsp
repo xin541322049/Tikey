@@ -1,3 +1,4 @@
+<%@ page import="cn.tikey.entity.Coupon" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -14,8 +15,12 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/pure-min.css">
     <link rel="stylesheet" href="/css/grids-responsive-min.css">
+    <link rel="stylesheet" href="/css/uikit.css">
+    <link rel="stylesheet" href="/css/uikit-rtl.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/uikit-icons.js"></script>
+    <script src="/js/uikit.js"></script>
 </head>
 <body>
 <div id="layout" class="pure-g">
@@ -40,50 +45,25 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
             <!-- A wrapper for all the blog posts -->
-            <div class="posts">
-                <h1 class="content-subhead">优惠券兑换</h1>
-                <table class="pure-table">
-                    <thead>
-                    <tr style="color: white; background-color: rgba(253,85,5,0.19); border: rgba(253,165,114,0.19)">
-                        <th>优惠券</th>
-                        <th>所需积分</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-
-                    <tbody>
-                    <c:forEach items="${couponTypeList}" var="couponType">
-                        <tr>
-                            <td>${couponType.name}</td>
-                            <td>${couponType.value}</td>
-                            <c:if test="${member.validCredit>couponType.value}">
-                                <td>
+            <div style="margin-top: 6%" class="posts">
+                <h1 class="content-subhead">优惠券兑换 (积分:${member.validCredit}）</h1>
+                <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
+                    <c:forEach items="${couponList}" var="coupons">
+                        <div>
+                            <div style="height: 180px;margin-bottom: 30px" class="uk-card uk-card-default uk-card-body">
+                                <h3 class="uk-card-title">${coupons.name}</h3>
+                                <p>兑换所需积分:${coupons.value}<br>
+                                    已拥有数量:${coupons.holdAmount}
+                                </p>
+                                <c:if test="${member.validCredit>coupons.value}">
                                     <a type="button" class="pure-button"
-                                       href="/tikey/member/coupon/convert?email=${member.email}&couponType=${couponType}"
-                                       style="float: right; background: #5987c9; color: white; margin-right: 40px">兑换</a>
-                                </td>
-                            </c:if>
-                        </tr>
+                                       href="/tikey/member/coupon/convert?email=${member.email}&name=${coupons.name}&condition=${coupons.condition}"
+                                       style="float: right; background: #5987c9; color: white; margin-right: 40px;margin-top: -50px">兑换</a>
+                                </c:if>
+                            </div>
+                        </div>
                     </c:forEach>
-                    </tbody>
-                </table>
-                <p><br>当前可兑换积分为 ${member.validCredit}</p>
-            </div>
-
-            <div class="posts" style="margin-top: 70px">
-                <h1 class="content-subhead">可用优惠券</h1>
-                <c:if test="${couponList.size()>0}">
-                    <ul style="font-size: large">
-                        <c:forEach items="${couponList}" var="coupon">
-                            <li style="margin: 25px">
-                                <td>${coupon.couponName}</td>
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </c:if>
-                <c:if test="${couponList.size()==0}">
-                    <p>您目前还没有可用的优惠券哦，快去兑换叭</p>
-                </c:if>
+                </div>
             </div>
         </div>
     </div>

@@ -1,14 +1,15 @@
 package cn.tikey.helper;
 
 public enum CouponType {
-    Little("10元优惠券",10, 100, 1000), Middle("20元优惠券", 20, 200, 800), Senior("30元优惠券", 30, 500, 600);
+    Little("10元优惠券",10, 100, 1000), Middle("20元优惠券", 20, 200, 800), Senior("30元优惠券", 30, 500, 600), Senior_1("50元优惠券", 50, 600, 800),
+    Senior_2("100元优惠券", 100, 800, 1000), Senior_3("150元优惠券", 150, 1000, 1200);
 
     private String name;
     private int discounts;
     private int value;
     private int condition;
 
-    private CouponType(String name, int discounts, int value, int condition){
+    CouponType(String name, int discounts, int value, int condition){
         this.name = name;
         this.discounts = discounts;
         this.value = value;

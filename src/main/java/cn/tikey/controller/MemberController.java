@@ -6,6 +6,7 @@ import cn.tikey.entity.Ticket;
 import cn.tikey.exceptions.NoMemberException;
 import cn.tikey.exceptions.WrongPasswordException;
 import cn.tikey.helper.CouponType;
+import cn.tikey.helper.Coupons;
 import cn.tikey.helper.MemberState;
 import cn.tikey.helper.TicketState;
 import cn.tikey.service.*;
@@ -14,7 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping(value = "/tikey/member")
@@ -149,16 +153,34 @@ public class MemberController {
         List<Coupon> couponList = couponService.getMemberCoupon(email);
         Member member = memberService.getMemberByEmail(email);
         modelMap.addAttribute("member", member);
-        modelMap.addAttribute("couponList", couponList);
-        modelMap.addAttribute("couponTypeList", couponTypeList);
+//        modelMap.addAttribute("couponList", couponList);
+//        modelMap.addAttribute("couponTypeList", couponTypeList);
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        Map<String, CouponType> values = new HashMap<String, CouponType>();
+        for(Coupon coupon : couponList){
+            if(map.containsKey(coupon.getCouponName())){
+                map.put(coupon.getCouponName(), map.get(coupon.getCouponName()) + 1);
+            }else {
+                map.put(coupon.getCouponName(), 1);
+            }
+        }
+
+        for(CouponType couponType : couponTypeList){
+            values.put(couponType.getName(),couponType);
+        }
+        List<Coupons> couponsList = new ArrayList<Coupons>();
+        for(String s : values.keySet()){
+            couponsList.add(new Coupons(s,values.get(s).getValue(),map.get(s) == null ? 0 : map.get(s), values.get(s).getDiscounts(),values.get(s).getCondition()));
+        }
+        modelMap.addAttribute("couponList", couponsList);
         return "member/coupon";
     }
 
     @RequestMapping(value = "/coupon/convert")
     public String couponConvert(ModelMap modelMap, @ModelAttribute("email") String email,
-                                @ModelAttribute("couponType") CouponType couponType){
-        Member member = memberService.convertCoupon(email, couponType.getCondition());
-        couponService.convertCoupon(email, couponType);
+                                @ModelAttribute("name") String name, @ModelAttribute("condition") String condition){
+        Member member = memberService.convertCoupon(email, Integer.parseInt(condition));
+        couponService.convertCoupon(email, CouponType.getCouponType(name));
         return "redirect:/tikey/member/coupons?email="+email;
     }
 
