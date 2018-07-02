@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-    <%--<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.7.2/jquery.min.js"></script>--%>
+    <link href="/img/viking_ship_72px_1209600_easyicon.net.ico" rel="shortcut icon" type="image/x-icon">
+<%--<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.7.2/jquery.min.js"></script>--%>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery.spinner.js"></script>
 </head>
