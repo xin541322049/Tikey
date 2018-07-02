@@ -11,7 +11,7 @@
     <title>支付超时</title>
 </head>
 <body>
-<img alt="Brand" src="/img/viking_ship_72px_1209600_easyicon.net.ico">
+<img alt="Brand" src="/img/Hollywood_Ticket_72px_548853_easyicon.net.jpg">
 <h2>对不起，由于在规定支付时间内未及时付款，您的订单已取消，请重新购买</h2>
 点击<a href="/tikey/performance/detail/${id}?email=${email}">返回</a>演出详情
 </body>

@@ -26,11 +26,27 @@
     <script src="/js/paging.js"></script>
 
 </head>
+
+<style>
+    .post-title{
+        font-size: x-large;
+        font-weight: normal;
+    }
+    .post-title:focus,
+    .post-title:hover{
+        color: #4e5b9c;
+    }
+    .title-link:focus,
+    .title-link:hover{
+        text-decoration: none;
+    }
+</style>
+
 <body>
 <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
-            <h1 class="brand-title">${member.name}</h1>
+            <h1 class="brand-title" style="color: white;">${member.name}</h1>
             <h2 class="brand-tagline">在 Tikey,<br>发现你从未见过的世界</h2>
 
             <nav class="nav">
@@ -60,11 +76,11 @@
                 <div class="posts">
                     <%--<h1 class="content-subhead">未使用</h1>--%>
                     <c:forEach items="${unusedList}" var="ticket" begin="${page1 * 5}" end="${(page1 + 1) * 5 - 1}">
-                    <section class="post" style="margin-bottom: 15px">
+                    <section class="post">
                         <header class="post-header">
                             <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
 
-                            <a href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
+                            <a class="title-link" href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
                                 <h2 class="post-title">${ticket.performanceName}</h2>
                             </a>
 
@@ -104,11 +120,11 @@
             <li>
                 <div class="posts">
                     <c:forEach items="${unseatedList}" var="ticket" begin="${page2 * 5}" end="${(page2 + 1) * 5 - 1}">
-                        <section class="post" style="margin-bottom: 15px">
+                        <section class="post">
                             <header class="post-header">
                                 <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
 
-                                <a href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
+                                <a class="title-link" href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
                                     <h2 class="post-title">${ticket.performanceName}</h2>
                                 </a>
 
@@ -153,7 +169,7 @@
                             <header class="post-header">
                                 <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
 
-                                <a href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
+                                <a class="title-link" href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
                                     <h2 class="post-title">${ticket.performanceName}</h2>
                                 </a>
 
@@ -196,7 +212,7 @@
                             <header class="post-header">
                                 <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
 
-                                <a href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
+                                <a class="title-link" href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
                                     <h2 class="post-title">${ticket.performanceName}</h2>
                                 </a>
 

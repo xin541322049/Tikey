@@ -197,11 +197,11 @@ public class MemberController {
         modelMap.addAttribute("unseatedList", unseatedList);
         modelMap.addAttribute("usedList", usedList);
         modelMap.addAttribute("refundedList", refundedList);
-        modelMap.addAttribute("page1",Integer.parseInt(page1));
-        modelMap.addAttribute("page2",Integer.parseInt(page2));
-        modelMap.addAttribute("page3",Integer.parseInt(page3));
-        modelMap.addAttribute("page4",Integer.parseInt(page4));
-        modelMap.addAttribute("index",index);
+        modelMap.addAttribute("page1",!page1.equals("") ? Integer.parseInt(page1) : 0);
+        modelMap.addAttribute("page2",!page2.equals("") ? Integer.parseInt(page2) : 0);
+        modelMap.addAttribute("page3",!page3.equals("") ? Integer.parseInt(page3) : 0);
+        modelMap.addAttribute("page4",!page4.equals("") ? Integer.parseInt(page4) : 0);
+        modelMap.addAttribute("index",!index.equals("") ? Integer.parseInt(index) : 0);
         return "member/ticket_list";
     }
 

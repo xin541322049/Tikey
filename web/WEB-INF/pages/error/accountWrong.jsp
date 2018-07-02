@@ -12,7 +12,7 @@
     <title>支付失败</title>
 </head>
 <body>
-<img alt="Brand" src="/img/viking_ship_72px_1209600_easyicon.net.ico">
+<img alt="Brand" src="/img/Hollywood_Ticket_72px_548853_easyicon.net.jpg">
 <h2>对不起，您的支付账户错误，购买失败， 请重新选购</h2>
 <c:if test="${email.length()==0}">
     <a href="/tikey/stadium/performance/${code}/${id}">点击返回演出</a>
