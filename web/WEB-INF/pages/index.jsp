@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: apple
@@ -256,7 +257,7 @@
                     <div class="show-detail">
                         <span style="font-size: 15px">${performance.name}</span>
                         <h5 style="color: #737373">${performance.showPlace.name}</h5>
-                        <h5 style="color: #737373">${performance.showTime}</h5>
+                        <h5 style="color: #737373">${fn:substring(performance.showTime,0,16)}</h5>
                     </div>
                 </a>
             </c:if>
@@ -272,11 +273,12 @@
     </footer>
 </div>
 
-<div class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="logModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade center-modal" id="logModal" tabindex="-1" role="dialog" aria-labelledby="logModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-mid-size">
         <div class="modal-content">
             <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg">
+                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg" style="background-color: transparent; width: 50px">
             </a>
             <div class="modal-header" style="top: 25px">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -321,13 +323,13 @@
     </div>
 </div>
 
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
+<div class="modal fade center-modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
      aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog  modal-mid-size">
         <div class="modal-content">
             <a class="navbar-brand" href="#">
                 <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg"
-                     style="background-color: transparent">
+                     style="background-color: transparent; width: 50px">
             </a>
             <div class="modal-header" style="top: 25px">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -343,7 +345,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="nameRegister" class="col-sm-2 control-label">会员昵称</label>
+                        <label for="nameRegister" class="col-sm-2 control-label">昵称</label>
                         <div class="col-sm-8">
                             <input type="text" class="form-control" id="nameRegister" placeholder="请给您起一个喜欢的昵称"
                                    name="name" required="required">

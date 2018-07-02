@@ -18,7 +18,7 @@
     border-radius: 20px;
     height: 40px;
     width: 190%;
-    outline:none;
+    outline: none;
 }
 
 .join-button {
@@ -91,11 +91,11 @@
 
 .no-default-a {
     text-decoration: none;
-    color:#111
+    color: #111
 }
 
 .hover-a:hover {
-    text-decoration:none;
+    text-decoration: none;
     color: #ea8c30;
 }
 
@@ -121,7 +121,7 @@
     margin: 0px;
 }
 
-.user-menu{
+.user-menu {
     margin-left: 20px;
     color: #888888;
 }
@@ -142,11 +142,11 @@
 
 #nav-channel a {
     text-decoration: none;
-    color:#222
+    color: #222
 }
 
 #nav-channel a:hover {
-    text-decoration:none;
+    text-decoration: none;
     color: #ea8c30;
 }
 
@@ -168,7 +168,7 @@
     border-radius: 8px;
     font-size: 14px;
     color: #fff;
-    background-image: linear-gradient(#ea8c30,#EA711E);
+    background-image: linear-gradient(#ea8c30, #EA711E);
     display: inline-block;
     vertical-align: top;
 }
@@ -187,4 +187,16 @@
 .top-item {
     display: block;
     margin-top: 20px;
+}
+
+.modal-mid-size {
+    width: 400px;
+}
+
+.center-modal {
+    border-radius: 30px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-30%);
 }
