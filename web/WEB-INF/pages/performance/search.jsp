@@ -124,18 +124,18 @@
     </div>
 </nav>
 
-<div class="container" style="margin-top: 20px">
+<div class="container" style="margin-top: 70px">
     <c:if test="${result.size()==0}">
         <h2>哎呀，目前还没有这个演出哦～返回<a href="/tikey?email=${email}">首页</a>看看别的演出叭，也很精彩呢！</h2>
     </c:if>
     <c:forEach items="${result}" var="performance" begin="${page * 10}" end="${(page + 1) * 10 - 1}">
-        <div class="col-md-5 uk-card uk-card-default uk-card-hover uk-card-body" style="float: right; padding: 8px; margin: 30px 30px;">
-            <div class="col-md-4" style="padding-right: 0">
-                <div class="poster" style="max-height: 350px; max-width: 200px; float: right">
-                    <img class="img-thumbnail" src="${performance.posterUrl}" style="min-height: 210px; min-width: 150px">
+        <div class="col-md-5 uk-card uk-card-default uk-card-hover uk-card-body" style="float: right; padding: 8px; margin: 4% 4%; height: 200px">
+            <div class="col-md-3" style="padding-right: 0;">
+                <div class="poster" style="float: right; margin-left: -40%; margin-top: -40%; margin-bottom: 40%">
+                    <img class="img-thumbnail" src="${performance.posterUrl}" style="height: 200px">
                 </div>
             </div>
-            <div class="col-md-7" style="padding-left: 30px;">
+            <div class="col-md-9" style="padding-left: 30px;">
                 <div class="movie-info">
                     <h2>
                         <a href="/tikey/performance/detail/${performance.id}?email=${email}" class="performance-link">${performance.name}</a>
