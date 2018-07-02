@@ -233,11 +233,12 @@
     </div>
 </div>
 
-<div class="modal fade" id="logModal" tabindex="-1" role="dialog" aria-labelledby="logModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade center-modal" id="logModal" tabindex="-1" role="dialog" aria-labelledby="logModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-mid-size">
         <div class="modal-content">
             <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg">
+                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg" style="background-color: transparent; width: 50px">
             </a>
             <div class="modal-header" style="top: 25px">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -248,13 +249,15 @@
                     <div class="form-group">
                         <label for="email" class="col-sm-2 control-label">邮箱</label>
                         <div class="col-sm-8" id="member_check">
-                            <input type="email" class="form-control" id="email" placeholder="请输入完整邮箱地址" name="email" required="required">
+                            <input type="email" class="form-control" id="email" placeholder="请输入完整邮箱地址" name="email"
+                                   required="required">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="password" class="col-sm-2 control-label">密码</label>
                         <div class="col-sm-8" id="password_check">
-                            <input type="password" class="form-control" id="password" placeholder="注意区分大小写" name="password" required="required">
+                            <input type="password" class="form-control" id="password" placeholder="注意区分大小写"
+                                   name="password" required="required">
                         </div>
                     </div>
                     <div class="form-group">
@@ -268,21 +271,25 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-8">
-                            <button type="submit" class="pure-button" style="float: right; background: #5987c9; color: white" id="login_button">
-                                登录</button>
+                            <button type="submit" class="pure-button"
+                                    style="float: right; background: #5987c9; color: white" id="login_button">
+                                登录
+                            </button>
                         </div>
                     </div>
                 </form>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+    </div>
 </div>
 
-<div class="modal fade" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+<div class="modal fade center-modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog  modal-mid-size">
         <div class="modal-content">
             <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg">
+                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg"
+                     style="background-color: transparent; width: 50px">
             </a>
             <div class="modal-header" style="top: 25px">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -293,31 +300,36 @@
                     <div class="form-group">
                         <label for="emailRegister" class="col-sm-2 control-label">邮箱</label>
                         <div class="col-sm-8" id="email_check">
-                            <input type="email" class="form-control" id="emailRegister" placeholder="请输入正确完整邮箱地址" name="email" required="required">
+                            <input type="email" class="form-control" id="emailRegister" placeholder="请输入正确完整邮箱地址"
+                                   name="email" required="required">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="nameRegister" class="col-sm-2 control-label">会员昵称</label>
+                        <label for="nameRegister" class="col-sm-2 control-label">昵称</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="nameRegister" placeholder="请给您起一个喜欢的昵称" name="name" required="required">
+                            <input type="text" class="form-control" id="nameRegister" placeholder="请给您起一个喜欢的昵称"
+                                   name="name" required="required">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="passwordRegister" class="col-sm-2 control-label">密码</label>
                         <div class="col-sm-8">
-                            <input type="password" class="form-control" id="passwordRegister" placeholder="密码至多20位" name="password" required="required">
+                            <input type="password" class="form-control" id="passwordRegister" placeholder="密码至多20位"
+                                   name="password" required="required">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-8" id="button_container">
-                            <button type="submit" class="pure-button" style="float: right; background: #5987c9; color: white" id="register_b">
-                                注册</button>
+                            <button type="submit" class="pure-button"
+                                    style="float: right; background: #5987c9; color: white" id="register_b">
+                                注册
+                            </button>
                         </div>
                     </div>
                 </form>
             </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+        </div>
+    </div>
 </div>
 
 <div class="modal fade" id="numberModal" tabindex="-1" role="dialog" aria-labelledby="numberModalLabel" aria-hidden="true">
