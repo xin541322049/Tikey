@@ -233,7 +233,6 @@
     </div>
 </div>
 
-
 <div class="modal fade center-modal" id="logModal" tabindex="-1" role="dialog" aria-labelledby="logModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-mid-size">
@@ -253,15 +252,23 @@
 
             <div class="modal-body">
                 <form class="form-horizontal" role="form" id="login-form" action="/tikey" onsubmit="return logIn()">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2" id="member_check">
+                        </div>
+                    </div>
                     <div class="form-group row">
-                        <div class="input-group col-md-8 col-md-offset-2" id="member_check">
+                        <div class="input-group col-md-8 col-md-offset-2">
                             <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
                             <input type="email" class="form-control" id="email" placeholder="邮箱地址" name="email"
                                    required="required">
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2" id="password_check">
+                        </div>
+                    </div>
                     <div class="form-group row">
-                        <div class="input-group col-md-8 col-md-offset-2" id="password_check">
+                        <div class="input-group col-md-8 col-md-offset-2">
                             <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
                             <input type="password" class="form-control" id="password" placeholder="区分大小写"
                                    name="password" required="required">
@@ -283,6 +290,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="modal fade center-modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
      aria-hidden="true">
