@@ -2,6 +2,7 @@ package cn.tikey.controller;
 
 import cn.tikey.entity.Performance;
 import cn.tikey.helper.PerformanceState;
+import cn.tikey.helper.PerformanceType;
 import cn.tikey.service.MemberService;
 import cn.tikey.service.PerformanceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -43,7 +45,8 @@ public class HomeController {
 
     @RequestMapping(value = "/tikey/search")
     public String searchPerformance(ModelMap modelMap, @ModelAttribute("term") String term,
-                                    @ModelAttribute("email") String email, @ModelAttribute("page") String page){
+                                    @ModelAttribute("email") String email, @ModelAttribute("page") String page,
+                                    @ModelAttribute("genre") String genre){
         if(!email.equals("")){
             modelMap.addAttribute("member", memberService.getMemberByEmail(email));
         }
@@ -51,10 +54,59 @@ public class HomeController {
             page = "0";
         }
         List<Performance> result = performanceService.findByNameContaining(term);
-        result.addAll(performanceService.findByDescriptionContaining(term));
+        for (Performance performance: performanceService.findByDescriptionContaining(term)
+             ) {
+            boolean find = false;
+            for (Performance addPerformance : result
+                    ) {
+                if(performance.getId() == addPerformance.getId()){
+                    find = true;
+                    break;
+                }
+            }
+            if (!find){
+                result.add(performance);
+            }
+        }
+        if(!genre.equals("")){
+            PerformanceType type = null;
+            if(genre.equals("演唱会")){
+                type = PerformanceType.Concert;
+            }
+            if(genre.equals("体育赛事")){
+                type = PerformanceType.Competition;
+            }
+            if(genre.equals("音乐会")){
+                type = PerformanceType.Music;
+            }
+            if(genre.equals("歌剧")){
+                type = PerformanceType.Opera;
+            }
+            if(genre.equals("话剧")){
+                type = PerformanceType.Drama;
+            }
+            if(genre.equals("儿童亲子")){
+                type = PerformanceType.ChildPlay;
+            }
+            if(genre.equals("舞蹈")){
+                type = PerformanceType.Dance;
+            }
+            if(genre.equals("马戏")){
+                type = PerformanceType.Circus;
+            }
+            List<Performance> temp = new ArrayList<Performance>();
+            for (Performance performance : result
+                    ) {
+                if(performance.getType() == type){
+                    temp.add(performance);
+                }
+            }
+            result = temp;
+        }
         modelMap.addAttribute("result", result);
         modelMap.addAttribute("page", Integer.parseInt(page));
         modelMap.addAttribute("search_term", term);
+        modelMap.addAttribute("genre", genre);
         return "performance/search";
     }
 }
