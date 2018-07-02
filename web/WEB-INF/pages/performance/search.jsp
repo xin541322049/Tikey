@@ -15,16 +15,33 @@
     <link rel="stylesheet" href="/css/pure-min.css">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/uikit.css">
     <link rel="stylesheet" href="/css/paging.css">
     <link href="/img/Hollywood_Ticket_64px_548853_easyicon.net.ico" rel="shortcut icon" type="image/x-icon">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/uikit-icons.js"></script>
+    <script src="/js/uikit.js"></script>
     <script src="/js/paging.js"></script>
 </head>
 
 <style>
     .page_div{
         margin-left: 35%;
+    }
+    h2{
+        font-size: large;
+        margin-top: 5px;
+    }
+
+    .performance-link{
+        color: #666666;
+    }
+
+    .performance-link:hover,
+    .performance-link:focus{
+        color: #ea8c30;
+        text-decoration: none;
     }
 </style>
 
@@ -106,21 +123,21 @@
     </div>
 </nav>
 
-<div class="container" style="margin-top: 130px">
+<div class="container" style="margin-top: 20px">
     <c:if test="${result.size()==0}">
-        <h2>哎呀，目前还没有这个演出哦～返回<a href="/tikey">首页</a>看看别的演出叭，也很精彩呢！</h2>
+        <h2>哎呀，目前还没有这个演出哦～返回<a href="/tikey?email=${email}">首页</a>看看别的演出叭，也很精彩呢！</h2>
     </c:if>
     <c:forEach items="${result}" var="performance" begin="${page * 10}" end="${(page + 1) * 10 - 1}">
-        <div class="row" style="margin: 30px">
-            <div class="col-md-4">
-                <div class="poster" style="max-height: 350px; max-width: 200px">
-                    <img class="img-thumbnail" src="${performance.posterUrl}">
+        <div class="col-md-5 uk-card uk-card-default uk-card-hover uk-card-body" style="float: right; padding: 8px; margin: 30px 30px;">
+            <div class="col-md-4" style="padding-right: 0">
+                <div class="poster" style="max-height: 350px; max-width: 200px; float: right">
+                    <img class="img-thumbnail" src="${performance.posterUrl}" style="min-height: 210px; min-width: 150px">
                 </div>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-7" style="padding-left: 30px;">
                 <div class="movie-info">
                     <h2>
-                        <a href="/tikey/performance/detail/${performance.id}?email=${email}">${performance.name}</a>
+                        <a href="/tikey/performance/detail/${performance.id}?email=${email}" class="performance-link">${performance.name}</a>
                         <small> <br><br>${performance.showPlace.name}</small>
                     </h2>
                     <p>
@@ -153,9 +170,9 @@
                     <p>
                             ${performance.actors} 出演
                     </p>
-                    <p>
-                            ${performance.description}
-                    </p>
+                    <%--<p>--%>
+                            <%--${performance.description}--%>
+                    <%--</p>--%>
                     <%--<h3>现场购票</h3>--%>
                     <%--<div>--%>
                         <%--<label for="stall">选择票面：</label>--%>
@@ -184,7 +201,6 @@
             </div>
         </div>
     </c:forEach>
-
     <div id="page_block" class="page_div"></div>
 </div>
 
