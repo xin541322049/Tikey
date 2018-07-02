@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="/css/unit.css">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
-    <link href="/img/viking_ship_72px_1209600_easyicon.net.ico" rel="shortcut icon" type="image/x-icon">
+    <link href="/img/Hollywood_Ticket_72px_548853_easyicon.net.jpg" rel="shortcut icon" type="image/x-icon">
 </head>
 
 <body id="mainBody">
@@ -24,11 +24,10 @@
 <nav class="navbar navbar-default navbar-static-top header">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand no-gap" href="/tikey" style="height: 75px;">
-                <img alt="Brand" src="/img/viking_ship_72px_1209600_easyicon.net.ico"
-                     style="width: 130px; height: 72px">
+            <a class="navbar-brand no-gap" href="/tikey" style="margin-right: 10px">
+                <img alt="Brand" src="/img/Hollywood_Ticket_72px_548853_easyicon.net.jpg">
             </a>
-            <%--<h3 class="pure-menu-heading" style="margin: 0px; padding: 0px">Tikey</h3>--%>
+            <h3 class="pure-menu-heading" style="margin: 15px;color: #666666">Tikey</h3>
         </div>
 
         <div class="navbar-site">
@@ -211,7 +210,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/img/viking_ship_48px_1209600_easyicon.net.ico">
+                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg">
             </a>
             <div class="modal-header" style="top: 25px">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -261,7 +260,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/img/viking_ship_48px_1209600_easyicon.net.ico">
+                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg" style="background-color: transparent">
             </a>
             <div class="modal-header" style="top: 25px">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
