@@ -23,17 +23,21 @@ public class HomeController {
     @RequestMapping(value = "/tikey")
     public String getHomePage(ModelMap modelMap, @ModelAttribute("genre") String genre,
                               @ModelAttribute("email") String email){
-        if(genre.equals("")){
-            List<Performance> hotList = performanceService.findByState(PerformanceState.Sale);
-            modelMap.addAttribute("hotList", hotList);
-        }
-        else {
-            List<Performance> hotList = performanceService.findByStateAndType(PerformanceState.Sale, genre);
-            modelMap.addAttribute("hotList", hotList);
-        }
+        // 用户
         if(!email.equals("")){
             modelMap.addAttribute("member", memberService.getMemberByEmail(email));
         }
+
+        if(genre.equals("")){
+            List<Performance> hotList = performanceService.findByState(PerformanceState.Sale);
+            modelMap.addAttribute("hotList", hotList);
+        } else {
+            List<Performance> hotList = performanceService.findByStateAndType(PerformanceState.Sale, genre);
+            modelMap.addAttribute("hotList", hotList);
+        }
+
+        modelMap.addAttribute("curType", genre);
+
         return "index";
     }
 

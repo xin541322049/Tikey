@@ -51,7 +51,7 @@
         </div>
 
         <div id="search-area" class="nav navbar-nav" style="margin-left: 120px;">
-            <form class="form-inline" role="search" action="/tikey/search"  method="post"
+            <form class="form-inline" role="search" action="/tikey/search" method="post"
                   style="margin-top: 20px; line-height: 40px; height: 40px;">
                 <input class="search-input" placeholder="搜索演出、赛事" name="term">
                 <input value="${member.email}" name="email" hidden="hidden">
@@ -79,15 +79,17 @@
                 <li>
                     <a href="${pageContext.servletContext.contextPath}/tikey/member/detail"
                        onclick="return addEmail();">
-                        <span class="glyphicon glyphicon-user"></span> 我的
+                        <i class="fa fa-user-circle fa-2x"></i>
+                        <span style="position:relative;bottom: 5px">我的</span>
                     </a>
                 </li>
                 <li>
                     <a href="${pageContext.servletContext.contextPath}/tikey">
-                        <span class="glyphicon glyphicon-log-in"></span> 退出
+                        <i class="fa fa-sign-out fa-2x"></i>
+                        <span style="position:relative;bottom: 5px"> 退出</span>
                     </a>
                 </li>
-                <form action="/tikey/member/detail" hidden="hidden" id="email-form" method="post">
+                <form action="/tikey/member/detail" id="email-form" method="post">
                     <input value="${member.email}" name="email">
                 </form>
             </c:if>
@@ -260,7 +262,8 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg" style="background-color: transparent">
+                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg"
+                     style="background-color: transparent">
             </a>
             <div class="modal-header" style="top: 25px">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -305,10 +308,10 @@
 
 </body>
 
-<script src="/js/jquery-1.8.3.min.js"></script>
 <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery.carousel.js"></script>
+<script src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
 <script type="text/javascript">
     Caroursel.init($('.caroursel'));
     $(function () {
@@ -347,8 +350,8 @@
                             }
                         }
                     });
-                }   //end if
-            }); //end button2 click
+                }
+            });
     });
 
     function logIn() {
