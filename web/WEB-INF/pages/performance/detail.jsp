@@ -132,7 +132,7 @@
 </nav>
 
 
-<div class="container" style="margin-top: 200px;
+<div class="container" style="margin-top: 100px;
     display: table;
     border-radius: 14px;
     background-color: #fff;
@@ -146,7 +146,7 @@
                 <img class="img-rounded" src="${performance.posterUrl}">
             </div>
         </div>
-        <div style="margin-top: 3%;margin-left: -2%" class="col-md-8">
+        <div style="margin-top: 3%;margin-left: -3%" class="col-md-8">
             <div class="movie-info">
                 <h2>${performance.name}<small> <br><br>${performance.showPlace.name}</small></h2>
                 <p>

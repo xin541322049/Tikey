@@ -17,77 +17,12 @@
     <link rel="stylesheet" href="/css/grids-responsive-min.css">
     <link rel="stylesheet" href="/css/uikit.css">
     <link rel="stylesheet" href="/css/uikit-rtl.css">
+    <link rel="stylesheet" href="/css/paging.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/uikit-icons.js"></script>
     <script src="/js/uikit.js"></script>
     <script src="/js/paging.js"></script>
-
-    <style>
-        * {
-            padding: 0;
-            margin: 0;
-        }
-        /*
-          * 外面盒子样式---自己定义
-          */
-
-        .page_div {
-            margin-bottom: 20px;
-            font-size: 15px;
-            font-family: "microsoft yahei";
-            color: #666666;
-            margin-right: 10px;
-            margin-left: -5px;
-            box-sizing: border-box;
-        }
-        /*
-         * 页数按钮样式
-         */
-
-        .page_div a {
-            min-width: 30px;
-            height: 28px;
-            border: 1px solid #dce0e0!important;
-            text-align: center;
-            margin: 0 4px;
-            cursor: pointer;
-            line-height: 28px;
-            color: #666666;
-            font-size: 13px;
-            display: inline-block;
-        }
-
-        #firstPage,
-        #lastPage {
-            width: 50px;
-            color: #0073A9;
-            border: 1px solid #0073A9!important;
-        }
-
-        #prePage,
-        #nextPage {
-            width: 70px;
-            color: #0073A9;
-            border: 1px solid #0073A9!important;
-        }
-
-        .page_div .current {
-            background-color: #0073A9;
-            border-color: #0073A9;
-            color: #FFFFFF;
-        }
-
-        .totalPages {
-            margin: 0 10px;
-        }
-
-        .totalPages span,
-        .totalSize span {
-            color: #0073A9;
-            margin: 0 5px;
-        }
-    </style>
 
 </head>
 <body>
