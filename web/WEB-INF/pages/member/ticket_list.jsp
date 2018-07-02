@@ -29,7 +29,8 @@
 
 <style>
     .post-title{
-        font-size: x-large;
+        margin-left: 130px;
+        font-size: large;
         font-weight: normal;
     }
     .post-title:focus,
@@ -39,6 +40,13 @@
     .title-link:focus,
     .title-link:hover{
         text-decoration: none;
+    }
+    .post-avatar{
+        border-radius: unset;
+        float: left;
+    }
+    .post-category{
+        zoom: 0.1%;
     }
 </style>
 
@@ -81,26 +89,24 @@
                             <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
 
                             <a class="title-link" href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
-                                <h2 class="post-title">${ticket.performanceName}</h2>
+                                <h2 class="post-title">${ticket.performanceName}
+                                    <c:if test="${ticket.type=='Stall'}">
+                                        <span class="post-category post-category-concert">池座</span>
+                                    </c:if>
+                                    <c:if test="${ticket.type=='Second'}">
+                                        <span class="post-category post-category-competition">二楼</span>
+                                    </c:if>
+                                    <c:if test="${ticket.type=='Third'}">
+                                        <span class="post-category post-category-opera">三楼</span>
+                                    </c:if>
+                                    <c:if test="${ticket.type=='Fourth'}">
+                                        <span class="post-category post-category-circus">四楼</span>
+                                    </c:if>
+                                </h2>
                             </a>
-
-                            <p class="post-meta" style="margin-top: 13px; margin-bottom: 13px">
-                                <c:if test="${ticket.type=='Stall'}">
-                                    <span class="post-category post-category-concert">池座</span>
-                                </c:if>
-                                <c:if test="${ticket.type=='Second'}">
-                                    <span class="post-category post-category-competition">二楼</span>
-                                </c:if>
-                                <c:if test="${ticket.type=='Third'}">
-                                    <span class="post-category post-category-opera">三楼</span>
-                                </c:if>
-                                <c:if test="${ticket.type=='Fourth'}">
-                                    <span class="post-category post-category-circus">四楼</span>
-                                </c:if>
-                            </p>
                         </header>
 
-                        <div class="post-description">
+                        <div style="margin-left: 130px" class="post-description">
                             <p>
                                 票号：${ticket.id}<br>
                                 票价：¥${ticket.price}<br>
@@ -125,26 +131,24 @@
                                 <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
 
                                 <a class="title-link" href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
-                                    <h2 class="post-title">${ticket.performanceName}</h2>
+                                    <h2 class="post-title">${ticket.performanceName}
+                                        <c:if test="${ticket.type=='Stall'}">
+                                            <span class="post-category post-category-concert">池座</span>
+                                        </c:if>
+                                        <c:if test="${ticket.type=='Second'}">
+                                            <span class="post-category post-category-competition">二楼</span>
+                                        </c:if>
+                                        <c:if test="${ticket.type=='Third'}">
+                                            <span class="post-category post-category-opera">三楼</span>
+                                        </c:if>
+                                        <c:if test="${ticket.type=='Fourth'}">
+                                            <span class="post-category post-category-circus">四楼</span>
+                                        </c:if>
+                                    </h2>
                                 </a>
-
-                                <p class="post-meta" style="margin-top: 13px; margin-bottom: 13px">
-                                    <c:if test="${ticket.type=='Stall'}">
-                                        <span class="post-category post-category-concert">池座</span>
-                                    </c:if>
-                                    <c:if test="${ticket.type=='Second'}">
-                                        <span class="post-category post-category-competition">二楼</span>
-                                    </c:if>
-                                    <c:if test="${ticket.type=='Third'}">
-                                        <span class="post-category post-category-opera">三楼</span>
-                                    </c:if>
-                                    <c:if test="${ticket.type=='Fourth'}">
-                                        <span class="post-category post-category-circus">四楼</span>
-                                    </c:if>
-                                </p>
                             </header>
 
-                            <div class="post-description">
+                            <div style="margin-left: 130px" class="post-description">
                                 <p>
                                     票号：${ticket.id}<br>
                                     票价：¥${ticket.price}<br>
@@ -170,31 +174,32 @@
                                 <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
 
                                 <a class="title-link" href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
-                                    <h2 class="post-title">${ticket.performanceName}</h2>
+                                    <h2 class="post-title">${ticket.performanceName}
+                                        <c:if test="${ticket.type=='Stall'}">
+                                            <span class="post-category post-category-concert">池座</span>
+                                        </c:if>
+                                        <c:if test="${ticket.type=='Second'}">
+                                            <span class="post-category post-category-competition">二楼</span>
+                                        </c:if>
+                                        <c:if test="${ticket.type=='Third'}">
+                                            <span class="post-category post-category-opera">三楼</span>
+                                        </c:if>
+                                        <c:if test="${ticket.type=='Fourth'}">
+                                            <span class="post-category post-category-circus">四楼</span>
+                                        </c:if>
+                                    </h2>
                                 </a>
-
-                                <p class="post-meta" style="margin-top: 13px; margin-bottom: 13px">
-                                    <c:if test="${ticket.type=='Stall'}">
-                                        <span class="post-category post-category-concert">池座</span>
-                                    </c:if>
-                                    <c:if test="${ticket.type=='Second'}">
-                                        <span class="post-category post-category-competition">二楼</span>
-                                    </c:if>
-                                    <c:if test="${ticket.type=='Third'}">
-                                        <span class="post-category post-category-opera">三楼</span>
-                                    </c:if>
-                                    <c:if test="${ticket.type=='Fourth'}">
-                                        <span class="post-category post-category-circus">四楼</span>
-                                    </c:if>
-                                </p>
                             </header>
 
-                            <div class="post-description">
+                            <div style="margin-left: 130px" class="post-description">
                                 <p>
                                     票号：${ticket.id}<br>
-                                    票价：¥${ticket.price}<br>
+                                    票价：¥${fn:substring(ticket.price, 0, fn:indexOf(ticket.price, ".") + 2)}<br>
                                     位置：${ticket.theRow}排${ticket.theColumn}座<br>
                                     购票时间：${fn:substring(ticket.saleTime,0,19)}<br>
+                                    <button type="button" class="pure-button" style="float: right; background: #5987c9; color: white; margin-top: -30px; margin-right: 20px"
+                                            data-toggle="modal" data-target="#acceptModal" onclick="refundCheck(${ticket.id})" disabled=disabled>
+                                        退票</button>
                                 </p>
                             </div>
                         </section>
@@ -213,26 +218,24 @@
                                 <img width="100" height="100" alt="Tilo Mitra&#x27;s avatar" class="post-avatar" src=${ticket.posterUrl}>
 
                                 <a class="title-link" href="/tikey/performance/detail/${ticket.performanceId}?email=${member.email}">
-                                    <h2 class="post-title">${ticket.performanceName}</h2>
+                                    <h2 class="post-title">${ticket.performanceName}
+                                        <c:if test="${ticket.type=='Stall'}">
+                                            <span class="post-category post-category-concert">池座</span>
+                                        </c:if>
+                                        <c:if test="${ticket.type=='Second'}">
+                                            <span class="post-category post-category-competition">二楼</span>
+                                        </c:if>
+                                        <c:if test="${ticket.type=='Third'}">
+                                            <span class="post-category post-category-opera">三楼</span>
+                                        </c:if>
+                                        <c:if test="${ticket.type=='Fourth'}">
+                                            <span class="post-category post-category-circus">四楼</span>
+                                        </c:if>
+                                    </h2>
                                 </a>
-
-                                <p class="post-meta" style="margin-top: 13px; margin-bottom: 13px">
-                                    <c:if test="${ticket.type=='Stall'}">
-                                        <span class="post-category post-category-concert">池座</span>
-                                    </c:if>
-                                    <c:if test="${ticket.type=='Second'}">
-                                        <span class="post-category post-category-competition">二楼</span>
-                                    </c:if>
-                                    <c:if test="${ticket.type=='Third'}">
-                                        <span class="post-category post-category-opera">三楼</span>
-                                    </c:if>
-                                    <c:if test="${ticket.type=='Fourth'}">
-                                        <span class="post-category post-category-circus">四楼</span>
-                                    </c:if>
-                                </p>
                             </header>
 
-                            <div class="post-description">
+                            <div style="margin-left: 130px" class="post-description">
                                 <p>
                                     票号：${ticket.id}<br>
                                     票价：¥${fn:substring(ticket.price, 0, fn:indexOf(ticket.price, ".") + 2)}<br>
@@ -244,6 +247,9 @@
                                     </c:if>
                                     购票时间：${fn:substring(ticket.saleTime,0,19)}<br>
                                     退款金额：${fn:substring(ticket.refund, 0, fn:indexOf(ticket.refund, ".") + 2)}<br>
+                                    <button type="button" class="pure-button" style="float: right; background: #5987c9; color: white; margin-top: -30px; margin-right: 20px"
+                                            data-toggle="modal" data-target="#acceptModal" onclick="refundCheck(${ticket.id})" disabled=disabled>
+                                        退票</button>
                                 </p>
                             </div>
                         </section>
