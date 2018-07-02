@@ -40,10 +40,10 @@
             <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a class="pure-button" href="/tikey/member/tickets?email=${member.email}&page1=0&page2=0&page3=0&page4=0&index=0">我的订单</a>
+                        <a style="width: 100px;" class="pure-button" href="/tikey/member/tickets?email=${member.email}&page1=0&page2=0&page3=0&page4=0&index=0">我的订单</a>
                     </li>
                     <li class="nav-item">
-                        <a class="pure-button" href="/tikey/member/coupons?email=${member.email}">我的优惠券</a>
+                        <a style="width: 100px" class="pure-button" href="/tikey/member/coupons?email=${member.email}">我的优惠券</a>
                     </li>
                 </ul>
             </nav>
@@ -53,7 +53,7 @@
     <div class="content pure-u-1 pure-u-md-3-4">
 
         <div  style="float: right">
-            <a  href="/tikey?email=${member.email}">返回</a>
+            <a  href="/tikey?email=${member.email}">返回主页</a>
         </div>
 
         <div>

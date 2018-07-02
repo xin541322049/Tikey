@@ -36,11 +36,11 @@
             <nav class="nav">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a class="pure-button" href="/tikey/member/detail?email=${member.email}">我的资料</a>
+                        <a class="pure-button" href="/tikey/member/detail?email=${member.email}">返回我的资料</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="pure-button" href="/tikey/member/coupons?email=${member.email}">我的优惠券</a>
-                    </li>
+                    <%--<li class="nav-item">--%>
+                        <%--<a class="pure-button" href="/tikey/member/coupons?email=${member.email}">我的优惠券</a>--%>
+                    <%--</li>--%>
                 </ul>
             </nav>
         </div>
@@ -134,7 +134,7 @@
                                     票价：¥${ticket.price}<br>
                                     位置：未选座，等待配票<br>
                                     购票时间：${fn:substring(ticket.saleTime,0,19)}<br>
-                                    <button type="button" class="pure-button" style="float: right; background: #5987c9; color: white; margin-top: -30px; margin-right: 20px "
+                                    <button type="button" class="pure-button" style="float: right; background: #5987c9; color: white; margin-top: -20px; margin-right: 20px "
                                             data-toggle="modal" data-target="#acceptModal" onclick="refundCheck(${ticket.id})">
                                         退票</button>
                                 </p>
