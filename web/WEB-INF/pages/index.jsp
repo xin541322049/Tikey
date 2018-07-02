@@ -24,7 +24,7 @@
 <nav class="navbar navbar-default navbar-static-top header">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand no-gap" href="/tikey" style="margin-right: 10px">
+            <a class="navbar-brand no-gap" href="/tikey?email=${member.email}" style="margin-right: 10px">
                 <img alt="Brand" src="/img/Hollywood_Ticket_72px_548853_easyicon.net.jpg">
             </a>
             <h3 class="pure-menu-heading" style="margin: 15px;color: #666666">Tikey</h3>
