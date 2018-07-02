@@ -1,24 +1,3 @@
-var v = new Vue({
-    el: '#mainBody',
-    data: {
-    },
-
-    created: function () {
-    },
-
-    watch: {
-        searchType: function () {
-        }
-    },
-
-    computed: {
-    },
-
-    methods: {
-
-    }
-});
-
 
 Caroursel.init($('.caroursel'));
 $(function () {
