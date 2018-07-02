@@ -51,7 +51,7 @@
             </li>
         </div>
 
-        <div id="search-area" class="nav navbar-nav" style="margin-left: 120px;">
+        <div id="search-area" class="nav navbar-nav" style="margin-left: 90px;">
             <form class="form-inline" role="search" action="/tikey/search" method="post"
                   style="margin-top: 20px; line-height: 40px; height: 40px;">
                 <input class="search-input" placeholder="搜索演出、赛事" name="term">
@@ -111,34 +111,41 @@
             </c:if>
 
             <c:if test="${curType.equals('演唱会')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=演唱会&email=${member.email}&term=${search_term}">演唱会</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=演唱会&email=${member.email}&term=${search_term}">演唱会</a>
                     <div class="border-bottom" style="margin-left: 15px"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('演唱会')}">
-                <li class="genre"><a href="/tikey/search?genre=演唱会&email=${member.email}&term=${search_term}">演唱会</a></li>
+                <li class="genre"><a href="/tikey/search?genre=演唱会&email=${member.email}&term=${search_term}">演唱会</a>
+                </li>
             </c:if>
 
             <c:if test="${curType.equals('体育赛事')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=体育赛事&email=${member.email}&term=${search_term}">体育赛事</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=体育赛事&email=${member.email}&term=${search_term}">体育赛事</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('体育赛事')}">
-                <li class="genre"><a href="/tikey/search?genre=体育赛事&email=${member.email}&term=${search_term}">体育赛事</a></li>
+                <li class="genre"><a href="/tikey/search?genre=体育赛事&email=${member.email}&term=${search_term}">体育赛事</a>
+                </li>
             </c:if>
 
             <c:if test="${curType.equals('音乐会')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=音乐会&email=${member.email}&term=${search_term}">音乐会</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=音乐会&email=${member.email}&term=${search_term}">音乐会</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('音乐会')}">
-                <li class="genre"><a href="/tikey/search?genre=音乐会&email=${member.email}&term=${search_term}">音乐会</a></li>
+                <li class="genre"><a href="/tikey/search?genre=音乐会&email=${member.email}&term=${search_term}">音乐会</a>
+                </li>
             </c:if>
 
             <c:if test="${curType.equals('歌剧')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=歌剧&email=${member.email}&term=${search_term}">歌剧</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=歌剧&email=${member.email}&term=${search_term}">歌剧</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
@@ -147,7 +154,8 @@
             </c:if>
 
             <c:if test="${curType.equals('话剧')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=话剧&email=${member.email}&term=${search_term}">话剧</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=话剧&email=${member.email}&term=${search_term}">话剧</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
@@ -156,16 +164,19 @@
             </c:if>
 
             <c:if test="${curType.equals('儿童亲子')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=儿童亲子&email=${member.email}&term=${search_term}">儿童亲子</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=儿童亲子&email=${member.email}&term=${search_term}">儿童亲子</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('儿童亲子')}">
-                <li class="genre"><a href="/tikey/search?genre=儿童亲子&email=${member.email}&term=${search_term}">儿童亲子</a></li>
+                <li class="genre"><a href="/tikey/search?genre=儿童亲子&email=${member.email}&term=${search_term}">儿童亲子</a>
+                </li>
             </c:if>
 
             <c:if test="${curType.equals('舞蹈')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=舞蹈&email=${member.email}&term=${search_term}">舞蹈</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=舞蹈&email=${member.email}&term=${search_term}">舞蹈</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
@@ -174,12 +185,14 @@
             </c:if>
 
             <c:if test="${curType.equals('马戏杂技')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=马戏杂技&email=${member.email}&term=${search_term}">马戏杂技</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=马戏杂技&email=${member.email}&term=${search_term}">马戏杂技</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('马戏杂技')}">
-                <li class="genre"><a href="/tikey/search?genre=马戏杂技&email=${member.email}&term=${search_term}">马戏杂技</a></li>
+                <li class="genre"><a href="/tikey/search?genre=马戏杂技&email=${member.email}&term=${search_term}">马戏杂技</a>
+                </li>
             </c:if>
         </ol>
     </div>
@@ -218,7 +231,8 @@
     <section id="hot-section">
         <div class="section-header">
             <div class="section-title">近期热门</div>
-            <div class="section-operation" style="margin-left: 500px;"><a href="#" class="no-default-a hover-a">查看更多<i
+            <div class="section-operation" style="margin-left: 500px;"><a
+                    href="/tikey/search?email=${member.email}&term=${search_term}" class="no-default-a hover-a">查看更多<i
                     class="fa fa-angle-right fa-lg"></i></a></div>
         </div>
 
@@ -244,7 +258,8 @@
     <section id="top-section">
         <div class="section-header">
             <div class="section-title">人气TOP 5</div>
-            <div class="section-operation" style="margin-left: 140px;"><a href="#" class="no-default-a hover-a">查看更多<i
+            <div class="section-operation" style="margin-left: 140px;"><a
+                    href="/tikey/search?email=${member.email}&term=${search_term}" class="no-default-a hover-a">查看更多<i
                     class="fa fa-angle-right fa-lg"></i></a></div>
         </div>
         <c:forEach items="${hotList}" var="performance" varStatus="status">
@@ -277,46 +292,46 @@
      aria-hidden="true">
     <div class="modal-dialog modal-mid-size">
         <div class="modal-content">
-            <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg" style="background-color: transparent; width: 50px">
-            </a>
-            <div class="modal-header" style="top: 25px">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="logModalLabel"><br>会员登录</h4>
+            <div class="modal-header" style="border: 0">
+                <button type="button" class="close  no-border" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
+            <div class="row modal-top" style="margin-bottom: -5px">
+                <div class="col-md-offset-3 col-md-2">
+                    <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg"
+                         style="background-color: transparent; width: 50px">
+                </div>
+                <div class="col-md-3">
+                    <h4 class="modal-title" id="logModalLabel" style="margin-top: 13px">会员登录</h4>
+                </div>
+            </div>
+
             <div class="modal-body">
                 <form class="form-horizontal" role="form" id="login-form" action="/tikey" onsubmit="return logIn()">
-                    <div class="form-group">
-                        <label for="email" class="col-sm-2 control-label">邮箱</label>
-                        <div class="col-sm-8" id="member_check">
-                            <input type="email" class="form-control" id="email" placeholder="请输入完整邮箱地址" name="email"
+                    <div class="form-group row">
+                        <div class="input-group col-md-8 col-md-offset-2" id="member_check">
+                            <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                            <input type="email" class="form-control" id="email" placeholder="邮箱地址" name="email"
                                    required="required">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="password" class="col-sm-2 control-label">密码</label>
-                        <div class="col-sm-8" id="password_check">
-                            <input type="password" class="form-control" id="password" placeholder="注意区分大小写"
+                    <div class="form-group row">
+                        <div class="input-group col-md-8 col-md-offset-2" id="password_check">
+                            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                            <input type="password" class="form-control" id="password" placeholder="区分大小写"
                                    name="password" required="required">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-8">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox" name="remember" id="remember">记住用户名
-                                </label>
-                            </div>
-                        </div>
+                    <%--<div class="form-group">--%>
+                    <%--<div class="col-sm-offset-2 col-sm-8">--%>
+                    <%--<div class="checkbox"><label><input type="checkbox" name="remember" id="remember">记住用户名</label></div>--%>
+                    <%--</div>--%>
+                    <%--</div>--%>
+                    <div class="form-group row" style="margin-top: 30px">
+                        <button type="submit" class="col-sm-8 col-sm-offset-2 pure-button login-button"
+                                id="login_button">登录
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-8">
-                            <button type="submit" class="pure-button"
-                                    style="float: right; background: #5987c9; color: white" id="login_button">
-                                登录
-                            </button>
-                        </div>
-                    </div>
+                    <div class="form-group row" style="margin-top: 30px"></div>
                 </form>
             </div>
         </div>
@@ -327,50 +342,54 @@
      aria-hidden="true">
     <div class="modal-dialog  modal-mid-size">
         <div class="modal-content">
-            <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg"
-                     style="background-color: transparent; width: 50px">
-            </a>
-            <div class="modal-header" style="top: 25px">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                <h4 class="modal-title" id="registerModalLabel"><br>会员注册</h4>
+            <div class="modal-header" style="border: 0">
+                <button type="button" class="close no-border" data-dismiss="modal" aria-hidden="true">×</button>
             </div>
+            <div class="row modal-top">
+                <div class="col-md-offset-3 col-md-2">
+                    <img alt="Brand" src="/img/Hollywood_Ticket_64px_548853_easyicon.net.jpg"
+                         style="background-color: transparent; width: 50px">
+                </div>
+                <div class="col-md-3">
+                    <h4 class="modal-title" id="registerModalLabel" style="margin-top: 13px">会员注册</h4>
+                </div>
+            </div>
+
             <div class="modal-body">
                 <form class="form-horizontal" role="form" action="/tikey/member/register">
-                    <div class="form-group">
-                        <label for="emailRegister" class="col-sm-2 control-label">邮箱</label>
-                        <div class="col-sm-8" id="email_check">
-                            <input type="email" class="form-control" id="emailRegister" placeholder="请输入正确完整邮箱地址"
+                    <div class="form-group row">
+                        <div class="input-group col-md-8 col-md-offset-2" id="email_check">
+                            <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
+                            <input type="email" class="form-control" id="emailRegister" placeholder="完整邮箱地址"
                                    name="email" required="required">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="nameRegister" class="col-sm-2 control-label">昵称</label>
-                        <div class="col-sm-8">
-                            <input type="text" class="form-control" id="nameRegister" placeholder="请给您起一个喜欢的昵称"
+                    <div class="form-group row">
+                        <div class="input-group col-md-8 col-md-offset-2">
+                            <span class="input-group-addon"><i class="fa fa-pencil-square-o fa-fw"></i></span>
+                            <input type="text" class="form-control" id="nameRegister" placeholder="会员昵称"
                                    name="name" required="required">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="passwordRegister" class="col-sm-2 control-label">密码</label>
-                        <div class="col-sm-8">
+                    <div class="form-group row">
+                        <div class="input-group col-md-8 col-md-offset-2">
+                            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
                             <input type="password" class="form-control" id="passwordRegister" placeholder="密码至多20位"
                                    name="password" required="required">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-8" id="button_container">
-                            <button type="submit" class="pure-button"
-                                    style="float: right; background: #5987c9; color: white" id="register_b">
-                                注册
-                            </button>
-                        </div>
+                    <div class="form-group row" style="margin-top: 30px">
+                        <button type="submit" class="col-sm-offset-2 col-sm-8 pure-button login-button" id="register_b">
+                            注册
+                        </button>
                     </div>
+                    <div class="form-group row"></div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 </body>
 <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
