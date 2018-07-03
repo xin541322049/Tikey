@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/css/seat.css">
     <link rel="stylesheet" href="/css/uikit.css">
     <link rel="stylesheet" href="/css/uikit-rtl.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <link href="/img/Hollywood_Ticket_64px_548853_easyicon.net.ico" rel="shortcut icon" type="image/x-icon">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
@@ -55,48 +56,48 @@
             </li>
         </div>
 
-        <div id="search-area" class="nav navbar-nav" style="margin-left: 120px;">
-            <form class="form-inline" role="search" action="/tikey/search"  method="post"
-                  style="margin-top: 20px; line-height: 40px; height: 40px;">
+        <div id="search-area" class="nav navbar-nav">
+            <form class="form-inline search-form" role="search" action="/tikey/search" method="post">
                 <input class="search-input" placeholder="搜索演出、赛事" name="term">
                 <input value="${member.email}" name="email" hidden="hidden">
-                <button class="pure-button join-button" style="padding-bottom: 8px">
-                    <span class="glyphicon glyphicon-search" style="margin-right: 5px"></span>搜索
+                <button class="pure-button join-button">
+                    <span class="glyphicon glyphicon-search search-text"></span>搜索
                 </button>
             </form>
         </div>
 
-        <ul id="visitor_nav" class="nav navbar-nav navbar-right" style="margin-top: 25px">
+        <ul id="visitor_nav" class="nav navbar-nav navbar-right">
             <c:if test="${member==null}">
-                <li class="user-menu"><span data-toggle="modal" href="#registerModal"
-                                            style="outline: none; cursor: pointer">
+                <li class="user-menu"><span data-toggle="modal" href="#registerModal">
                     <i class="fa fa-user-circle fa-2x"></i>
-                        <span style="position:relative;bottom: 5px">注册</span>
-                </span></li>
+                        <span  class="user-menu-text">注册</span>
+                </span>
+                </li>
 
-                <li class="user-menu"><span data-toggle="modal" href="#logModal" style="outline: none; cursor: pointer">
-                    <i class="fa fa-sign-in fa-2x"></i>
-                        <span style="position:relative;bottom: 5px">登录</span>
+                <li class="user-menu"><span data-toggle="modal" href="#logModal">
+                    <i class="fa fa-sign-in fa-2x"></i><span class="user-menu-text">登录</span>
                 </span></li>
             </c:if>
 
             <c:if test="${member.email.length()>0}">
-                <li>
-                    <a href="${pageContext.servletContext.contextPath}/tikey/member/detail"
-                       onclick="return addEmail();">
-                        <span class="glyphicon glyphicon-user"></span> 我的
+                <li class="user-menu">
+                    <span onclick="return addEmail();">
+                        <i class="fa fa-user-o fa-2x"></i>
+                        <span  class="user-menu-text">我的</span>
+                    </span>
+                </li>
+                <li class="user-menu">
+                    <a href="${pageContext.servletContext.contextPath}/tikey" style="padding: 0">
+                        <i class="fa fa-sign-out fa-2x"></i>
+                        <span  class="user-menu-text"> 退出</span>
                     </a>
                 </li>
-                <li>
-                    <a href="${pageContext.servletContext.contextPath}/tikey">
-                        <span class="glyphicon glyphicon-log-in"></span> 退出
-                    </a>
-                </li>
-                <form action="/tikey/member/detail" hidden="hidden" id="email-form" method="post">
+                <form action="/tikey/member/detail" id="email-form" method="post" hidden="hidden">
                     <input value="${member.email}" name="email">
                 </form>
             </c:if>
         </ul>
+
     </div>
 </nav>
 
