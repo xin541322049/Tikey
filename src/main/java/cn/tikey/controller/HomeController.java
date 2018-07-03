@@ -30,14 +30,26 @@ public class HomeController {
             modelMap.addAttribute("member", memberService.getMemberByEmail(email));
         }
 
+        List<Performance> hotList = null;
         if (genre.equals("")) {
-            List<Performance> hotList = performanceService.findByState(PerformanceState.Sale);
-            modelMap.addAttribute("hotList", hotList);
+            hotList = performanceService.findByState(PerformanceState.Sale);
+
+
         } else {
-            List<Performance> hotList = performanceService.findByStateAndType(PerformanceState.Sale, genre);
+            hotList = performanceService.findByStateAndType(PerformanceState.Sale, genre);
             modelMap.addAttribute("hotList", hotList);
         }
 
+        List<Performance> temp = new ArrayList<Performance>();
+        for (Performance performance: hotList
+             ) {
+            if(performance.getShowPlace().getCity().equals("南京")){
+                temp.add(performance);
+            }
+        }
+        hotList = temp;
+
+        modelMap.addAttribute("hotList", hotList);
         modelMap.addAttribute("curType", genre);
 
         return "index";
@@ -108,7 +120,11 @@ public class HomeController {
             result = temp;
         }
 
-        if(!city.equals("")&&!city.equals("all")){
+        if(city.equals("")){
+            city = "南京";
+        }
+
+        if(!city.equals("all")){
             List<Performance> temp = new ArrayList<Performance>();
             for (Performance performance : result
                     ) {
@@ -117,9 +133,6 @@ public class HomeController {
                 }
             }
             result = temp;
-        }
-        else {
-            city = "all";
         }
 
         // 按照时间由近到远排序

@@ -63,7 +63,7 @@
         <div id="choose-city" class="nav navbar-nav">
             <li class="dropdown">
                 <c:if test="${city.equals('all')}">
-                    <a href="/tikey/search?email=${member.email}&term=${search_term}&sort=0&genre=${genre}"
+                    <a href="/tikey/search?email=${member.email}&term=${search_term}&sort=0&genre=${genre}&city=all"
                        class="dropdown-toggle" data-toggle="dropdown" style="margin-top: 18px">
                         <span class="city-chooser">全部城市</span><b class="caret"></b>
                     </a>
@@ -76,7 +76,7 @@
                 </c:if>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="/tikey/search?email=${member.email}&term=${search_term}&sort=0&genre=${genre}">
+                        <a href="/tikey/search?email=${member.email}&term=${search_term}&sort=0&genre=${genre}&city=all">
                             全部城市
                         </a>
                     </li>

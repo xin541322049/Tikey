@@ -37,13 +37,13 @@
 
         <div id="choose-city" class="nav navbar-nav">
             <li class="dropdown">
-                <a href="/tikey/search?email=${email}&sort=0"
+                <a href="/tikey/search?email=${email}&sort=0&city=南京"
                    class="dropdown-toggle" data-toggle="dropdown" style="margin-top: 18px">
-                    <span class="city-chooser">全部城市</span><b class="caret"></b>
+                    <span class="city-chooser">南京</span><b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="/tikey/search?email=${member.email}&term=${search_term}&sort=0&genre=${genre}">
+                        <a href="/tikey/search?email=${member.email}&term=${search_term}&sort=0&genre=${genre}&city=all">
                             全部城市
                         </a>
                     </li>

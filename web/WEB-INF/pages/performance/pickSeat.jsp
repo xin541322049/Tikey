@@ -48,7 +48,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="/tikey/search?email=${email}&sort=0">
+                        <a href="/tikey/search?email=${email}&sort=0&city=all">
                             全部城市
                         </a>
                     </li>
