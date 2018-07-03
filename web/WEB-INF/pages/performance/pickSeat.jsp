@@ -193,19 +193,19 @@
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" role="form" id="pay-form" action="/tikey/performance/purchaseWithSeat">
-                    <div class="form-group">
-                        <label for="account_name" class="col-sm-2 control-label">账户名</label>
+                    <div style="margin-left: 2px" class="form-group">
+                        <label style="text-align: left" for="account_name" class="col-sm-2 control-label">账户名</label>
                         <div class="col-sm-8" id="member_check">
                             <input type="text" class="form-control" id="account_name" placeholder="请输入正确支付账户名" name="accountName" required="required">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="password" class="col-sm-2 control-label">支付密码</label>
+                    <div style="margin-left: 2px" class="form-group">
+                        <label style="text-align: left" for="password" class="col-sm-2 control-label">支付密码</label>
                         <div class="col-sm-8" id="password_check">
                             <input type="password" class="form-control" id="password" placeholder="注意区分大小写" name="accountPassword" required="required">
                         </div>
                     </div>
-                    <div class="col-sm-8">
+                    <div style="margin-top: 15px" class="col-sm-8">
                         <p>支付总额为 ¥<span id="sum"></span></p>
                     </div>
                     <div class="col-sm-8">
@@ -697,7 +697,7 @@
         payForm.submit();
     }
 
-    var t = 90;
+    var t = 3000;
     var timer;
     //显示倒数秒数
     function showTime(){
