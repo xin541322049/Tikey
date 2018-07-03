@@ -278,10 +278,10 @@
     </section>
 </div>
 
-<hr style="margin-top: 30px"/>
+<hr class="footer-border"/>
 
-<div class="container" style="margin-top: 40px">
-    <footer style="margin-bottom: 60px">
+<div class="container">
+    <footer class="footer-bottom">
         <p>&copy; Tikey, NJU Software Institute, 2018.</p>
     </footer>
 </div>

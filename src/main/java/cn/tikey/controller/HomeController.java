@@ -23,14 +23,15 @@ public class HomeController {
     private MemberService memberService;
 
     @RequestMapping(value = "/tikey")
-    public String getHomePage(ModelMap modelMap, @ModelAttribute("genre") String genre,
-                              @ModelAttribute("email") String email){
+    public String getHomePage(ModelMap modelMap,
+                              @ModelAttribute("genre") String genre,
+                              @ModelAttribute("email") String email) {
         // 用户
-        if(!email.equals("")){
+        if (!email.equals("")) {
             modelMap.addAttribute("member", memberService.getMemberByEmail(email));
         }
 
-        if(genre.equals("")){
+        if (genre.equals("")) {
             List<Performance> hotList = performanceService.findByState(PerformanceState.Sale);
             modelMap.addAttribute("hotList", hotList);
         } else {
@@ -44,60 +45,62 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/tikey/search")
-    public String searchPerformance(ModelMap modelMap, @ModelAttribute("term") String term,
-                                    @ModelAttribute("email") String email, @ModelAttribute("page") String page,
-                                    @ModelAttribute("genre") String genre){
-        if(!email.equals("")){
+    public String searchPerformance(ModelMap modelMap,
+                                    @ModelAttribute("term") String term,
+                                    @ModelAttribute("email") String email,
+                                    @ModelAttribute("page") String page,
+                                    @ModelAttribute("genre") String genre) {
+        if (!email.equals("")) {
             modelMap.addAttribute("member", memberService.getMemberByEmail(email));
         }
-        if(page.equals("")){
+        if (page.equals("")) {
             page = "0";
         }
         List<Performance> result = performanceService.findByNameContaining(term);
-        for (Performance performance: performanceService.findByDescriptionContaining(term)
-             ) {
+        for (Performance performance : performanceService.findByDescriptionContaining(term)
+                ) {
             boolean find = false;
             for (Performance addPerformance : result
                     ) {
-                if(performance.getId() == addPerformance.getId()){
+                if (performance.getId() == addPerformance.getId()) {
                     find = true;
                     break;
                 }
             }
-            if (!find){
+            if (!find) {
                 result.add(performance);
             }
         }
-        if(!genre.equals("")){
+        if (!genre.equals("")) {
             PerformanceType type = null;
-            if(genre.equals("演唱会")){
+            if (genre.equals("演唱会")) {
                 type = PerformanceType.Concert;
             }
-            if(genre.equals("体育赛事")){
+            if (genre.equals("体育赛事")) {
                 type = PerformanceType.Competition;
             }
-            if(genre.equals("音乐会")){
+            if (genre.equals("音乐会")) {
                 type = PerformanceType.Music;
             }
-            if(genre.equals("歌剧")){
+            if (genre.equals("歌剧")) {
                 type = PerformanceType.Opera;
             }
-            if(genre.equals("话剧")){
+            if (genre.equals("话剧")) {
                 type = PerformanceType.Drama;
             }
-            if(genre.equals("儿童亲子")){
+            if (genre.equals("儿童亲子")) {
                 type = PerformanceType.ChildPlay;
             }
-            if(genre.equals("舞蹈")){
+            if (genre.equals("舞蹈")) {
                 type = PerformanceType.Dance;
             }
-            if(genre.equals("马戏")){
+            if (genre.equals("马戏")) {
                 type = PerformanceType.Circus;
             }
             List<Performance> temp = new ArrayList<Performance>();
             for (Performance performance : result
                     ) {
-                if(performance.getType() == type){
+                if (performance.getType() == type) {
                     temp.add(performance);
                 }
             }

@@ -224,6 +224,12 @@ input {
 .top-item {
     display: block;
     margin-top: 20px;
+    color: #444;
+}
+.top-item:hover,
+.top-item:focus {
+    color: #ea8c30;
+    text-decoration: none;
 }
 
 .modal-mid-size {
@@ -256,3 +262,17 @@ input {
 .modal-top {
     margin-top: -18px
 }
+
+
+/*******footer**********/
+
+.footer-border {
+    margin-top: 15px;
+    margin-bottom: 40px
+}
+
+.footer-bottom {
+    margin-bottom: 60px;
+}
+
+/*******footer**********/

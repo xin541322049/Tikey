@@ -24,22 +24,22 @@
     <script src="/js/uikit.js"></script>
     <script src="/js/paging.js"></script>
 </head>
-
 <style>
-    .page_div{
+    .page_div {
         margin-left: 35%;
     }
-    h2{
+
+    h2 {
         font-size: large;
         margin-top: 5px;
     }
 
-    .performance-link{
+    .performance-link {
         color: #666666;
     }
 
     .performance-link:hover,
-    .performance-link:focus{
+    .performance-link:focus {
         color: #ea8c30;
         text-decoration: none;
     }
@@ -79,7 +79,7 @@
 
         <div id="search-area" class="nav navbar-nav">
             <form class="form-inline search-form" role="search" action="/tikey/search" method="post">
-                <input class="search-input" placeholder="搜索演出、赛事" name="term">
+                <input class="search-input" placeholder="搜索演出、赛事" name="term" value="${search_term}">
                 <input value="${member.email}" name="email" hidden="hidden">
                 <button class="pure-button join-button">
                     <span class="glyphicon glyphicon-search search-text"></span>搜索
@@ -91,7 +91,7 @@
             <c:if test="${member==null}">
                 <li class="user-menu"><span data-toggle="modal" href="#registerModal">
                     <i class="fa fa-user-circle fa-2x"></i>
-                        <span  class="user-menu-text">注册</span>
+                        <span class="user-menu-text">注册</span>
                 </span>
                 </li>
 
@@ -104,13 +104,13 @@
                 <li class="user-menu">
                     <span onclick="return addEmail();">
                         <i class="fa fa-user-o fa-2x"></i>
-                        <span  class="user-menu-text">我的</span>
+                        <span class="user-menu-text">我的</span>
                     </span>
                 </li>
                 <li class="user-menu">
                     <a href="${pageContext.servletContext.contextPath}/tikey" style="padding: 0">
                         <i class="fa fa-sign-out fa-2x"></i>
-                        <span  class="user-menu-text"> 退出</span>
+                        <span class="user-menu-text"> 退出</span>
                     </a>
                 </li>
                 <form action="/tikey/member/detail" id="email-form" method="post" hidden="hidden">
@@ -126,7 +126,8 @@
         <ol class="breadcrumb genres" style="margin: 0; padding: 0">
             <c:if test="${genre.equals('') || genre == null}">
                 <li class="genre">
-                    <a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?email=${member.email}&term=${search_term}">全部</a>
+                    <a style="font-weight: 800;color: #ea8c30;"
+                       href="/tikey/search?email=${member.email}&term=${search_term}">全部</a>
                     <div class="border-bottom"></div>
                 </li>
             </c:if>
@@ -135,34 +136,41 @@
             </c:if>
 
             <c:if test="${genre.equals('演唱会')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=演唱会&email=${member.email}&term=${search_term}">演唱会</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=演唱会&email=${member.email}&term=${search_term}">演唱会</a>
                     <div class="border-bottom" style="margin-left: 15px"></div>
                 </li>
             </c:if>
             <c:if test="${!genre.equals('演唱会')}">
-                <li class="genre"><a href="/tikey/search?genre=演唱会&email=${member.email}&term=${search_term}">演唱会</a></li>
+                <li class="genre"><a href="/tikey/search?genre=演唱会&email=${member.email}&term=${search_term}">演唱会</a>
+                </li>
             </c:if>
 
             <c:if test="${genre.equals('体育赛事')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=体育赛事&email=${member.email}&term=${search_term}">体育赛事</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=体育赛事&email=${member.email}&term=${search_term}">体育赛事</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!genre.equals('体育赛事')}">
-                <li class="genre"><a href="/tikey/search?genre=体育赛事&email=${member.email}&term=${search_term}">体育赛事</a></li>
+                <li class="genre"><a href="/tikey/search?genre=体育赛事&email=${member.email}&term=${search_term}">体育赛事</a>
+                </li>
             </c:if>
 
             <c:if test="${genre.equals('音乐会')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=音乐会&email=${member.email}&term=${search_term}">音乐会</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=音乐会&email=${member.email}&term=${search_term}">音乐会</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!genre.equals('音乐会')}">
-                <li class="genre"><a href="/tikey/search?genre=音乐会&email=${member.email}&term=${search_term}">音乐会</a></li>
+                <li class="genre"><a href="/tikey/search?genre=音乐会&email=${member.email}&term=${search_term}">音乐会</a>
+                </li>
             </c:if>
 
             <c:if test="${genre.equals('歌剧')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=歌剧&email=${member.email}&term=${search_term}">歌剧</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=歌剧&email=${member.email}&term=${search_term}">歌剧</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
@@ -171,7 +179,8 @@
             </c:if>
 
             <c:if test="${genre.equals('话剧')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=话剧&email=${member.email}&term=${search_term}">话剧</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=话剧&email=${member.email}&term=${search_term}">话剧</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
@@ -180,16 +189,19 @@
             </c:if>
 
             <c:if test="${genre.equals('儿童亲子')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=儿童亲子&email=${member.email}&term=${search_term}">儿童亲子</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=儿童亲子&email=${member.email}&term=${search_term}">儿童亲子</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!genre.equals('儿童亲子')}">
-                <li class="genre"><a href="/tikey/search?genre=儿童亲子&email=${member.email}&term=${search_term}">儿童亲子</a></li>
+                <li class="genre"><a href="/tikey/search?genre=儿童亲子&email=${member.email}&term=${search_term}">儿童亲子</a>
+                </li>
             </c:if>
 
             <c:if test="${genre.equals('舞蹈')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=舞蹈&email=${member.email}&term=${search_term}">舞蹈</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=舞蹈&email=${member.email}&term=${search_term}">舞蹈</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
@@ -198,76 +210,98 @@
             </c:if>
 
             <c:if test="${genre.equals('马戏杂技')}">
-                <li class="genre"><a style="font-weight: 800;color: #ea8c30;" href="/tikey/search?genre=马戏杂技&email=${member.email}&term=${search_term}">马戏杂技</a>
+                <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
+                                     href="/tikey/search?genre=马戏杂技&email=${member.email}&term=${search_term}">马戏杂技</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!genre.equals('马戏杂技')}">
-                <li class="genre"><a href="/tikey/search?genre=马戏杂技&email=${member.email}&term=${search_term}">马戏杂技</a></li>
+                <li class="genre"><a href="/tikey/search?genre=马戏杂技&email=${member.email}&term=${search_term}">马戏杂技</a>
+                </li>
             </c:if>
         </ol>
     </div>
 </div>
 
-<div class="container" style="margin-top: 70px">
+<div class="container" style="margin-top: 70px; min-height: 50%">
     <c:if test="${result.size()==0}">
-        <h2>哎呀，目前还没有这个演出哦～返回<a href="/tikey?email=${email}">首页</a>看看别的演出叭，也很精彩呢！</h2>
+        <div class="row" style="padding-top: 120px; min-height: 40%;">
+            <h2 class="col-md-offset-4">暂时还没有相关演出哦～
+                返回<a href="/tikey?email=${email}">首页</a>看看别的演出叭
+            </h2>
+        </div>
     </c:if>
 
-    <c:forEach items="${result}" var="performance" begin="${page * 10}" end="${(page + 1) * 10 - 1}">
-        <div class="col-md-5 uk-card uk-card-default uk-card-hover uk-card-body" style=" padding: 8px; margin: 4% 4%; height: 215px">
-            <div class="col-md-3" style="padding-right: 0;">
-                <div class="poster" style="float: right; margin-left: -40%; margin-top: -40%; margin-bottom: 40%">
-                    <img class="img-thumbnail" src="${performance.posterUrl}" style="height: 200px">
-                </div>
-            </div>
-            <div class="col-md-9" style="padding-left: 30px;">
-                <div class="movie-info">
-                    <h2>
-                        <a href="/tikey/performance/detail/${performance.id}?email=${email}" class="performance-link">${performance.name}</a>
-                        <small> <br><br>${performance.showPlace.name}</small>
-                    </h2>
-                    <p>
-                            ${fn:substring(performance.showTime,0,16)}<span class="split-symbol"> | </span>
-                        <c:if test="${performance.type=='Concert'}">
-                            演唱会
-                        </c:if>
-                        <c:if test="${performance.type=='Competition'}">
-                            体育比赛
-                        </c:if>
-                        <c:if test="${performance.type=='Opera'}">
-                            歌剧
-                        </c:if>
-                        <c:if test="${performance.type=='Circus'}">
-                            马戏
-                        </c:if>
-                        <c:if test="${performance.type=='Drama'}">
-                            话剧
-                        </c:if>
-                        <c:if test="${performance.type=='Dance'}">
-                            舞蹈
-                        </c:if>
-                        <c:if test="${performance.type=='ChildPlay'}">
-                            儿童亲子
-                        </c:if>
-                        <c:if test="${performance.type=='Music'}">
-                            音乐会
-                        </c:if>
-                    </p>
-                    <p>
-                            ${performance.actors} 出演
+    <c:if test="${result.size()>0}">
+        <div style="min-height: 40%">
+            <c:forEach items="${result}" var="performance" begin="${page * 10}" end="${(page + 1) * 10 - 1}">
+                <div class="col-md-5 uk-card uk-card-default uk-card-hover uk-card-body"
+                     style=" padding: 8px; margin: 4% 4%; height: 215px">
+                    <div class="col-md-3" style="padding-right: 0;">
+                        <div class="poster"
+                             style="float: right; margin-left: -40%; margin-top: -40%; margin-bottom: 40%">
+                            <img class="img-thumbnail" src="${performance.posterUrl}" style="height: 200px">
+                        </div>
+                    </div>
+                    <div class="col-md-9" style="padding-left: 30px;">
+                        <div class="movie-info">
+                            <h2>
+                                <a href="/tikey/performance/detail/${performance.id}?email=${email}"
+                                   class="performance-link">${performance.name}</a>
+                                <small><br><br>${performance.showPlace.name}</small>
+                            </h2>
+                            <p>
+                                    ${fn:substring(performance.showTime,0,16)}<span class="split-symbol"> | </span>
+                                <c:if test="${performance.type=='Concert'}">
+                                    演唱会
+                                </c:if>
+                                <c:if test="${performance.type=='Competition'}">
+                                    体育比赛
+                                </c:if>
+                                <c:if test="${performance.type=='Opera'}">
+                                    歌剧
+                                </c:if>
+                                <c:if test="${performance.type=='Circus'}">
+                                    马戏
+                                </c:if>
+                                <c:if test="${performance.type=='Drama'}">
+                                    话剧
+                                </c:if>
+                                <c:if test="${performance.type=='Dance'}">
+                                    舞蹈
+                                </c:if>
+                                <c:if test="${performance.type=='ChildPlay'}">
+                                    儿童亲子
+                                </c:if>
+                                <c:if test="${performance.type=='Music'}">
+                                    音乐会
+                                </c:if>
+                            </p>
+                            <p>
+                                    ${performance.actors} 出演
 
-                    </p>
-                    <div style="color: #ff936f; font-size: large; padding-left: 68%; font-weight: 500">
-                        ¥${performance.stallPrice}<span style="color: #666666; font-size: small; font-weight: normal"> 以内</span>
+                            </p>
+                            <div style="color: #ff936f; font-size: large; padding-left: 68%; font-weight: 500">
+                                ¥${performance.stallPrice}<span
+                                    style="color: #666666; font-size: small; font-weight: normal"> 以内</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </c:forEach>
         </div>
-    </c:forEach>
-    <div class="col-md-12">
-        <div id="page_block" class="page_div"></div>
+    </c:if>
+    <div class="col-md-11 col-md-offset-1">
+        <div id="page_block" class="page_div "></div>
     </div>
+</div>
+
+<hr class="footer-border"/>
+
+<div class="container">
+    <footer class="footer-bottom">
+        <p>&copy; Tikey, NJU Software Institute, 2018.</p>
+    </footer>
 </div>
 
 <div class="modal fade center-modal" id="logModal" tabindex="-1" role="dialog" aria-labelledby="logModalLabel"
@@ -341,7 +375,8 @@
                          style="background-color: transparent; width: 50px">
                 </div>
                 <div class="col-md-3">
-                    <h4 class="modal-title" id="registerModalLabel" style="margin-top:13px; font-size:18px; font-weight: 500;">会员注册</h4>
+                    <h4 class="modal-title" id="registerModalLabel"
+                        style="margin-top:13px; font-size:18px; font-weight: 500;">会员注册</h4>
                 </div>
             </div>
 
@@ -383,13 +418,13 @@
 </body>
 
 <script>
-    function logIn(){
+    function logIn() {
         $.ajax({
             type: "POST",
-            data: {'email':$("#email").val(), 'password': $("#password").val(), 'remember': $("#remember").val()},
-            url: "/tikey/member/login/check" ,
+            data: {'email': $("#email").val(), 'password': $("#password").val(), 'remember': $("#remember").val()},
+            url: "/tikey/member/login/check",
             success: function (data) {
-                if(data=="success"){
+                if (data == "success") {
                     // window.location.href="/tikey/member/detail/"+$("#email").val();
                     $('#member_wrong').remove();
                     $('#password_wrong').remove();
@@ -397,19 +432,19 @@
                     var form = document.getElementById("login-form");
                     form.submit();
                 }
-                if(data=="no member"){
+                if (data == "no member") {
                     $('#member_wrong').remove();
                     $('#password_wrong').remove();
                     $('#member_check').append("<span id='member_wrong' class='glyphicon glyphicon-remove-sign' " +
                         "style='color: #d06d72; top: 8px'>用该邮箱注册用户不存在</span>");
                 }
-                if(data=="wrong password"){
+                if (data == "wrong password") {
                     $('#member_wrong').remove();
                     $('#password_wrong').remove();
                     $('#password_check').append("<span id='password_wrong' class='glyphicon glyphicon-remove-sign' " +
                         "style='color: #d06d72; top: 8px'>密码错误</span>");
                 }
-                if(data=="canceled member"){
+                if (data == "canceled member") {
                     // $('#member_wrong').remove();
                     // $('#password_wrong').remove();
                     $('#logModal').modal('hide');
@@ -420,14 +455,14 @@
         return false;
     }
 
-    function addEmail(){
+    function addEmail() {
         var form = document.getElementById("email-form");
         form.submit();
         return false;
     }
 
     max_page = ${result.size()}
-    max_page = Math.ceil(max_page / 10)
+        max_page = Math.ceil(max_page / 10)
 
     function changePage(newPage) {
         $("#search-form-page").val(newPage)
@@ -435,11 +470,11 @@
     }
 
     $("#page_block").paging({
-        pageNo:${page}+1,
+        pageNo: ${page}+1,
         totalPage: max_page,
         totalSize: ${result.size()},
-        callback: function(num) {
-            changePage(num-1)
+        callback: function (num) {
+            changePage(num - 1)
         }
     })
 </script>
