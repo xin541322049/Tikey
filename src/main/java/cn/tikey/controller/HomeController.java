@@ -49,7 +49,8 @@ public class HomeController {
                                     @ModelAttribute("email") String email,
                                     @ModelAttribute("page") String page,
                                     @ModelAttribute("sort") int sortType,
-                                    @ModelAttribute("genre") String genre) {
+                                    @ModelAttribute("genre") String genre,
+                                    @ModelAttribute("city") String city) {
         if (!email.equals("")) {
             modelMap.addAttribute("member", memberService.getMemberByEmail(email));
         }
@@ -107,6 +108,20 @@ public class HomeController {
             result = temp;
         }
 
+        if(!city.equals("")&&!city.equals("all")){
+            List<Performance> temp = new ArrayList<Performance>();
+            for (Performance performance : result
+                    ) {
+                if (performance.getShowPlace().getCity().equals(city)) {
+                    temp.add(performance);
+                }
+            }
+            result = temp;
+        }
+        else {
+            city = "all";
+        }
+
         // 按照时间由近到远排序
         if (sortType == 1) {
             Collections.sort(result, new Comparator<Performance>() {
@@ -135,6 +150,8 @@ public class HomeController {
         modelMap.addAttribute("search_term", term);
         modelMap.addAttribute("genre", genre);
         modelMap.addAttribute("sortType", sortType);
+        modelMap.addAttribute("city", city);
+        System.out.println();
         return "performance/search";
     }
 }

@@ -76,16 +76,48 @@
 
         <div id="choose-city" class="nav navbar-nav">
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="margin-top: 15px">
-                    <span class="city-chooser">南京</span><b class="caret"></b>
+                <a href="/tikey/search?email=${email}&sort=0&city=${performance.showPlace.city}"
+                   class="dropdown-toggle" data-toggle="dropdown" style="margin-top: 18px">
+                    <span class="city-chooser">${performance.showPlace.city}</span><b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">北京</a></li>
-                    <li><a href="#">上海</a></li>
-                    <li><a href="#">杭州</a></li>
+                    <li>
+                        <a href="/tikey/search?email=${email}&sort=0">
+                            全部城市
+                        </a>
+                    </li>
                     <li class="divider"></li>
-                    <li><a href="#">大连</a></li>
-                    <li><a href="#">武汉</a></li>
+                    <li>
+                        <a href="/tikey/search?email=${email}&sort=0&city=北京">
+                            北京
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/tikey/search?email=${email}&sort=0&city=上海">
+                            上海
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/tikey/search?email=${email}&sort=0&city=南京">
+                            南京
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/tikey/search?email=${email}&sort=0&city=杭州">
+                            杭州
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="/tikey/search?email=${email}&sort=0&city=大连">
+                            大连
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/tikey/search?email=${email}&sort=0&city=武汉">
+                            武汉
+                        </a>
+                    </li>
                 </ul>
             </li>
         </div>
