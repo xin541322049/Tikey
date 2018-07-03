@@ -263,7 +263,8 @@
         <div class="section-header">
             <div class="section-title">近期热门</div>
             <div class="section-operation" style="margin-left: 500px;"><a
-                    href="/tikey/search?email=${member.email}&term=${search_term}" class="no-default-a hover-a">查看更多<i
+                    href="/tikey/search?email=${member.email}&term=${search_term}
+                    &sort=0" class="no-default-a hover-a">查看更多<i
                     class="fa fa-angle-right fa-lg"></i></a></div>
         </div>
 
@@ -290,7 +291,7 @@
         <div class="section-header">
             <div class="section-title">人气TOP 5</div>
             <div class="section-operation" style="margin-left: 140px;"><a
-                    href="/tikey/search?email=${member.email}&term=${search_term}" class="no-default-a hover-a">查看更多<i
+                    href="/tikey/search?email=${member.email}&term=${search_term}&sort=0" class="no-default-a hover-a">查看更多<i
                     class="fa fa-angle-right fa-lg"></i></a></div>
         </div>
         <c:forEach items="${hotList}" var="performance" varStatus="status">
