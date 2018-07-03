@@ -87,41 +87,40 @@
             </li>
         </div>
 
-        <div id="search-area" class="nav navbar-nav" style="margin-left: 90px;">
-            <form class="form-inline" role="search" action="/tikey/search" method="post"
-                  style="margin-top: 20px; line-height: 40px; height: 40px;">
+        <div id="search-area" class="nav navbar-nav">
+            <form class="form-inline search-form" role="search" action="/tikey/search" method="post">
                 <input class="search-input" placeholder="搜索演出、赛事" name="term">
-                <button class="pure-button join-button" style="padding-bottom: 8px">
-                    <span class="glyphicon glyphicon-search" style="margin-right: 5px"></span>搜索
+                <input value="${member.email}" name="email" hidden="hidden">
+                <button class="pure-button join-button">
+                    <span class="glyphicon glyphicon-search search-text"></span>搜索
                 </button>
             </form>
         </div>
 
-        <ul id="visitor_nav" class="nav navbar-nav navbar-right" style="margin-top: 25px">
+        <ul id="visitor_nav" class="nav navbar-nav navbar-right">
             <c:if test="${member==null}">
-                <li class="user-menu"><span data-toggle="modal" href="#registerModal"
-                                            style="outline: none; cursor: pointer">
+                <li class="user-menu"><span data-toggle="modal" href="#registerModal">
                     <i class="fa fa-user-circle fa-2x"></i>
-                        <span style="position:relative;bottom: 5px">注册</span>
-                </span></li>
+                        <span  class="user-menu-text">注册</span>
+                </span>
+                </li>
 
-                <li class="user-menu"><span data-toggle="modal" href="#logModal" style="outline: none; cursor: pointer">
-                    <i class="fa fa-sign-in fa-2x"></i>
-                        <span style="position:relative;bottom: 5px">登录</span>
+                <li class="user-menu"><span data-toggle="modal" href="#logModal">
+                    <i class="fa fa-sign-in fa-2x"></i><span class="user-menu-text">登录</span>
                 </span></li>
             </c:if>
 
             <c:if test="${member.email.length()>0}">
-                <li  class="user-menu">
-                    <span onclick="return addEmail();" style="text-decoration: none; cursor: pointer">
+                <li class="user-menu">
+                    <span onclick="return addEmail();">
                         <i class="fa fa-user-o fa-2x"></i>
-                        <span style="position:relative;bottom: 5px">我的</span>
+                        <span  class="user-menu-text">我的</span>
                     </span>
                 </li>
-                <li  class="user-menu">
-                    <a href="${pageContext.servletContext.contextPath}/tikey"  style="padding: 0">
+                <li class="user-menu">
+                    <a href="${pageContext.servletContext.contextPath}/tikey" style="padding: 0">
                         <i class="fa fa-sign-out fa-2x"></i>
-                        <span style="position:relative;bottom: 5px"> 退出</span>
+                        <span  class="user-menu-text"> 退出</span>
                     </a>
                 </li>
                 <form action="/tikey/member/detail" id="email-form" method="post" hidden="hidden">

@@ -3,6 +3,62 @@ input {
     border: 0;
 }
 
+/******nav*****/
+
+#search-area {
+    margin-left: 90px;
+}
+
+.search-text {
+    margin-right: 5px
+}
+
+.search-form {
+    margin-top: 20px;
+    line-height: 40px;
+    height: 40px;
+}
+
+#visitor_nav {
+    margin-top: 25px
+}
+
+#visitor_nav .user-menu span {
+    outline: none; cursor: pointer
+}
+
+.navbar-site {
+    float: left;
+    position: relative;
+    margin-left: 20px;
+    padding: 0;
+    display: block;
+    height: 75px;
+}
+
+.city-chooser {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 6px;
+    color: #444;
+    cursor: pointer
+}
+
+.user-menu-text {
+    position:relative;bottom: 5px
+}
+
+.user-menu {
+    margin-left: 20px;
+    color: #888888;
+}
+
+.user-menu:hover {
+    color: #ea8c30;
+}
+
+/******nav*****/
+
 .header {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -37,6 +93,7 @@ input {
     width: 90px;
     border-width: 0;
     cursor: pointer;
+    padding-bottom: 8px
 }
 
 .login-menu-item {
@@ -104,35 +161,10 @@ input {
     color: #ea8c30;
 }
 
-.navbar-site {
-    float: left;
-    position: relative;
-    margin-left: 20px;
-    padding: 0;
-    display: block;
-    height: 75px;
-}
-
-.city-chooser {
-    font-size: 14px;
-    font-weight: 500;
-    padding: 0 6px;
-    color: #444;
-    cursor: pointer
-}
 
 .no-gap {
     padding: 0px;
     margin: 0px;
-}
-
-.user-menu {
-    margin-left: 20px;
-    color: #888888;
-}
-
-.user-menu:hover {
-    color: #ea8c30;
 }
 
 #hot-section {
