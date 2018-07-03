@@ -106,7 +106,7 @@
     var couponId = -1;
 </script>
 
-<div class="container" style="margin-top: 20px; width: 70% ">
+<div class="container" style="margin-top: 20px; width: 70%; margin-bottom: 60px">
 
     <h2 class="title" style="font-size: 23px; font-weight: 500"><a href="">演出选座</a></h2>
 
@@ -149,6 +149,14 @@
         </div>
 
     </div>
+</div>
+
+<hr class="footer-border"/>
+
+<div class="container">
+    <footer class="footer-bottom">
+        <p>&copy; Tikey, NJU Software Institute, 2018.</p>
+    </footer>
 </div>
 
 <div class="modal fade" id="couponModal" tabindex="-1" role="dialog" aria-labelledby="couponModalLabel" aria-hidden="true">

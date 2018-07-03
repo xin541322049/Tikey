@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%--
   Created by IntelliJ IDEA.
   User: apple
@@ -18,18 +18,19 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <link href="/img/Hollywood_Ticket_64px_548853_easyicon.net.ico" rel="shortcut icon" type="image/x-icon">
-<%--<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.7.2/jquery.min.js"></script>--%>
+    <%--<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.7.2/jquery.min.js"></script>--%>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery.spinner.js"></script>
 </head>
 <style>
-    .price_button{
+    .price_button {
         background: white;
         border: 2px solid;
         border-radius: 20px;
         margin: 10px;
         color: #999999;
     }
+
     .price_button:hover,
     .price_button:focus {
         background: white;
@@ -38,6 +39,7 @@
         color: #fda572;
         margin: 10px;
     }
+
     .price_button_active {
         background: white;
         border: 2px solid rgb(253, 165, 114);
@@ -45,6 +47,7 @@
         color: #fda572;
         margin: 10px;
     }
+
     .price_button_active:hover
     .price_button_active:focus {
         background: white;
@@ -101,7 +104,7 @@
             <c:if test="${member==null}">
                 <li class="user-menu"><span data-toggle="modal" href="#registerModal">
                     <i class="fa fa-user-circle fa-2x"></i>
-                        <span  class="user-menu-text">注册</span>
+                        <span class="user-menu-text">注册</span>
                 </span>
                 </li>
 
@@ -114,13 +117,13 @@
                 <li class="user-menu">
                     <span onclick="return addEmail();">
                         <i class="fa fa-user-o fa-2x"></i>
-                        <span  class="user-menu-text">我的</span>
+                        <span class="user-menu-text">我的</span>
                     </span>
                 </li>
                 <li class="user-menu">
                     <a href="${pageContext.servletContext.contextPath}/tikey" style="padding: 0">
                         <i class="fa fa-sign-out fa-2x"></i>
-                        <span  class="user-menu-text"> 退出</span>
+                        <span class="user-menu-text"> 退出</span>
                     </a>
                 </li>
                 <form action="/tikey/member/detail" id="email-form" method="post" hidden="hidden">
@@ -131,15 +134,14 @@
     </div>
 </nav>
 
-
 <div class="container" style="margin-top: 100px;
     display: table;
     border-radius: 14px;
     background-color: #fff;
     box-shadow: 0 0 20px 0 #eee;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
     border: 1px solid #eee;
-    height: 54%">
+    height: 56%">
     <div style="margin-left: -100px" class="row">
         <div class="col-md-4">
             <div style="margin-left: 10%;margin-top: -10%" class="poster">
@@ -148,7 +150,9 @@
         </div>
         <div style="margin-top: 3%;margin-left: -3%" class="col-md-8">
             <div class="movie-info">
-                <h2>${performance.name}<small> <br><br>${performance.showPlace.name}</small></h2>
+                <h2>${performance.name}
+                    <small><br><br>${performance.showPlace.name}</small>
+                </h2>
                 <p>
                     ${fn:substring(performance.showTime,0,16)}<span class="split-symbol"> | </span>
                     <c:if test="${performance.type=='Concert'}">
@@ -206,21 +210,33 @@
                         </c:if>
                     </div>
                     <c:if test="${email.length()>0}">
-                        <button class="pure-button" style="background: #fda572; color: white; margin-top: 10px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px" onclick="pickSeat()">
-                            选座购买</button>
+                        <button class="pure-button"
+                                style="background: #fda572; color: white; margin-top: 10px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px"
+                                onclick="pickSeat()">
+                            选座购买
+                        </button>
                     </c:if>
                     <c:if test="${email.length()==0}">
-                        <button class="pure-button" style="background: #fda572; color: white; margin-top: 10px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px" onclick="javascript: alert('登录后才能购票，请先登录')">
-                            选座购买</button>
+                        <button class="pure-button"
+                                style="background: #fda572; color: white; margin-top: 10px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px"
+                                onclick="javascript: alert('登录后才能购票，请先登录')">
+                            选座购买
+                        </button>
                     </c:if>
                     <c:if test="${!performance.distributed}">
                         <c:if test="${email.length()>0}">
-                            <button class="pure-button" style="background: #fda572; color: white; margin-top: 10px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px" data-toggle="modal" data-target="#numberModal">
-                                直接购买</button>
+                            <button class="pure-button"
+                                    style="background: #fda572; color: white; margin-top: 10px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px"
+                                    data-toggle="modal" data-target="#numberModal">
+                                直接购买
+                            </button>
                         </c:if>
                         <c:if test="${email.length()==0}">
-                            <button class="pure-button" style="background: #fda572; color: white; margin-top: 10px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px" onclick="javascript: alert('登录后才能购票，请先登录')">
-                                直接购买</button>
+                            <button class="pure-button"
+                                    style="background: #fda572; color: white; margin-top: 10px; margin-right:10px;border-radius: 25px; font-size: 18px; box-shadow: 0 8px 16px 0 rgba(253,165,114,0.2), 0 6px 20px 0 rgba(253,165,114,0.19);width: 130px"
+                                    onclick="javascript: alert('登录后才能购票，请先登录')">
+                                直接购买
+                            </button>
                         </c:if>
                     </c:if>
                 </c:if>
@@ -230,6 +246,14 @@
             </div>
         </div>
     </div>
+</div>
+
+<hr class="footer-border"/>
+
+<div class="container">
+    <footer class="footer-bottom">
+        <p>&copy; Tikey, NJU Software Institute, 2018.</p>
+    </footer>
 </div>
 
 <div class="modal fade center-modal" id="logModal" tabindex="-1" role="dialog" aria-labelledby="logModalLabel"
@@ -290,7 +314,6 @@
     </div>
 </div>
 
-
 <div class="modal fade center-modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel"
      aria-hidden="true">
     <div class="modal-dialog  modal-mid-size">
@@ -343,7 +366,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="numberModal" tabindex="-1" role="dialog" aria-labelledby="numberModalLabel" aria-hidden="true">
+<div class="modal fade" id="numberModal" tabindex="-1" role="dialog" aria-labelledby="numberModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <a class="navbar-brand" href="#">
@@ -363,10 +387,10 @@
 
                     </div>
                     <%--<div class="form-group">--%>
-                        <%--<label for="number" class="col-sm-2 control-label"></label>--%>
-                        <%--<div class="col-sm-8">--%>
-                            <%--<input type="text" class="spinner" id="memberEmail" name="memberEmail" placeholder="如是"/>--%>
-                        <%--</div>--%>
+                    <%--<label for="number" class="col-sm-2 control-label"></label>--%>
+                    <%--<div class="col-sm-8">--%>
+                    <%--<input type="text" class="spinner" id="memberEmail" name="memberEmail" placeholder="如是"/>--%>
+                    <%--</div>--%>
                     <%--</div>--%>
                     <div class="form-group">
                         <label for="coupon_select" class="col-sm-2 control-label">优惠券</label>
@@ -374,7 +398,8 @@
                             <select id="coupon_select">
                                 <option value="-1">请选择要使用的优惠券</option>
                                 <c:forEach items="${couponList}" var="coupon">
-                                    <option value="${coupon.id}" name="${coupon.discounts}">${coupon.couponName}</option>
+                                    <option value="${coupon.id}"
+                                            name="${coupon.discounts}">${coupon.couponName}</option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -390,8 +415,10 @@
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-8">
-                            <button type="button" class="pure-button" style="float: right; background: #5987c9; color: white" onclick="confirmNumber()">
-                                付款</button>
+                            <button type="button" class="pure-button"
+                                    style="float: right; background: #5987c9; color: white" onclick="confirmNumber()">
+                                付款
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -400,7 +427,8 @@
     </div><!-- /.modal-dialog -->
 </div>
 
-<div class="modal fade" id="purchaseModal" tabindex="-1" role="dialog" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+<div class="modal fade" id="purchaseModal" tabindex="-1" role="dialog" aria-labelledby="purchaseModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <a class="navbar-brand" href="#">
@@ -411,17 +439,20 @@
                 <h4 class="modal-title" id="purchaseModalLabel"><br>支付界面</h4>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" role="form" id="pay-form" action="/tikey/performance/purchase" method="post">
+                <form class="form-horizontal" role="form" id="pay-form" action="/tikey/performance/purchase"
+                      method="post">
                     <div class="form-group">
                         <label for="account_name" class="col-sm-2 control-label">账户名</label>
                         <div class="col-sm-8">
-                            <input type="text" class="form-control" id="account_name" placeholder="请输入正确支付账户名" name="accountName" required="required">
+                            <input type="text" class="form-control" id="account_name" placeholder="请输入正确支付账户名"
+                                   name="accountName" required="required">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="password" class="col-sm-2 control-label">支付密码</label>
                         <div class="col-sm-8">
-                            <input type="password" class="form-control" id="accountPassword" placeholder="注意区分大小写" name="accountPassword" required="required">
+                            <input type="password" class="form-control" id="accountPassword" placeholder="注意区分大小写"
+                                   name="accountPassword" required="required">
                         </div>
                     </div>
                     <div class="col-sm-8">
@@ -433,16 +464,20 @@
                     <div class="form-group">
                         <input type="text" id="pay_email" name="email" value="${email}" hidden="hidden">
                         <input type="text" id="id" name="id" value="${performance.id}" hidden="hidden">
-                        <input type="text" id="type" name="type"  hidden="hidden">
+                        <input type="text" id="type" name="type" hidden="hidden">
                         <input type="text" id="sumPrice" name="sum" hidden="hidden">
                         <input type="text" id="couponId" name="couponId" hidden="hidden">
                         <input type="text" id="pay_number" name="number" hidden="hidden">
                     </div>
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-8">
-                            <button type="button" class="pure-button" style="float: right; margin-left: 10px" onclick="clearTimer()">取消支付</button>
-                            <button type="button" class="pure-button" style="float: right; background: #5987c9; color: white" onclick="pay()">
-                                确认支付</button>
+                            <button type="button" class="pure-button" style="float: right; margin-left: 10px"
+                                    onclick="clearTimer()">取消支付
+                            </button>
+                            <button type="button" class="pure-button"
+                                    style="float: right; background: #5987c9; color: white" onclick="pay()">
+                                确认支付
+                            </button>
                         </div>
                     </div>
                 </form>
@@ -461,50 +496,50 @@
     var coupon = 0;
     var couponId = -1;
 
-    $("#member_discounts").text(rank[${member.rank}]*10)
+    $("#member_discounts").text(rank[${member.rank}] * 10)
 
-    $(function(){
+    $(function () {
         $("#coupon_select").change(
-            function(){
-                var myselect=document.getElementById("coupon_select");
+            function () {
+                var myselect = document.getElementById("coupon_select");
                 var index = myselect.selectedIndex;
                 couponId = myselect.options[index].value;
                 coupon = parseInt(myselect.options[index].getAttribute("name"));
-                if(index==0){
-                    discounts = sum*rank[${member.rank}];
+                if (index == 0) {
+                    discounts = sum * rank[${member.rank}];
                 }
                 else {
-                    discounts = sum*rank[${member.rank}]-coupon;
+                    discounts = sum * rank[${member.rank}] - coupon;
                 }
                 $("#discounts").text(discounts);
             }); //end button2 click
     });
 
-    $( "#number" ).spinner({
-        max:20,
-        min:0,
+    $("#number").spinner({
+        max: 20,
+        min: 0,
         value: 0
     });
 
-    $(function(){
+    $(function () {
         $("#number").change(
-            function(){
-                number=$("#number").val();
-                sum = price*number;
-                discounts = sum*rank[${member.rank}]-coupon;
-                var total_span=document.getElementById("total");
+            function () {
+                number = $("#number").val();
+                sum = price * number;
+                discounts = sum * rank[${member.rank}] - coupon;
+                var total_span = document.getElementById("total");
                 $("#total").text(sum);
                 $("#discounts").text(discounts);
             });
     });
 
-    function logIn(){
+    function logIn() {
         $.ajax({
             type: "POST",
-            data: {'email':$("#email").val(), 'password': $("#password").val(), 'remember': $("#remember").val()},
-            url: "/tikey/member/login/check" ,
+            data: {'email': $("#email").val(), 'password': $("#password").val(), 'remember': $("#remember").val()},
+            url: "/tikey/member/login/check",
             success: function (data) {
-                if(data=="success"){
+                if (data == "success") {
                     // window.location.href="/tikey/member/detail/"+$("#email").val();
                     $('#member_wrong').remove();
                     $('#password_wrong').remove();
@@ -512,19 +547,19 @@
                     var form = document.getElementById("login-form");
                     form.submit();
                 }
-                if(data=="no member"){
+                if (data == "no member") {
                     $('#member_wrong').remove();
                     $('#password_wrong').remove();
                     $('#member_check').append("<span id='member_wrong' class='glyphicon glyphicon-remove-sign' " +
                         "style='color: #d06d72; top: 8px'>用该邮箱注册用户不存在</span>");
                 }
-                if(data=="wrong password"){
+                if (data == "wrong password") {
                     $('#member_wrong').remove();
                     $('#password_wrong').remove();
                     $('#password_check').append("<span id='password_wrong' class='glyphicon glyphicon-remove-sign' " +
                         "style='color: #d06d72; top: 8px'>密码错误</span>");
                 }
-                if(data=="canceled member"){
+                if (data == "canceled member") {
                     // $('#member_wrong').remove();
                     // $('#password_wrong').remove();
                     $('#logModal').modal('hide');
@@ -535,28 +570,28 @@
         return false;
     }
 
-    function addEmail(){
+    function addEmail() {
         var form = document.getElementById("email-form");
         form.submit();
         return false;
     }
 
-    function selectPrice(val, t){
-        price=val;
+    function selectPrice(val, t) {
+        price = val;
         type = t;
         var active = document.getElementsByClassName("price_button_active");
-        if (active.length>0) {
+        if (active.length > 0) {
             active.item(0).setAttribute("class", "pure-button price_button");
         }
         document.getElementById(t).setAttribute("class", "pure-button price_button_active");
     }
 
     function pickSeat() {
-        window.location.href="/tikey/performance/pickSeat?id=${performance.id}"
-            +"&code=${performance.showPlace.stadiumCode}"+"&type="+type+"&price="+price
-            +"&email=${email}";
+        window.location.href = "/tikey/performance/pickSeat?id=${performance.id}"
+            + "&code=${performance.showPlace.stadiumCode}" + "&type=" + type + "&price=" + price
+            + "&email=${email}";
     }
-    
+
     function confirmNumber() {
         $("#numberModal").modal('hide');
         $("#sum").text(discounts);
@@ -566,15 +601,16 @@
 
     var t = 90;
     var timer;
+
     //显示倒数秒数
-    function showTime(){
+    function showTime() {
         t -= 1;
-        document.getElementById('time').innerHTML= t;
-        if(t==0){
-            location.href="/tikey/performance/cancel?id=${performance.id}&email=${email}";
+        document.getElementById('time').innerHTML = t;
+        if (t == 0) {
+            location.href = "/tikey/performance/cancel?id=${performance.id}&email=${email}";
         }
         //每秒执行一次,showTime()
-        timer = setTimeout("showTime()",1000);
+        timer = setTimeout("showTime()", 1000);
     }
 
     function pay() {
