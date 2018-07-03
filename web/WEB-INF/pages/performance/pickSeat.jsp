@@ -58,8 +58,9 @@
 
         <div id="search-area" class="nav navbar-nav">
             <form class="form-inline search-form" role="search" action="/tikey/search" method="post">
-                <input class="search-input" placeholder="搜索演出、赛事" name="term">
+                <input class="search-input" placeholder="搜索演出、赛事" name="term" required="required">
                 <input value="${member.email}" name="email" hidden="hidden">
+                <input value="0" name="sort" hidden="hidden">
                 <button class="pure-button join-button">
                     <span class="glyphicon glyphicon-search search-text"></span>搜索
                 </button>
@@ -82,7 +83,7 @@
             <c:if test="${member.email.length()>0}">
                 <li class="user-menu">
                     <span onclick="return addEmail();">
-                        <i class="fa fa-user-o fa-2x"></i>
+                        <i class="fa fa-user fa-2x"></i>
                         <span  class="user-menu-text">我的</span>
                     </span>
                 </li>

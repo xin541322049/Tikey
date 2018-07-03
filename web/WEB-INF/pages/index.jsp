@@ -53,8 +53,9 @@
 
         <div id="search-area" class="nav navbar-nav">
             <form class="form-inline search-form" role="search" action="/tikey/search" method="post">
-                <input class="search-input" placeholder="搜索演出、赛事" name="term">
+                <input class="search-input" placeholder="搜索演出、赛事" name="term" required="required">
                 <input value="${member.email}" name="email" hidden="hidden">
+                <input value="0" name="sort" hidden="hidden">
                 <button class="pure-button join-button">
                     <span class="glyphicon glyphicon-search search-text"></span>搜索
                 </button>
@@ -77,7 +78,7 @@
             <c:if test="${member.email.length()>0}">
                 <li class="user-menu">
                     <span onclick="return addEmail();">
-                        <i class="fa fa-user-o fa-2x"></i>
+                        <i class="fa fa-user fa-2x"></i>
                         <span  class="user-menu-text">我的</span>
                     </span>
                 </li>
@@ -100,96 +101,96 @@
         <ol class="breadcrumb genres" style="margin: 0; padding: 0">
             <c:if test="${curType.equals('') || curType == null}">
                 <li class="genre">
-                    <a style="font-weight: 800;color: #ea8c30;" href="/tikey?email=${member.email}">首页</a>
+                    <a style="font-weight: 800;color: #ea8c30;" href="/tikey?email=${member.email}&sort=0">首页</a>
                     <div class="border-bottom"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('') && curType != null}">
-                <li class="genre"><a href="/tikey/search?email=${member.email}">首页</a></li>
+                <li class="genre"><a href="/tikey/search?email=${member.email}&sort=0">首页</a></li>
             </c:if>
 
             <c:if test="${curType.equals('演唱会')}">
                 <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
-                                     href="/tikey/search?genre=演唱会&email=${member.email}&term=${search_term}">演唱会</a>
+                                     href="/tikey/search?genre=演唱会&email=${member.email}&term=${search_term}&sort=0">演唱会</a>
                     <div class="border-bottom" style="margin-left: 15px"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('演唱会')}">
-                <li class="genre"><a href="/tikey/search?genre=演唱会&email=${member.email}&term=${search_term}">演唱会</a>
+                <li class="genre"><a href="/tikey/search?genre=演唱会&email=${member.email}&term=${search_term}&sort=0">演唱会</a>
                 </li>
             </c:if>
 
             <c:if test="${curType.equals('体育赛事')}">
                 <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
-                                     href="/tikey/search?genre=体育赛事&email=${member.email}&term=${search_term}">体育赛事</a>
+                                     href="/tikey/search?genre=体育赛事&email=${member.email}&term=${search_term}&sort=0">体育赛事</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('体育赛事')}">
-                <li class="genre"><a href="/tikey/search?genre=体育赛事&email=${member.email}&term=${search_term}">体育赛事</a>
+                <li class="genre"><a href="/tikey/search?genre=体育赛事&email=${member.email}&term=${search_term}&sort=0">体育赛事</a>
                 </li>
             </c:if>
 
             <c:if test="${curType.equals('音乐会')}">
                 <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
-                                     href="/tikey/search?genre=音乐会&email=${member.email}&term=${search_term}">音乐会</a>
+                                     href="/tikey/search?genre=音乐会&email=${member.email}&term=${search_term}&sort=0">音乐会</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('音乐会')}">
-                <li class="genre"><a href="/tikey/search?genre=音乐会&email=${member.email}&term=${search_term}">音乐会</a>
+                <li class="genre"><a href="/tikey/search?genre=音乐会&email=${member.email}&term=${search_term}&sort=0">音乐会</a>
                 </li>
             </c:if>
 
             <c:if test="${curType.equals('歌剧')}">
                 <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
-                                     href="/tikey/search?genre=歌剧&email=${member.email}&term=${search_term}">歌剧</a>
+                                     href="/tikey/search?genre=歌剧&email=${member.email}&term=${search_term}&sort=0">歌剧</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('歌剧')}">
-                <li class="genre"><a href="/tikey/search?genre=歌剧&email=${member.email}&term=${search_term}">歌剧</a></li>
+                <li class="genre"><a href="/tikey/search?genre=歌剧&email=${member.email}&term=${search_term}&sort=0">歌剧</a></li>
             </c:if>
 
             <c:if test="${curType.equals('话剧')}">
                 <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
-                                     href="/tikey/search?genre=话剧&email=${member.email}&term=${search_term}">话剧</a>
+                                     href="/tikey/search?genre=话剧&email=${member.email}&term=${search_term}&sort=0">话剧</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('话剧')}">
-                <li class="genre"><a href="/tikey/search?genre=话剧&email=${member.email}&term=${search_term}">话剧</a></li>
+                <li class="genre"><a href="/tikey/search?genre=话剧&email=${member.email}&term=${search_term}&sort=0">话剧</a></li>
             </c:if>
 
             <c:if test="${curType.equals('儿童亲子')}">
                 <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
-                                     href="/tikey/search?genre=儿童亲子&email=${member.email}&term=${search_term}">儿童亲子</a>
+                                     href="/tikey/search?genre=儿童亲子&email=${member.email}&term=${search_term}&sort=0">儿童亲子</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('儿童亲子')}">
-                <li class="genre"><a href="/tikey/search?genre=儿童亲子&email=${member.email}&term=${search_term}">儿童亲子</a>
+                <li class="genre"><a href="/tikey/search?genre=儿童亲子&email=${member.email}&term=${search_term}&sort=0">儿童亲子</a>
                 </li>
             </c:if>
 
             <c:if test="${curType.equals('舞蹈')}">
                 <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
-                                     href="/tikey/search?genre=舞蹈&email=${member.email}&term=${search_term}">舞蹈</a>
+                                     href="/tikey/search?genre=舞蹈&email=${member.email}&term=${search_term}&sort=0">舞蹈</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('舞蹈')}">
-                <li class="genre"><a href="/tikey/search?genre=舞蹈&email=${member.email}&term=${search_term}">舞蹈</a></li>
+                <li class="genre"><a href="/tikey/search?genre=舞蹈&email=${member.email}&term=${search_term}&sort=0">舞蹈</a></li>
             </c:if>
 
             <c:if test="${curType.equals('马戏杂技')}">
                 <li class="genre"><a style="font-weight: 800;color: #ea8c30;"
-                                     href="/tikey/search?genre=马戏杂技&email=${member.email}&term=${search_term}">马戏杂技</a>
+                                     href="/tikey/search?genre=马戏杂技&email=${member.email}&term=${search_term}&sort=0">马戏杂技</a>
                     <div class="border-bottom" style="margin-left: 12px"></div>
                 </li>
             </c:if>
             <c:if test="${!curType.equals('马戏杂技')}">
-                <li class="genre"><a href="/tikey/search?genre=马戏杂技&email=${member.email}&term=${search_term}">马戏杂技</a>
+                <li class="genre"><a href="/tikey/search?genre=马戏杂技&email=${member.email}&term=${search_term}&sort=0">马戏杂技</a>
                 </li>
             </c:if>
         </ol>

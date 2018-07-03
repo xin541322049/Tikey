@@ -11,8 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class HomeController {
@@ -49,6 +48,7 @@ public class HomeController {
                                     @ModelAttribute("term") String term,
                                     @ModelAttribute("email") String email,
                                     @ModelAttribute("page") String page,
+                                    @ModelAttribute("sort") int sortType,
                                     @ModelAttribute("genre") String genre) {
         if (!email.equals("")) {
             modelMap.addAttribute("member", memberService.getMemberByEmail(email));
@@ -106,10 +106,35 @@ public class HomeController {
             }
             result = temp;
         }
+
+        // 按照时间由近到远排序
+        if (sortType == 1) {
+            Collections.sort(result, new Comparator<Performance>() {
+                public int compare(Performance o1, Performance o2) {
+                    return o2.getShowTime().compareTo(o1.getShowTime());
+                }
+            });
+        // 按照价格低到高排序
+        } else if (sortType == 2) {
+            Collections.sort(result, new Comparator<Performance>() {
+                public int compare(Performance o1, Performance o2) {
+                    return (int)o1.getStallPrice() - (int)o2.getStallPrice();
+                }
+            });
+        // 按照价格高到低排序
+        } else if (sortType == 3){
+            Collections.sort(result, new Comparator<Performance>() {
+                public int compare(Performance o1, Performance o2) {
+                    return (int)o2.getStallPrice() - (int)o1.getStallPrice();
+                }
+            });
+        }
+
         modelMap.addAttribute("result", result);
         modelMap.addAttribute("page", Integer.parseInt(page));
         modelMap.addAttribute("search_term", term);
         modelMap.addAttribute("genre", genre);
+        modelMap.addAttribute("sortType", sortType);
         return "performance/search";
     }
 }

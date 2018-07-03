@@ -24,7 +24,8 @@ input {
 }
 
 #visitor_nav .user-menu span {
-    outline: none; cursor: pointer
+    outline: none;
+    cursor: pointer
 }
 
 .navbar-site {
@@ -45,7 +46,8 @@ input {
 }
 
 .user-menu-text {
-    position:relative;bottom: 5px
+    position: relative;
+    bottom: 5px
 }
 
 .user-menu {
@@ -100,6 +102,7 @@ input {
     border-left: 1.5px solid #F5F5F5;
 }
 
+/**********分类标签**********/
 .genres {
     background: white;
     color: black;
@@ -113,6 +116,48 @@ input {
     font-size: 19px;
     color: #331612;
 }
+
+/**********分类标签**********/
+
+/**********筛选的标签**********/
+.filter-panel {
+    border-radius: 18px;
+    border: 1px solid #ededed;
+    padding-left: 15px
+}
+
+.filter-item {
+    margin: 12px 5px;
+    font-size: 15px;
+    color: #494949;
+}
+.filter-item:before {
+    padding: 0 !important;
+}
+
+.filter-label {
+    font-weight: 500;
+    color: #444;
+    font-size: 16px;
+}
+
+.filter-chosen {
+    border-radius: 18px;
+    color: #fff !important;
+    background-color: #ea8c30;
+}
+
+.sort-chosen {
+    color: #ea8c30 !important;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.filter-text {
+    padding: 7px 23px
+}
+
+/**********筛选的标签**********/
 
 .price {
     color: #5987c9;
@@ -161,7 +206,6 @@ input {
     color: #ea8c30;
 }
 
-
 .no-gap {
     padding: 0px;
     margin: 0px;
@@ -177,11 +221,15 @@ input {
     width: 34%;
 }
 
+#filter-channel a,
+#sort-channel a,
 #nav-channel a {
     text-decoration: none;
     color: #222
 }
 
+#filter-channel a:hover,
+#sort-channel a:hover,
 #nav-channel a:hover {
     text-decoration: none;
     color: #ea8c30;
@@ -226,6 +274,7 @@ input {
     margin-top: 20px;
     color: #444;
 }
+
 .top-item:hover,
 .top-item:focus {
     color: #ea8c30;
@@ -262,7 +311,6 @@ input {
 .modal-top {
     margin-top: -18px
 }
-
 
 /*******footer**********/
 
