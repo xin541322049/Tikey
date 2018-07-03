@@ -15,10 +15,14 @@
     <link rel="stylesheet" href="/css/pure-min.css">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/seat.css">
+    <link rel="stylesheet" href="/css/uikit.css">
+    <link rel="stylesheet" href="/css/uikit-rtl.css">
     <link href="/img/Hollywood_Ticket_64px_548853_easyicon.net.ico" rel="shortcut icon" type="image/x-icon">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery.seat-charts.min.js"></script>
+    <script src="/js/uikit.js"></script>
+    <script src="/js/uikit-icons.js"></script>
 </head>
 <body>
 
@@ -157,13 +161,15 @@
                 <h4 class="modal-title" id="couponModalLabel"><br>优惠券使用</h4>
             </div>
             <div class="modal-body">
-                <p>您有可以使用的优惠券，请选择</p>
-                <select id="coupon_select">
-                    <option value="-1">请选择要使用的优惠券</option>
-                    <c:forEach items="${couponList}" var="coupon">
-                        <option value="${coupon.id}" name="${coupon.discounts}">${coupon.couponName}</option>
-                    </c:forEach>
-                </select>
+                <button style="width: 200px" id="select_coupon_icon" class="uk-button uk-button-default" type="button">选择优惠券</button>
+                <div uk-dropdown>
+                    <ul class="uk-nav uk-dropdown-nav">
+                        <li><a href="#" onclick="setCouponId(-1, 0, '不使用')">不使用</a></li>
+                        <c:forEach items="${couponList}" var="coupon">
+                            <li><a href="#" onclick="setCouponId(${coupon.id}, ${coupon.discounts}, '${coupon.couponName}')">${coupon.couponName}</a></li>
+                        </c:forEach>
+                    </ul>
+                </div>
                 <p>使用优惠券后支付总额为 ¥<span id="coupon_sum"></span></p>
             </div>
             <div class="modal-footer">
@@ -234,20 +240,20 @@
     var rank = [0.95, 0.9, 0.85, 0.8, 0.7];
     var discounts = 0;
 
-    $(function(){
-        $("#coupon_select").change(
-            function(){
-                var myselect=document.getElementById("coupon_select");
-                var index = myselect.selectedIndex;
-                if(index==0){
-                    discounts = sum;
-                }
-                else {
-                    discounts = sum-parseInt(myselect.options[index].getAttribute("name"));
-                }
-                $("#coupon_sum").text(discounts);
-            }); //end button2 click
-    });
+    // $(function(){
+    //     $("#coupon_select").change(
+    //         function(){
+    //             var myselect=document.getElementById("coupon_select");
+    //             var index = myselect.selectedIndex;
+    //             if(index==0){
+    //                 discounts = sum;
+    //             }
+    //             else {
+    //                 discounts = sum-parseInt(myselect.options[index].getAttribute("name"));
+    //             }
+    //             $("#coupon_sum").text(discounts);
+    //         }); //end button2 click
+    // });
 
     $(document).ready(function() {
 
@@ -660,9 +666,6 @@
 
     function consumeCoupon() {
         sum = discounts;
-        var myselect=document.getElementById("coupon_select");
-        var index = myselect.selectedIndex;
-        couponId = myselect.options[index].value;
         $('#couponModal').modal('hide');
         $('#sum').text(sum);
         $('#purchaseModal').modal('show');
@@ -711,6 +714,18 @@
         t = 90;
         window.clearTimeout(timer);
         $("#purchaseModal").modal("hide");
+    }
+
+    function setCouponId(id, discount, name) {
+        couponId = id;
+        if(id==0){
+            discounts = sum;
+        }
+        else {
+            discounts = sum-parseInt(discount);
+        }
+        $("#select_coupon_icon").text(name);
+        $("#coupon_sum").text(discounts);
     }
 
 </script>
