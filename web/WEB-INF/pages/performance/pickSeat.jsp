@@ -24,6 +24,12 @@
     <script src="/js/jquery.seat-charts.min.js"></script>
     <script src="/js/uikit.js"></script>
     <script src="/js/uikit-icons.js"></script>
+
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
 </head>
 <body>
 

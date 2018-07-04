@@ -165,18 +165,13 @@
             </div>
 
             <div class="posts" style="margin-top: 70px">
-                <h1 class="content-subhead">我与Tikey</h1>
-                <%--<a href="/tikey/member/statistics?email=${member.email}" style="margin-top: 30px">翻看故事</a>--%>
+                <h1 class="content-subhead"></h1>
             </div>
 
-            <div class="footer">
-                <div class="pure-menu pure-menu-horizontal">
-                    <ul>
-                        <li class="pure-menu-item"><a href="http://purecss.io/" class="pure-menu-link">About</a></li>
-                        <li class="pure-menu-item"><a href="http://twitter.com/yuilibrary/" class="pure-menu-link">Twitter</a></li>
-                        <li class="pure-menu-item"><a href="http://github.com/yahoo/pure/" class="pure-menu-link">GitHub</a></li>
-                    </ul>
-                </div>
+            <div class="container">
+                <footer class="footer-bottom">
+                    <p>&copy; Tikey, NJU Software Institute, 2018.</p>
+                </footer>
             </div>
         </div>
     </div>
