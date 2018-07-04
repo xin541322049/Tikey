@@ -317,6 +317,9 @@
 <div class="container">
     <footer class="footer-bottom">
         <p>&copy; Tikey, NJU Software Institute, 2018.</p>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#applyModal">场馆注册</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#workInModal">场馆登录</button>
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#adminModal">管理员登录</button>
     </footer>
 </div>
 
@@ -427,6 +430,164 @@
                 </form>
             </div>
         </div>
+    </div>
+</div>
+
+<div class="modal fade" id="applyModal" tabindex="-1" role="dialog" aria-labelledby="applyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="/img/viking_ship_48px_1209600_easyicon.net.ico">
+            </a>
+            <div class="modal-header" style="top: 25px">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="applyModalLabel"><br>场馆注册</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" action="/tikey/stadium/register">
+                    <div class="form-group">
+                        <label for="name_register" class="col-sm-2 control-label">场馆名称</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="name_register" placeholder="请输入完整的场馆名称" name="name" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password_register" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" id="password_register" placeholder="密码至多20位" name="password" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="province_register" class="col-sm-2 control-label">场馆地址</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="province_register" placeholder="请输入场馆所在省份" name="province" required="required">
+                            <input type="text" class="form-control" id="city_register" placeholder="请输入场馆所在市" name="city" required="required">
+                            <input type="text" class="form-control" id="address_register" placeholder="请输入场馆具体地址" name="address" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="account_register" class="col-sm-2 control-label">支付账户</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="account_register" placeholder="请输入完整有效的账户名称" name="account" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="stall_row_register" class="col-sm-2 control-label">池座</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="stall_row_register" placeholder="行个数" name="stallRow" required="required">
+                            <input type="text" class="form-control" id="stall_col_register" placeholder="列个数" name="stallCol" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="second_row_register" class="col-sm-2 control-label">二层</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="second_row_register" placeholder="行个数" name="secondRow">
+                            <input type="text" class="form-control" id="second_col_register" placeholder="列个数" name="secondCol">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="third_row_register" class="col-sm-2 control-label">三层</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="third_row_register" placeholder="行个数" name="thirdRow">
+                            <input type="text" class="form-control" id="third_col_register" placeholder="列个数" name="thirdCol">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="fourth_row_register" class="col-sm-2 control-label">四层（没有请输入0）</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fourth_row_register" placeholder="行个数" name="fourthRow">
+                            <input type="text" class="form-control" id="fourth_col_register" placeholder="列个数" name="fourthCol">
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="pure-button" style="float: right; background: #5987c9; color: white; margin-right: 40px" id="register_btn">
+                            注册</button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="workInModal" tabindex="-1" role="dialog" aria-labelledby="workInModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="/img/viking_ship_48px_1209600_easyicon.net.ico">
+            </a>
+            <div class="modal-header" style="top: 25px">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="workInModalLabel"><br>场馆登录</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="workIn-form" action="/tikey/stadium/login" onsubmit="return workIn();">
+                    <div class="form-group">
+                        <label for="code" class="col-sm-2 control-label">验证码</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="code" placeholder="请正确输入系统分配的场馆验证码" name="code" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-8" id="code_check">
+                            <input type="password" class="form-control" id="stdm_password" placeholder="注意区分大小写" name="password" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-8">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="remember" id="code_remember">记住验证码
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-8">
+                            <button type="submit" class="pure-button" style="float: right; background: #5987c9; color: white" id="workin_button">登录</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div>
+</div>
+
+<div class="modal fade" id="adminModal" tabindex="-1" role="dialog" aria-labelledby="adminModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <a class="navbar-brand" href="#">
+                <img alt="Brand" src="/img/viking_ship_48px_1209600_easyicon.net.ico">
+            </a>
+            <div class="modal-header" style="top: 25px">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title" id="adminModalLabel"><br>管理员登录</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" role="form" id="admin-form">
+                    <div class="form-group">
+                        <label for="code" class="col-sm-2 control-label">验证码</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="admin_id" placeholder="请正确输入系统管理员验证码" name="id" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-8" id="admin_check">
+                            <input type="password" class="form-control" id="admin_password" placeholder="注意区分大小写" name="password" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-8">
+                            <button type="button" class="pure-button" style="float: right; background: #5987c9; color: white" onclick="adminCheck()">登录</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
     </div>
 </div>
 
