@@ -47,6 +47,7 @@ public class PerformanceController {
             // 将内存中的数据写入磁盘
             posterFile.transferTo(newFile);
             // 将新图片名称返回到前端
+            System.out.println(newFileName);
             Map<String, Object> map = new HashMap<String, Object>();
             map.put("success", "成功啦");
             map.put("url", newFileName);
