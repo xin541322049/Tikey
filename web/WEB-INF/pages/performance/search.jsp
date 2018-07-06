@@ -683,8 +683,7 @@
         max_page = Math.ceil(max_page / 10)
 
     function changePage(newPage) {
-        $("#search-form-page").val(newPage)
-        $("#search-form").submit()
+        window.location = "/tikey/search?email=${member.email}&term=${search_term}&sort=0&city=${city}&genre=${genre}&page="+newPage;
     }
 
     $("#page_block").paging({
