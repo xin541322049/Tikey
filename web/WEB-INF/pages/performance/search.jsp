@@ -500,8 +500,8 @@
 
                             </p>
                             <div style="color: #ff936f; font-size: large; padding-left: 68%; font-weight: 500">
-                                ¥${performance.stallPrice}<span
-                                    style="color: #666666; font-size: small; font-weight: normal"> 以内</span>
+                                ¥${performance.minPrice}<span
+                                    style="color: #666666; font-size: small; font-weight: normal"> 起</span>
                             </div>
                         </div>
                     </div>
