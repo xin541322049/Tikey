@@ -240,15 +240,15 @@
 	        "algin":"middle"
 	    }'>
         <ul class="poster-list">
-            <li class="poster-item"><img src="https://img2.tking.cn/assets/img/cyKpCMZMEa.jpg" width="100%"
+            <li class="poster-item"><img src="/posters/KcQStGGBeN.jpg" width="100%"
                                          height="100%"></li>
-            <li class="poster-item"><img src="https://img0.tking.cn/assets/img/DJZGrerwaN.jpg" width="100%"
+            <li class="poster-item"><img src="/posters/3CpFX5HYjQ.jpg" width="100%"
                                          height="100%"></li>
-            <li class="poster-item"><img src="https://img0.tking.cn/assets/img/wwY35nA5Wt.jpg" width="100%"
+            <li class="poster-item"><img src="/posters/reDieNkdfM.jpg" width="100%"
                                          height="100%"></li>
-            <li class="poster-item"><img src="https://img1.tking.cn/assets/img/7i5ASpE6it.jpg" width="100%"
+            <li class="poster-item"><img src="/posters/m8ffZxTbkH.jpg" width="100%"
                                          height="100%"></li>
-            <li class="poster-item"><img src="https://img0.tking.cn/assets/img/7w7McrXKxs.jpg" width="100%"
+            <li class="poster-item"><img src="/posters/N4G6EFrNYm.jpg" width="100%"
                                          height="100%"></li>
         </ul>
 
