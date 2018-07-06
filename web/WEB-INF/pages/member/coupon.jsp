@@ -44,6 +44,10 @@
 
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
+            <div  style="float: right;">
+                <a  href="/tikey?email=${member.email}">返回主页</a>
+            </div>
+
             <!-- A wrapper for all the blog posts -->
             <div style="margin-top: 6%" class="posts">
                 <h1 class="content-subhead">优惠券兑换 (积分:${member.validCredit}）</h1>
