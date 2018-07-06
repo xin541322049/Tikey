@@ -295,9 +295,9 @@
                     class="fa fa-angle-right fa-lg"></i></a></div>
         </div>
         <c:forEach items="${hotList}" var="performance" varStatus="status">
-            <c:if test="${status.index<5}">
+            <c:if test="${status.index>=6 && status.index<11}">
                 <a href="/tikey/performance/detail/${performance.id}?email=${member.email}" class="top-item">
-                    <div class="show-index">${status.index + 1}</div>
+                    <div class="show-index">${status.index - 5}</div>
                     <div class="image-holder">
                         <img src="${performance.posterUrl}" style="width: 90px; height: 130px">
                     </div>
@@ -364,11 +364,6 @@
                                    name="password" required="required">
                         </div>
                     </div>
-                    <%--<div class="form-group">--%>
-                    <%--<div class="col-sm-offset-2 col-sm-8">--%>
-                    <%--<div class="checkbox"><label><input type="checkbox" name="remember" id="remember">记住用户名</label></div>--%>
-                    <%--</div>--%>
-                    <%--</div>--%>
                     <div class="form-group row" style="margin-top: 30px">
                         <button type="submit" class="col-sm-8 col-sm-offset-2 pure-button login-button"
                                 id="login_button">登录
