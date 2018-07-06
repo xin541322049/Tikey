@@ -72,12 +72,18 @@
 
     <div class="content pure-u-1 pure-u-md-3-4">
 
+        <div  style="float: right;">
+            <a  href="/tikey?email=${member.email}">返回主页</a>
+        </div>
+
         <ul ul uk-switcher="animation: uk-animation-fade" id="tabElement" uk-tab>
             <li><a href="#">未使用/已选座</a></li>
             <li><a href="#">未使用/未选座</a></li>
             <li><a href="#">已使用</a></li>
             <li><a href="#">已退款</a></li>
         </ul>
+
+
 
         <ul class="uk-switcher uk-margin">
             <li>
