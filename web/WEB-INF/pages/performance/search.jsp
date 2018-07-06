@@ -500,8 +500,8 @@
 
                             </p>
                             <div style="color: #ff936f; font-size: large; padding-left: 68%; font-weight: 500">
-                                ¥${performance.stallPrice}<span
-                                    style="color: #666666; font-size: small; font-weight: normal"> 以内</span>
+                                ¥${performance.minPrice}<span
+                                    style="color: #666666; font-size: small; font-weight: normal"> 起</span>
                             </div>
                         </div>
                     </div>
@@ -683,8 +683,7 @@
         max_page = Math.ceil(max_page / 10)
 
     function changePage(newPage) {
-        $("#search-form-page").val(newPage)
-        $("#search-form").submit()
+        window.location = "/tikey/search?email=${member.email}&term=${search_term}&sort=0&city=${city}&genre=${genre}&page="+newPage;
     }
 
     $("#page_block").paging({

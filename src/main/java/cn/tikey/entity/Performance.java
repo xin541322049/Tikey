@@ -23,6 +23,7 @@ public class Performance {
     private double secondPrice;
     private double thirdPrice;
     private double fourthPrice;
+    private double minPrice;
     private int stallSeats;
     private int secondSeats;
     private int thirdSeats;
@@ -271,5 +272,17 @@ public class Performance {
 
     public void setDistributed(boolean distributed) {
         this.distributed = distributed;
+    }
+
+    public double getMinPrice() {
+        double res = stallPrice;
+        if (secondPrice > 0 && secondPrice < res) res = secondPrice;
+        if (thirdPrice > 0 && thirdPrice < res) res = thirdPrice;
+        if (fourthPrice > 0 && fourthPrice < res) res = fourthPrice;
+        return res;
+    }
+
+    public void setMinPrice(double minPrice) {
+        this.minPrice = minPrice;
     }
 }
