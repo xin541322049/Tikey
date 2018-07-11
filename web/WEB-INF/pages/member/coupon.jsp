@@ -49,7 +49,7 @@
             </div>
 
             <!-- A wrapper for all the blog posts -->
-            <div style="margin-top: 6%" class="posts">
+            <div style="margin-top: 1%" class="posts">
                 <h1 class="content-subhead">优惠券兑换 (积分:${member.validCredit}）</h1>
                 <div class="uk-child-width-1-3@m uk-grid-small uk-grid-match" uk-grid>
                     <c:forEach items="${couponList}" var="coupons">
@@ -70,6 +70,14 @@
                 </div>
             </div>
         </div>
+
+        <div class="posts" style="margin-top: 200px">
+            <h1 class="content-subhead"></h1>
+        </div>
+
+            <footer class="footer-bottom" style="margin-top: 35px">
+                <p>&copy; Tikey, NJU Software Institute, 2018.</p>
+            </footer>
     </div>
 </div>
 </body>

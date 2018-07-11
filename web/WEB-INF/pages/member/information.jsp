@@ -83,8 +83,8 @@
                         积分：${member.credits}
                     </p>
 
-                    <button class="pure-button join_button" data-toggle="modal" data-target="#cancelModal">会员注销</button>
-                    <button class="join_button pure-button" onclick="editPassword()" id="password_button">修改密码</button>
+                    <%--<button class="pure-button join_button" data-toggle="modal" data-target="#cancelModal">会员注销</button>--%>
+                    <%--<button class="join_button pure-button" onclick="editPassword()" id="password_button">修改密码</button>--%>
 
                     <div id="password_field"></div>
                 </div>
@@ -164,12 +164,12 @@
                 </div>
             </div>
 
-            <div class="posts" style="margin-top: 70px">
+            <div class="posts" style="margin-top: 120px">
                 <h1 class="content-subhead"></h1>
             </div>
 
             <div class="container">
-                <footer class="footer-bottom">
+                <footer class="footer-bottom" style="margin-top: 20px">
                     <p>&copy; Tikey, NJU Software Institute, 2018.</p>
                 </footer>
             </div>

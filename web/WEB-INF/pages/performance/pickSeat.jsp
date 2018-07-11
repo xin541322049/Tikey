@@ -126,7 +126,7 @@
                     </span>
                 </li>
                 <li class="user-menu">
-                    <a href="${pageContext.servletContext.contextPath}/tikey" style="padding: 0">
+                    <a href="${pageContext.servletContext.contextPath}/tikey" id="logout-a">
                         <i class="fa fa-sign-out fa-2x"></i>
                         <span  class="user-menu-text"> 退出</span>
                     </a>

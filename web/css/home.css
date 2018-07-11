@@ -59,6 +59,14 @@ input {
     color: #ea8c30;
 }
 
+#logout-a {
+    padding: 0;
+}
+
+#logout-a:hover {
+    color: #ea8c30;
+}
+
 /******nav*****/
 
 .header {

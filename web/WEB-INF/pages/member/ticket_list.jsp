@@ -83,9 +83,7 @@
             <li><a href="#">已退款</a></li>
         </ul>
 
-
-
-        <ul class="uk-switcher uk-margin">
+        <ul class="uk-switcher uk-margin" style="min-height: 72%">
             <li>
                 <div class="posts">
                     <%--<h1 class="content-subhead">未使用</h1>--%>
@@ -266,8 +264,17 @@
             </li>
         </ul>
 
+        <div class="posts" style="margin-top: 30px">
+            <h1 class="content-subhead"></h1>
+        </div>
+
+        <div class="container">
+            <footer class="footer-bottom" style="margin-top: 10px">
+                <p>&copy; Tikey, NJU Software Institute, 2018.</p>
+            </footer>
         </div>
     </div>
+
 </div>
 
 <div class="modal fade" id="refundModal" tabindex="-1" role="dialog" aria-labelledby="refundModalLabel" aria-hidden="true">

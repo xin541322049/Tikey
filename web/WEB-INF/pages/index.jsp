@@ -115,7 +115,7 @@
                     </span>
                 </li>
                 <li class="user-menu">
-                    <a href="${pageContext.servletContext.contextPath}/tikey" style="padding: 0">
+                    <a href="${pageContext.servletContext.contextPath}/tikey" id="logout-a">
                         <i class="fa fa-sign-out fa-2x"></i>
                         <span  class="user-menu-text"> 退出</span>
                     </a>
@@ -240,15 +240,15 @@
 	        "algin":"middle"
 	    }'>
         <ul class="poster-list">
-            <li class="poster-item"><a href=/tikey/performance/detail/233?email="><img src="/posters/KcQStGGBeN.jpg" width="100%"
+            <li class="poster-item"><a href="/tikey/performance/detail/233?email=${member.email}"><img src="/posters/KcQStGGBeN.jpg" width="100%"
                                                     height="100%"></a></li>
-            <li class="poster-item"><a href="/tikey/performance/detail/242?email="><img src="/posters/3CpFX5HYjQ.jpg" width="100%"
+            <li class="poster-item"><a href="/tikey/performance/detail/242?email=${member.email}"><img src="/posters/3CpFX5HYjQ.jpg" width="100%"
                                                     height="100%"></a></li>
-            <li class="poster-item"><a href="/tikey/performance/detail/240?email="><img src="/posters/reDieNkdfM.jpg" width="100%"
+            <li class="poster-item"><a href="/tikey/performance/detail/240?email=${member.email}"><img src="/posters/reDieNkdfM.jpg" width="100%"
                                                     height="100%"></a></li>
-            <li class="poster-item"><a href="/tikey/performance/detail/238?email="><img src="/posters/m8ffZxTbkH.jpg" width="100%"
+            <li class="poster-item"><a href="/tikey/performance/detail/238?email=${member.email}"><img src="/posters/m8ffZxTbkH.jpg" width="100%"
                                                     height="100%"></a></li>
-            <li class="poster-item"><a href="/tikey/performance/detail/241?email="><img src="/posters/N4G6EFrNYm.jpg" width="100%"
+            <li class="poster-item"><a href="/tikey/performance/detail/241?email=${member.email}"><img src="/posters/N4G6EFrNYm.jpg" width="100%"
                                                     height="100%"></a></li>
         </ul>
 
@@ -263,13 +263,12 @@
         <div class="section-header">
             <div class="section-title">近期热门</div>
             <div class="section-operation" style="margin-left: 500px;"><a
-                    href="/tikey/search?email=${member.email}&term=${search_term}
-                    &sort=0" class="no-default-a hover-a">查看更多<i
+                    href="/tikey/search?email=${member.email}&term=${search_term}&sort=0" class="no-default-a hover-a">查看更多<i
                     class="fa fa-angle-right fa-lg"></i></a></div>
         </div>
 
         <c:forEach items="${hotList}" var="performance" varStatus="status">
-            <c:if test="${status.index< 6}">
+            <c:if test="${status.index< 7 && status.index != 3}">
                 <div class="single-member effect-2" style="width: 210px; height: 350px">
                     <div class="member-image">
                         <img src="${performance.posterUrl}" alt="Member" style="width: 210px; height: 285px">
@@ -317,9 +316,9 @@
 <div class="container">
     <footer class="footer-bottom">
         <p>&copy; Tikey, NJU Software Institute, 2018.</p>
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#applyModal">场馆注册</button>
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#workInModal">场馆登录</button>
-        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#adminModal">管理员登录</button>
+        <%--<button type="button" class="btn btn-default" data-toggle="modal" data-target="#applyModal">场馆注册</button>--%>
+        <%--<button type="button" class="btn btn-default" data-toggle="modal" data-target="#workInModal">场馆登录</button>--%>
+        <%--<button type="button" class="btn btn-default" data-toggle="modal" data-target="#adminModal">管理员登录</button>--%>
     </footer>
 </div>
 

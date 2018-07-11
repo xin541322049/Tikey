@@ -158,7 +158,7 @@
                     </span>
                 </li>
                 <li class="user-menu">
-                    <a href="${pageContext.servletContext.contextPath}/tikey" style="padding: 0">
+                    <a href="${pageContext.servletContext.contextPath}/tikey" id="logout-a">
                         <i class="fa fa-sign-out fa-2x"></i>
                         <span class="user-menu-text"> 退出</span>
                     </a>
@@ -178,7 +178,7 @@
     box-shadow: 0 0 20px 0 #eee;
     margin-bottom: 60px;
     border: 1px solid #eee;
-    height: 56%">
+    height: 63%">
     <div style="margin-left: -100px" class="row">
         <div class="col-md-4">
             <div style="margin-left: 10%;margin-top: -10%" class="poster">
