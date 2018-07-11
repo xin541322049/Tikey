@@ -126,7 +126,7 @@
                     </span>
                 </li>
                 <li class="user-menu">
-                    <a href="${pageContext.servletContext.contextPath}/tikey" id="logout-a">
+                    <a href="${pageContext.servletContext.contextPath}/tikey" style="padding: 0">
                         <i class="fa fa-sign-out fa-2x"></i>
                         <span  class="user-menu-text"> 退出</span>
                     </a>
@@ -221,8 +221,8 @@
                 <p>使用优惠券后支付总额为 ¥<span id="coupon_sum"></span></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" onclick="giveUpCoupon()">不使用，直接支付</button>
-                <button type="button" class="btn btn-primary" onclick="consumeCoupon()">确认使用并支付
+                <%--<button type="button" class="btn btn-default" onclick="giveUpCoupon()">不使用，直接支付</button>--%>
+                <button type="button" class="btn btn-primary" onclick="consumeCoupon()">确认支付
                 </button>
             </div>
         </div><!-- /.modal-content -->

@@ -15,10 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/tikey/member")
@@ -192,6 +189,11 @@ public class MemberController {
         List<Ticket> unseatedList = ticketService.findByMemberEmailAndState(email, TicketState.Unseated);
         List<Ticket> usedList = ticketService.findByMemberEmailAndState(email, TicketState.Used);
         List<Ticket> refundedList = ticketService.findByMemberEmailAndState(email, TicketState.Refunded);
+        Collections.sort(unusedList, new Comparator<Ticket>() {
+            public int compare(Ticket o1, Ticket o2) {
+                return o2.getSaleTime().compareTo(o1.getSaleTime());
+            }
+        });
         modelMap.addAttribute("member", member);
         modelMap.addAttribute("unusedList", unusedList);
         modelMap.addAttribute("unseatedList", unseatedList);
