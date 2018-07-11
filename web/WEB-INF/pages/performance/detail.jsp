@@ -15,12 +15,16 @@
     <link rel="stylesheet" href="/css/pure-min.css">
     <link rel="stylesheet" href="/css/spinner.css">
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/uikit.css">
+    <link rel="stylesheet" href="/css/uikit-rtl.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css">
     <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
     <link href="/img/Hollywood_Ticket_64px_548853_easyicon.net.ico" rel="shortcut icon" type="image/x-icon">
     <%--<script type="text/javascript" src="http://libs.useso.com/js/jquery/1.7.2/jquery.min.js"></script>--%>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/jquery.spinner.js"></script>
+    <script src="/js/uikit.js"></script>
+    <script src="/js/uikit-icons.js"></script>
 </head>
 <style>
     .price_button {
@@ -411,7 +415,7 @@
                 <h4 class="modal-title" id="numberModalLabel"><br>购买选择</h4>
             </div>
             <div class="modal-body">
-                <label for="number" class="col-sm-2 control-label">数量</label>
+                <label for="number" class="col-sm-2 control-label">购票数量</label>
                 <div class="col-sm-8">
                     <input type="text" class="spinner" id="number" name="number" value="0"/>
                 </div>
@@ -426,15 +430,16 @@
                     <%--</div>--%>
                     <%--</div>--%>
                     <div class="form-group">
-                        <label for="coupon_select" class="col-sm-2 control-label">优惠券</label>
-                        <div class="col-sm-8">
-                            <select id="coupon_select">
-                                <option value="-1">请选择要使用的优惠券</option>
-                                <c:forEach items="${couponList}" var="coupon">
-                                    <option value="${coupon.id}"
-                                            name="${coupon.discounts}">${coupon.couponName}</option>
-                                </c:forEach>
-                            </select>
+                        <div class="modal-body">
+                            <button style="margin-left: 13px;width: 200px" id="select_coupon_icon" class="uk-button uk-button-default" type="button">选择优惠券</button>
+                            <div uk-dropdown>
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li><a href="#" onclick="setCouponId(-1, 0, '不使用')">不使用</a></li>
+                                    <c:forEach items="${couponList}" var="coupon">
+                                        <li><a href="#" onclick="setCouponId(${coupon.id}, ${coupon.discounts}, '${coupon.couponName}')">${coupon.couponName}</a></li>
+                                    </c:forEach>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-8">
@@ -449,7 +454,7 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-8">
                             <button type="button" class="pure-button"
-                                    style="float: right; background: #5987c9; color: white" onclick="confirmNumber()">
+                                    style="margin-right: -20%; float: right; background: #5987c9; color: white" onclick="confirmNumber()">
                                 付款
                             </button>
                         </div>
@@ -531,22 +536,22 @@
 
     $("#member_discounts").text(rank[${member.rank}] * 10)
 
-    $(function () {
-        $("#coupon_select").change(
-            function () {
-                var myselect = document.getElementById("coupon_select");
-                var index = myselect.selectedIndex;
-                couponId = myselect.options[index].value;
-                coupon = parseInt(myselect.options[index].getAttribute("name"));
-                if (index == 0) {
-                    discounts = sum * rank[${member.rank}];
-                }
-                else {
-                    discounts = sum * rank[${member.rank}] - coupon;
-                }
-                $("#discounts").text(discounts);
-            }); //end button2 click
-    });
+    <%--$(function () {--%>
+        <%--$("#coupon_select").change(--%>
+            <%--function () {--%>
+                <%--var myselect = document.getElementById("coupon_select");--%>
+                <%--var index = myselect.selectedIndex;--%>
+                <%--couponId = myselect.options[index].value;--%>
+                <%--coupon = parseInt(myselect.options[index].getAttribute("name"));--%>
+                <%--if (index == 0) {--%>
+                    <%--discounts = sum * rank[${member.rank}];--%>
+                <%--}--%>
+                <%--else {--%>
+                    <%--discounts = sum * rank[${member.rank}] - coupon;--%>
+                <%--}--%>
+                <%--$("#discounts").text(discounts);--%>
+            <%--}); //end button2 click--%>
+    <%--});--%>
 
     $("#number").spinner({
         max: 20,
@@ -660,6 +665,16 @@
         t = 90;
         window.clearTimeout(timer);
         $("#purchaseModal").modal("hide");
+    }
+
+    function setCouponId(id, discount, name) {
+        couponId = id;
+        if(id!=0){
+            discounts = discounts-parseInt(discount);
+        }
+        $("#select_coupon_icon").text(name);
+        $("#total").text(sum - parseInt(discount));
+        $("#discounts").text(discounts);
     }
 </script>
 
