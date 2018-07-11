@@ -240,16 +240,16 @@
 	        "algin":"middle"
 	    }'>
         <ul class="poster-list">
-            <li class="poster-item"><img src="/posters/KcQStGGBeN.jpg" width="100%"
-                                         height="100%"></li>
-            <li class="poster-item"><img src="/posters/3CpFX5HYjQ.jpg" width="100%"
-                                         height="100%"></li>
-            <li class="poster-item"><img src="/posters/reDieNkdfM.jpg" width="100%"
-                                         height="100%"></li>
-            <li class="poster-item"><img src="/posters/m8ffZxTbkH.jpg" width="100%"
-                                         height="100%"></li>
-            <li class="poster-item"><img src="/posters/N4G6EFrNYm.jpg" width="100%"
-                                         height="100%"></li>
+            <li class="poster-item"><a href=/tikey/performance/detail/233?email="><img src="/posters/KcQStGGBeN.jpg" width="100%"
+                                                    height="100%"></a></li>
+            <li class="poster-item"><a href="/tikey/performance/detail/242?email="><img src="/posters/3CpFX5HYjQ.jpg" width="100%"
+                                                    height="100%"></a></li>
+            <li class="poster-item"><a href="/tikey/performance/detail/240?email="><img src="/posters/reDieNkdfM.jpg" width="100%"
+                                                    height="100%"></a></li>
+            <li class="poster-item"><a href="/tikey/performance/detail/238?email="><img src="/posters/m8ffZxTbkH.jpg" width="100%"
+                                                    height="100%"></a></li>
+            <li class="poster-item"><a href="/tikey/performance/detail/241?email="><img src="/posters/N4G6EFrNYm.jpg" width="100%"
+                                                    height="100%"></a></li>
         </ul>
 
         <div class="poster-btn poster-prev-btn"></div>
